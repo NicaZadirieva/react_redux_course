@@ -1,3 +1,9 @@
+#### 0.0.2 (2024-08-13)
+
+##### Documentation Changes
+
+- change README.md (5300c79a)
+
 #### 0.0.1 (2024-08-05)
 
 ##### Chores
