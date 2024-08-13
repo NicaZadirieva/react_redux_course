@@ -2,7 +2,11 @@
 
 ##### Documentation Changes
 
-- change README.md (5300c79a)
+- change README.md (37e87b2d)
+
+##### New Features
+
+- Add Search component (7f137b2c)
 
 #### 0.0.1 (2024-08-05)
 
