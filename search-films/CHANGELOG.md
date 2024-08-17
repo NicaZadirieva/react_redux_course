@@ -6,9 +6,13 @@
 
 ##### New Features
 
-- add Header layout component (707056c7)
+- add Header layout component (2a8edcb2)
 - add Menu util components (738ff32e)
 - Add Search component (3c2d843f)
+
+##### Bug Fixes
+
+- add exports from components and styles for Logo (0a2097b5)
 
 #### 0.0.1 (2024-08-05)
 
