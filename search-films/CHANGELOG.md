@@ -6,7 +6,8 @@
 
 ##### New Features
 
-- add Menu util components (2c8f8441)
+- add Header layout component (707056c7)
+- add Menu util components (738ff32e)
 - Add Search component (3c2d843f)
 
 #### 0.0.1 (2024-08-05)
