@@ -6,7 +6,8 @@
 
 ##### New Features
 
-- add Content layout (90bb00c2)
+- demonstrate all components (e46c13cf)
+- add Content layout (741fb5f6)
 - add Header layout component (2a8edcb2)
 - add Menu util components (738ff32e)
 - Add Search component (3c2d843f)
