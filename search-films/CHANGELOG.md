@@ -1,4 +1,4 @@
-#### 0.0.2 (2024-08-13)
+#### 0.0.2 (2024-08-17)
 
 ##### Documentation Changes
 
@@ -6,7 +6,8 @@
 
 ##### New Features
 
-- Add Search component (7f137b2c)
+- add Menu util components (2c8f8441)
+- Add Search component (3c2d843f)
 
 #### 0.0.1 (2024-08-05)
 
