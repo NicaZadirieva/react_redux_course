@@ -1,3 +1,9 @@
+#### 0.0.3 (2024-10-13)
+
+##### New Features
+
+- **MovieCard:** add util component MovieCard, minimal refactoring (a652f0d6)
+
 #### 0.0.2 (2024-08-17)
 
 ##### Documentation Changes
