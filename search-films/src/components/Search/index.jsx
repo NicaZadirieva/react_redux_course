@@ -3,7 +3,6 @@ import Button from '../Button';
 import { default as CssUtils } from '../shared/CssUtils.js';
 import './styles/index.css';
 
-/**TODO: (me) исправить, чтобы информация о параметрах onSearch появлялась в JSDoc.*/
 /**
  * @callback requestCallback
  * @param {Object} requestBody

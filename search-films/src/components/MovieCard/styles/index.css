@@ -1,0 +1,79 @@
+.rating-movie-card {
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(0, 0, 0, .65);
+    padding: 9px 8px 4px 8px;
+    color: #FFBD6D;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    border-radius: 8px;
+    width: 65px;
+    box-sizing: border-box;
+}
+.rating-movie-card img{
+    margin-right: 5.39px;
+}
+
+.title-movie-card {
+    color: rgb(235, 238, 245);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 2%;
+    text-align: left;
+    margin: 16px 0px;
+    margin-top: 8px;
+}
+.poster-movie-card {
+    width: 266px;
+    height: 400px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 1px;
+    box-sizing: border-box;
+
+}
+.movie-card {
+    padding: 8px 8px 8px 16px;
+    background: rgba(32, 40, 62, 0.8);
+    width: 282px;
+    height: 520px;
+    border-radius: 12px;
+}
+.wishlist-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 16px;
+    cursor: pointer;
+    /*TODO: (q) выглядит странным width:109px (desc). Пыталась ограничить область для cursor:pointer */
+    /*24px (icon) + 8px (margin icon) + 109px (desc) */
+    width: 141px;
+    height: 24px;
+
+}
+.can-be-added-icon {
+    background: url("like-icon.svg") no-repeat;
+}
+
+.delete-added-icon {
+    background: url("hand-icon.svg") no-repeat;
+}
+
+.can-be-added-icon, .delete-added-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+.can-be-added-desc, .delete-added-desc {
+    /*TODO: (q) выглядит странным width:109px. Пыталась ограничить область для cursor:pointer */
+    width: 109px;
+}
+.can-be-added-desc {
+    color: rgb(123, 110, 246);
+}
+
+.delete-added-desc {
+    color: rgb(55, 216, 167);
+}
