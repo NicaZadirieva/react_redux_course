@@ -37,18 +37,18 @@ function JournalForm({onSubmit}) {
 	};
 	const validateRequired = (formData, requiredFields) => {
 		const emptyFields = requiredFields.filter(
-			(field) => formData[field].trim.length == 0
+			(field) => formData[field].trim().length == 0
 		);
 		const hasAllRequiredFields = emptyFields.length == 0;
 		if(hasAllRequiredFields) {
 			const newValidState = Object.fromEntries(
-				emptyFields.map(
+				requiredFields.map(
 					(field) => [field, true]
 				));
 			return newValidState;
 		} else {
 			const newFailureState = Object.fromEntries(
-				emptyFields.map(
+				requiredFields.map(
 					(field) => [field, false]
 				)
 			);
@@ -65,7 +65,7 @@ function JournalForm({onSubmit}) {
 		setFormValidState((oldValue) => (
 			{
 				...oldValue, 
-				...{...validateDateResult,...validateRequiredResult}
+				...validateDateResult,...validateRequiredResult
 			}));
 		const validateOk = validateRequiredResult.title && validateRequiredResult.post && validateDateResult.date;
 		if(validateOk) {
@@ -80,7 +80,7 @@ function JournalForm({onSubmit}) {
 			<form className={styles['journal-form']} onSubmit={addJournalItem}>
 				<div>
 					<input type="text" name="title" className={cn(styles['input-title'], {
-						[invalidClass]:!formValidState.title
+						[invalidClass]: formValidState.title == false
 					})}/>
 				</div>
 				<div className={styles['form-row']}>
@@ -89,7 +89,7 @@ function JournalForm({onSubmit}) {
 						<span>Дата</span>
 					</label>
 					<input id="date" type="date" name="date" className={cn(styles['input-date'], {
-						[invalidClass]:!formValidState.title
+						[invalidClass]: formValidState.date == false
 					})}/>
 				</div>
 				<div className={styles['form-row']}>
@@ -100,8 +100,8 @@ function JournalForm({onSubmit}) {
 					<input type='text' id='tag' name="tag" className={styles['input-tag']} value={inputData} onChange={inputChange}/>
 				</div>
 				
-				<textarea name="post" id="" cols="30" rows="10" className={cn(styles.post, {
-					[invalidClass]:!formValidState.post
+				<textarea name="post" cols="30" rows="10" className={cn(styles.post, {
+					[invalidClass]: formValidState.post == false
 				})}></textarea>
 
 				<Button text="Сохранить" onClick={() => {console.log('Нажали');}}/>
