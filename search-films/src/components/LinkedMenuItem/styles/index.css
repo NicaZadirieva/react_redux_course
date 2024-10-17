@@ -1,0 +1,40 @@
+.menu-item {
+  list-style-type: none;
+  padding: 12px 32px 12px 32px;
+}
+.menu-item .menu-link{
+    display: flex;
+    gap: 8px;
+    flex-direction: row;
+    vertical-align: middle;
+
+    box-sizing: border-box;
+}
+
+
+.rounded-text-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: rgb(123, 110, 246);
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.menu-item.can-choose .menu-link{
+    cursor: pointer;
+}
+.menu-item.can-choose .menu-link:hover {
+    color: rgb(255, 255, 255);
+}
+.menu-link {
+    color: rgb(168, 174, 191);
+}
+
+.menu-link.disable {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
