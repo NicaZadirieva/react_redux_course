@@ -1,94 +1,47 @@
 import cn from 'classnames';
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import Button from '../Button';
+import { formReducer, INITIAL_STATE } from './states/JournalForm.state';
 import styles from './styles/index.module.css';
 
-// valid state for validation
-const INITIAL_STATE = {
-	title: true,
-	date: true,
-	post: true
-};
 function JournalForm({onSubmit}) {
-	const [inputData, setInputData] = useState('');
-
-	const [formValidState, setFormValidState] = useState(INITIAL_STATE);
-	
+	const [formState, dispatchForm] = useReducer(formReducer, INITIAL_STATE);
+	const [inputData, setInputData] = useState();
+	const { isValid, isFormReadyToSubmit, values } = formState; 
 	useEffect(() => {
 		let timerId;
-		if(!formValidState.date || !formValidState.post || !formValidState.title) {
+		if(!isValid.date || !isValid.post || !isValid.title) {
 			timerId = setTimeout(() => {
-				setFormValidState(INITIAL_STATE);
+				dispatchForm({type: 'RESET_VALIDITY'});
 			}, 2000);
 		}
 		// unmount // 
 		return () => {
 			clearTimeout(timerId);
 		};
-	}, [formValidState]);
+	}, [isValid]);
 
 	const inputChange = (event) => {
 		setInputData(event.target.value);
 	};
 	
 	
-	const validateDate = (formData) => {
-		try {
-			if(!formData.date) {
-				throw new Error('Date must be specified');
-			}
-			new Date(formData.date);
-			return {date: true};
-		} catch (e) {
-			const notValidData = {
-				valid: false,
-				errorMessage: e.message,
-				data: formData,
-				stackTrace: e.stack
-			};
-			console.error(notValidData.errorMessage, notValidData.data, notValidData.stackTrace);
-			return {date: false};
-			
-		}
-	};
-	const validateRequired = (formData, requiredFields) => {
-		const emptyFields = requiredFields.filter(
-			(field) => formData[field].trim().length == 0
-		);
-		const hasAllRequiredFields = emptyFields.length == 0;
-		if(hasAllRequiredFields) {
-			const newValidState = Object.fromEntries(
-				requiredFields.map(
-					(field) => [field, true]
-				));
-			return newValidState;
-		} else {
-			const newFailureState = Object.fromEntries(
-				requiredFields.map(
-					(field) => [field, false]
-				)
-			);
-			return newFailureState;
-		}
-	};
+	
 	const addJournalItem = (e) => {
 		e.preventDefault();
 		const form = e.target;
 		const formData = new FormData(form);
 		const formProps = Object.fromEntries(formData);
-		const validateDateResult = validateDate(formProps);
-		const validateRequiredResult = validateRequired(formProps, /*requiredFields=*/['title', 'post']);
-		setFormValidState((oldValue) => (
-			{
-				...oldValue, 
-				...validateDateResult,...validateRequiredResult
-			}));
-		const validateOk = validateRequiredResult.title && validateRequiredResult.post && validateDateResult.date;
-		if(validateOk) {
-			onSubmit(formProps);
-			form.reset();
-		}
+		dispatchForm({type: 'FILL', payload: formProps});
+		
 	};
+
+	useEffect(() => {
+		if(isFormReadyToSubmit) {
+			onSubmit(values);
+			//form.reset();
+		}
+	}, [isFormReadyToSubmit]);
 	const invalidClass = styles.invalid;
 
 	return (
@@ -96,7 +49,7 @@ function JournalForm({onSubmit}) {
 			<form className={styles['journal-form']} onSubmit={addJournalItem}>
 				<div>
 					<input type="text" name="title" className={cn(styles['input-title'], {
-						[invalidClass]: formValidState.title == false
+						[invalidClass]: isValid.title == false
 					})}/>
 				</div>
 				<div className={styles['form-row']}>
@@ -105,7 +58,7 @@ function JournalForm({onSubmit}) {
 						<span>Дата</span>
 					</label>
 					<input id="date" type="date" name="date" className={cn(styles['input-date'], {
-						[invalidClass]: formValidState.date == false
+						[invalidClass]: isValid.date == false
 					})}/>
 				</div>
 				<div className={styles['form-row']}>
@@ -117,7 +70,7 @@ function JournalForm({onSubmit}) {
 				</div>
 				
 				<textarea name="post" cols="30" rows="10" className={cn(styles.post, {
-					[invalidClass]: formValidState.post == false
+					[invalidClass]: isValid.post == false
 				})}></textarea>
 
 				<Button text="Сохранить" onClick={() => {console.log('Нажали');}}/>
