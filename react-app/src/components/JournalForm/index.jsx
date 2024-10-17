@@ -1,16 +1,32 @@
 import cn from 'classnames';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '../Button';
 import styles from './styles/index.module.css';
 
+// valid state for validation
+const INITIAL_STATE = {
+	title: true,
+	date: true,
+	post: true
+};
 function JournalForm({onSubmit}) {
 	const [inputData, setInputData] = useState('');
-	const validState = {
-		title: true,
-		date: true,
-		post: true
-	};
-	const [formValidState, setFormValidState] = useState(validState);
+
+	const [formValidState, setFormValidState] = useState(INITIAL_STATE);
+	
+	useEffect(() => {
+		let timerId;
+		if(!formValidState.date || !formValidState.post || !formValidState.title) {
+			timerId = setTimeout(() => {
+				setFormValidState(INITIAL_STATE);
+			}, 2000);
+		}
+		// unmount // 
+		return () => {
+			clearTimeout(timerId);
+		};
+	}, [formValidState]);
+
 	const inputChange = (event) => {
 		setInputData(event.target.value);
 	};
