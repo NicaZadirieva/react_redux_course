@@ -20,7 +20,7 @@ export default function JournalList({items}) {
 					<CardButton key={el.id}>
 						<JournalItem
 							title={el.title}
-							text={el.text}
+							text={el.post}
 							date={el.date}/>
 					</CardButton>
 				);
