@@ -21,7 +21,9 @@ import './styles/index.css';
  * 
 */
 function Search(props) {
-	const {position='vertical', hasSearchIcon=false} = props;
+
+	const {position=/*byDefault=*/'vertical', hasSearchIcon=/*byDefault=*/false} = props;
+
 	/**TODO: (me) возможно придется убрать searchText из state-ов в props?*/
 	let [searchText, setSearchText] = useState(/*byDefault=*/'');
 	const inputChange = (event) => {

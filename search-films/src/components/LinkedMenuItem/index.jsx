@@ -20,7 +20,9 @@ import './styles/index.css';
  * 
 */
 function LinkedMenuItem(props) {
-	const {canChoose=true} = props;
+
+	const {canChoose=/*byDefault*/true} = props;
+	
 	const createIconItem = (icon) => {
 		const defaultIconClassName = 'menu-item-icon';
 

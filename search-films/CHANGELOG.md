@@ -2,7 +2,9 @@
 
 ##### Refactors
 
-- **components:** minimal changes in parameters of components (1c5c65c6)
+- **components:**
+  - minimal code reducing (fce88542)
+  - minimal changes in parameters of components (833a166c)
 
 #### 0.0.3 (2024-10-13)
 

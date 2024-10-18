@@ -23,7 +23,9 @@ import './styles/index.css';
  * 
 */
 function MovieCard(props) {
-	const {isLiked=false, rating=0} = props;
+
+	const {isLiked=/*byDefault*/false, rating=/*byDefault*/ 0} = props;
+	
 	const defaultCardClassName = 'movie-card';
 	const movieCardClassName = props.className ? 
 		CssUtils.addClassToDefaultClassName(defaultCardClassName, props.className): defaultCardClassName; 

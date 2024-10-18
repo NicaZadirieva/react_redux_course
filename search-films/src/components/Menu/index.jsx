@@ -8,6 +8,7 @@ import './styles/index.css';
  * 
 */
 function Menu({isAuthenticated=false}) {
+	
 	const authMenu = (
 		<>
 			<LinkedMenuItem
