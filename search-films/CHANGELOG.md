@@ -1,3 +1,9 @@
+#### 0.0.4 (2024-10-18)
+
+##### Refactors
+
+- **components:** minimal changes in parameters of components (1c5c65c6)
+
 #### 0.0.3 (2024-10-13)
 
 ##### New Features

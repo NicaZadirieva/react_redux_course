@@ -19,8 +19,8 @@ import './styles/index.css';
  * @returns {component} MenuItem 
  * 
 */
-function LinkedMenuItem({text, linkUrl, onClick, icon, canChoose=true}) {
-
+function LinkedMenuItem(props) {
+	const {canChoose=true} = props;
 	const createIconItem = (icon) => {
 		const defaultIconClassName = 'menu-item-icon';
 
@@ -39,14 +39,14 @@ function LinkedMenuItem({text, linkUrl, onClick, icon, canChoose=true}) {
 		return;
 	};
 
-	const iconItem = createIconItem(icon);
+	const iconItem = createIconItem(props.icon);
 	const defaultMenuItemClassName = 'menu-item';
 	const menuItemClassName = canChoose ? (
 	/*byDefault*/ CssUtils.addClassToDefaultClassName(defaultMenuItemClassName, 'can-choose')) : defaultMenuItemClassName;
 	const onMenuClick = (e) =>{
-		const handleEnabled = onClick && canChoose;
+		const handleEnabled = props.onClick && canChoose;
 		if(handleEnabled) {
-			onClick(e);
+			props.onClick(e);
 		}
 	};
 	const defaultLinkClassName = 'menu-link';
@@ -54,7 +54,7 @@ function LinkedMenuItem({text, linkUrl, onClick, icon, canChoose=true}) {
 	const linkClassName = canChoose ? /*enable link byDefault*/ defaultLinkClassName : disabledLink;
 	return (
 		<li className={menuItemClassName} onClick={onMenuClick}>
-			<a href={linkUrl} className={linkClassName}>{text} {iconItem}</a>
+			<a href={props.linkUrl} className={linkClassName}>{props.text} {iconItem}</a>
 			
 		</li>
 	);

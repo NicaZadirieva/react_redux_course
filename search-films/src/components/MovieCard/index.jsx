@@ -22,10 +22,11 @@ import './styles/index.css';
  * @returns {component} MovieCard 
  * 
 */
-function MovieCard({movieName, movieId, posterUrl, className, addToWishList, deleteFromWishList, isLiked=false, rating=0}) {
+function MovieCard(props) {
+	const {isLiked=false, rating=0} = props;
 	const defaultCardClassName = 'movie-card';
-	const movieCardClassName = className ? 
-		CssUtils.addClassToDefaultClassName(defaultCardClassName, className): defaultCardClassName; 
+	const movieCardClassName = props.className ? 
+		CssUtils.addClassToDefaultClassName(defaultCardClassName, props.className): defaultCardClassName; 
 
 	const Rating = (
 		<div className={'rating-movie-card'}>
@@ -35,16 +36,16 @@ function MovieCard({movieName, movieId, posterUrl, className, addToWishList, del
 	);
 
 	const Poster = (
-		<div className={'poster-movie-card'} style={{background: `url(/poster/${posterUrl})`}}>{Rating}</div>
+		<div className={'poster-movie-card'} style={{background: `url(/poster/${props.posterUrl})`}}>{Rating}</div>
 	);
     
 	const MovieTitle = (
-		<div className='title-movie-card'>{movieName}</div>
+		<div className='title-movie-card'>{props.movieName}</div>
 	);
 
 	// Добавить в избранное
 	const AddToWishListItem = (
-		<div className='wishlist-item' onClick={() => {addToWishList(movieId);}}>
+		<div className='wishlist-item' onClick={() => {props.addToWishList(props.movieId);}}>
 			<div className='can-be-added-icon'></div>
 			<p className='can-be-added-desc'>{'В избранное'}</p>
 		</div>
@@ -52,7 +53,7 @@ function MovieCard({movieName, movieId, posterUrl, className, addToWishList, del
 
 	// Удалить из избранного
 	const DeleteFromWishListItem = (
-		<div className='wishlist-item' onClick={() => {deleteFromWishList(movieId);}}>
+		<div className='wishlist-item' onClick={() => {props.deleteFromWishList(props.movieId);}}>
 			<div className='delete-added-icon'></div>
 			<p className='delete-added-desc'>{'В избранном'}</p>
 		</div>

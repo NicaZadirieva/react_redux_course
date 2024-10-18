@@ -20,7 +20,8 @@ import './styles/index.css';
  * @returns {component} Search 
  * 
 */
-function Search({placeholder, position='vertical', onSearch, searchActionName, hasSearchIcon=false}) {
+function Search(props) {
+	const {position='vertical', hasSearchIcon=false} = props;
 	/**TODO: (me) возможно придется убрать searchText из state-ов в props?*/
 	let [searchText, setSearchText] = useState(/*byDefault=*/'');
 	const inputChange = (event) => {
@@ -39,7 +40,7 @@ function Search({placeholder, position='vertical', onSearch, searchActionName, h
 		e.preventDefault();
 		const formData = new FormData(e.target);
 		const formProps = Object.fromEntries(formData);
-		onSearch(formProps);
+		props.onSearch(formProps);
 	};
     
 	return (
@@ -48,11 +49,11 @@ function Search({placeholder, position='vertical', onSearch, searchActionName, h
 				<input type="search"  
 					className={inputClassName}
 					name="textToSearch"
-					placeholder={placeholder}  
+					placeholder={props.placeholder}  
 					value={searchText} 
 					onChange={inputChange} />
 			</div>
-			<Button text={searchActionName}/>
+			<Button text={props.searchActionName}/>
 		</form>
 	);
 }
