@@ -2,7 +2,11 @@
 
 ##### Chores
 
-- **\*:** create module css styles (index.module.css) (3735a02b)
+- **\*:** create module css styles (index.module.css) (a9e69139)
+
+##### Bug Fixes
+
+- **Header:** change class 'restrict-content-size ' to global class (1f158800)
 
 #### 0.0.4 (2024-10-18)
 

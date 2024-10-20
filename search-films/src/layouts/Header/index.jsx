@@ -10,7 +10,7 @@ import styles from './styles/index.module.css';
 function Header({isAuthenticated=false}) {
 	return (
 		<header className={styles.header}>
-			<div className={`${styles['header-content']} ${styles['restrict-content-size']}`}>
+			<div className={`${styles['header-content']} restrict-content-size`}>
 				<Logo/>
 				<Menu isAuthenticated={isAuthenticated}/>
 			</div>
