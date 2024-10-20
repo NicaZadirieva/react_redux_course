@@ -1,6 +1,6 @@
 
 import { default as CssUtils } from '../shared/CssUtils';
-import './styles/index.css';
+import styles from './styles/index.module.css';
 
 /**
  * @callback requestCallback
@@ -26,38 +26,38 @@ function MovieCard(props) {
 
 	const {isLiked=/*byDefault*/false, rating=/*byDefault*/ 0} = props;
 	
-	const defaultCardClassName = 'movie-card';
+	const defaultCardClassName = styles['movie-card'];
 	const movieCardClassName = props.className ? 
 		CssUtils.addClassToDefaultClassName(defaultCardClassName, props.className): defaultCardClassName; 
 
 	const Rating = (
-		<div className={'rating-movie-card'}>
+		<div className={styles['rating-movie-card']}>
 			<img src='star-icon.svg'/>
-			<div className='rating-value'>{rating}</div>
+			<div className={styles['rating-value']}>{rating}</div>
 		</div>
 	);
 
 	const Poster = (
-		<div className={'poster-movie-card'} style={{background: `url(/poster/${props.posterUrl})`}}>{Rating}</div>
+		<div className={styles['poster-movie-card']} style={{background: `url(/poster/${props.posterUrl})`}}>{Rating}</div>
 	);
     
 	const MovieTitle = (
-		<div className='title-movie-card'>{props.movieName}</div>
+		<div className={styles['title-movie-card']}>{props.movieName}</div>
 	);
 
 	// Добавить в избранное
 	const AddToWishListItem = (
-		<div className='wishlist-item' onClick={() => {props.addToWishList(props.movieId);}}>
-			<div className='can-be-added-icon'></div>
-			<p className='can-be-added-desc'>{'В избранное'}</p>
+		<div className={styles['wishlist-item']} onClick={() => {props.addToWishList(props.movieId);}}>
+			<div className={styles['can-be-added-icon']}></div>
+			<p className={styles['can-be-added-desc']}>{'В избранное'}</p>
 		</div>
 	);
 
 	// Удалить из избранного
 	const DeleteFromWishListItem = (
-		<div className='wishlist-item' onClick={() => {props.deleteFromWishList(props.movieId);}}>
-			<div className='delete-added-icon'></div>
-			<p className='delete-added-desc'>{'В избранном'}</p>
+		<div className={styles['wishlist-item']} onClick={() => {props.deleteFromWishList(props.movieId);}}>
+			<div className={styles['delete-added-icon']}></div>
+			<p className={styles['delete-added-desc']}>{'В избранном'}</p>
 		</div>
 	);
 

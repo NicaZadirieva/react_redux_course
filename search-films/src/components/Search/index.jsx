@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Button from '../Button';
 import { default as CssUtils } from '../shared/CssUtils.js';
-import './styles/index.css';
+import styles from './styles/index.module.css';
 
 /**
  * @callback requestCallback
@@ -29,12 +29,12 @@ function Search(props) {
 	const inputChange = (event) => {
 		setSearchText(event.target.value);
 	};
-	const positionClass = position == 'horizontal' ? 'horizontal' : 'vertical';
-	const formClassName = CssUtils.addClassToDefaultClassName('search', positionClass);
-	const inputClassName = 'search-input';
+	const positionClass = position == 'horizontal' ? styles.horizontal : styles.vertical;
+	const formClassName = CssUtils.addClassToDefaultClassName(styles.search, positionClass);
+	const inputClassName = styles['search-input'];
 
 	const iconElement = (hasSearchIcon ? 
-	/*display search icon*/ 'icon-search' : 
+	/*display search icon*/ styles['icon-search'] : 
 	/*byDefault=hide search icon*/ ''
 	);
 

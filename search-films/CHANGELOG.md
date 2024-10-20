@@ -1,3 +1,9 @@
+#### 0.1.0 (2024-10-20)
+
+##### Chores
+
+- **\*:** create module css styles (index.module.css) (3735a02b)
+
 #### 0.0.4 (2024-10-18)
 
 ##### Refactors

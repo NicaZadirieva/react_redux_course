@@ -47,7 +47,6 @@
     align-items: center;
     margin-top: 16px;
     cursor: pointer;
-    /*TODO: (q) выглядит странным width:109px (desc). Пыталась ограничить область для cursor:pointer */
     /*24px (icon) + 8px (margin icon) + 109px (desc) */
     width: 141px;
     height: 24px;
@@ -67,7 +66,6 @@
     margin-right: 8px;
 }
 .can-be-added-desc, .delete-added-desc {
-    /*TODO: (q) выглядит странным width:109px. Пыталась ограничить область для cursor:pointer */
     width: 109px;
 }
 .can-be-added-desc {

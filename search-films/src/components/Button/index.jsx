@@ -1,8 +1,8 @@
-import './styles/index.css';
+import styles from './styles/index.module.css';
 
 function Button({text}) {
 	return (
-		<button className="button">{text}</button>
+		<button className={styles.button}>{text}</button>
 	);
 }
 

@@ -1,6 +1,6 @@
 import { default as CssUtils } from '../shared/CssUtils';
-import './styles/index.css';
-/**TODO: (me) исправить, чтобы информация о параметрах onClick появлялась в JSDoc.*/
+import styles from './styles/index.module.css';
+
 /**
  * @callback eventHandler
  * @param {SyntheticBaseEvent} event
@@ -24,16 +24,16 @@ function LinkedMenuItem(props) {
 	const {canChoose=/*byDefault*/true} = props;
 	
 	const createIconItem = (icon) => {
-		const defaultIconClassName = 'menu-item-icon';
+		const defaultIconClassName = styles['menu-item-icon'];
 
 		if(icon && icon.type == 'svg') {
-			return <img className="menu-item-icon" alt="Icon" src={icon.dataSource}/>;
+			return <img className={defaultIconClassName} alt="Icon" src={icon.dataSource}/>;
 		}
 		if(icon && icon.type == 'iconText') {
 
 			const roundedIconClassName = CssUtils.addClassToDefaultClassName(
 				defaultIconClassName, 
-				'rounded-text-icon');
+				styles['rounded-text-icon']);
 
 			return <span className={roundedIconClassName}>{icon.dataSource}</span>;
 		}
@@ -42,17 +42,17 @@ function LinkedMenuItem(props) {
 	};
 
 	const iconItem = createIconItem(props.icon);
-	const defaultMenuItemClassName = 'menu-item';
+	const defaultMenuItemClassName = styles['menu-item'];
 	const menuItemClassName = canChoose ? (
-	/*byDefault*/ CssUtils.addClassToDefaultClassName(defaultMenuItemClassName, 'can-choose')) : defaultMenuItemClassName;
+	/*byDefault*/ CssUtils.addClassToDefaultClassName(defaultMenuItemClassName, styles['can-choose'])) : defaultMenuItemClassName;
 	const onMenuClick = (e) =>{
 		const handleEnabled = props.onClick && canChoose;
 		if(handleEnabled) {
 			props.onClick(e);
 		}
 	};
-	const defaultLinkClassName = 'menu-link';
-	const disabledLink = CssUtils.addClassToDefaultClassName(defaultLinkClassName, 'disable');
+	const defaultLinkClassName = styles['menu-link'];
+	const disabledLink = CssUtils.addClassToDefaultClassName(defaultLinkClassName, styles['disable']);
 	const linkClassName = canChoose ? /*enable link byDefault*/ defaultLinkClassName : disabledLink;
 	return (
 		<li className={menuItemClassName} onClick={onMenuClick}>

@@ -1,6 +1,6 @@
 import LinkedMenuItem from '../LinkedMenuItem';
 import MenuIconBuilder from '../shared/MenuIconBuider';
-import './styles/index.css';
+import styles from './styles/index.module.css';
 /**
  * Util Menu component 
  * isAuthenticated (optional, byDefault=false) authenticated user or not
@@ -57,7 +57,7 @@ function Menu({isAuthenticated=false}) {
 		</>
 	);
 	return (
-		<ul className='menu'>
+		<ul className={styles.menu}>
 			{isAuthenticated ? authMenu: defaultMenuItems}
 		</ul>
 	);

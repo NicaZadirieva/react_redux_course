@@ -1,8 +1,8 @@
-import './styles/index.css';
+import styles from './styles/index.module.css';
 
 function Logo() {
 	return (
-		<img className="logo" src='/logo-icon.svg' alt='Logo'/>
+		<img className={styles.logo} src='/logo-icon.svg' alt='Logo'/>
 	);
 }
 

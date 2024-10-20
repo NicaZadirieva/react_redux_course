@@ -1,5 +1,5 @@
 import { Logo, Menu } from '../../components';
-import './styles/index.css';
+import styles from './styles/index.module.css';
 
 /**
  * Layout Header component 
@@ -9,8 +9,8 @@ import './styles/index.css';
 */
 function Header({isAuthenticated=false}) {
 	return (
-		<header className='header'>
-			<div className='header-content restrict-content-size'>
+		<header className={styles.header}>
+			<div className={`${styles['header-content']} ${styles['restrict-content-size']}`}>
 				<Logo/>
 				<Menu isAuthenticated={isAuthenticated}/>
 			</div>
