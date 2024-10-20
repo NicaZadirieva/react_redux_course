@@ -1,5 +1,5 @@
 import { Logo, Menu } from '../../components';
-import styles from './styles/index.module.css';
+import styles from './index.module.css';
 
 /**
  * Layout Header component 

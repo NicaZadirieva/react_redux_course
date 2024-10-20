@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Button from '../Button';
 import { default as CssUtils } from '../shared/CssUtils.js';
-import styles from './styles/index.module.css';
+import styles from './index.module.css';
 
 /**
  * @callback requestCallback

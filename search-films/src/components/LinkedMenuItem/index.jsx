@@ -1,5 +1,5 @@
 import { default as CssUtils } from '../shared/CssUtils';
-import styles from './styles/index.module.css';
+import styles from './index.module.css';
 
 /**
  * @callback eventHandler

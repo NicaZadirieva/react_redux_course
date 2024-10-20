@@ -1,5 +1,5 @@
 import { default as CssUtils } from '../shared/CssUtils.js';
-import styles from './styles/index.module.css';
+import styles from './index.module.css';
 
 function Paragraph({text, fontSizeInPx}) {
 	// здесь стили вот так задаются, чтобы на маленьких экранах было норм

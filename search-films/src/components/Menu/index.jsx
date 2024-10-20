@@ -1,6 +1,6 @@
 import LinkedMenuItem from '../LinkedMenuItem';
 import MenuIconBuilder from '../shared/MenuIconBuider';
-import styles from './styles/index.module.css';
+import styles from './index.module.css';
 /**
  * Util Menu component 
  * isAuthenticated (optional, byDefault=false) authenticated user or not

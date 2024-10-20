@@ -1,5 +1,5 @@
 import { default as CssUtils } from '../shared/CssUtils';
-import styles from './styles/index.module.css';
+import styles from './index.module.css';
 /**
  * util Flex component 
  * @param {string} position - (byDefault=vertical) vertical/horizontal flex container

@@ -6,7 +6,11 @@
 
 ##### Bug Fixes
 
-- **Header:** change class 'restrict-content-size ' to global class (1f158800)
+- **Header:** change class 'restrict-content-size ' to global class (da86a871)
+
+##### Refactors
+
+- **\*:** change path to index.module.css (fc0c9574)
 
 #### 0.0.4 (2024-10-18)
 
