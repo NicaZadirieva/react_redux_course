@@ -1,6 +1,6 @@
+import cs from 'classnames';
 import { useState } from 'react';
 import Button from '../Button';
-import { default as CssUtils } from '../shared/CssUtils.js';
 import styles from './index.module.css';
 
 /**
@@ -24,19 +24,11 @@ function Search(props) {
 
 	const {position=/*byDefault=*/'vertical', hasSearchIcon=/*byDefault=*/false} = props;
 
-	/**TODO: (me) возможно придется убрать searchText из state-ов в props?*/
 	let [searchText, setSearchText] = useState(/*byDefault=*/'');
 	const inputChange = (event) => {
 		setSearchText(event.target.value);
 	};
-	const positionClass = position == 'horizontal' ? styles.horizontal : styles.vertical;
-	const formClassName = CssUtils.addClassToDefaultClassName(styles.search, positionClass);
-	const inputClassName = styles['search-input'];
 
-	const iconElement = (hasSearchIcon ? 
-	/*display search icon*/ styles['icon-search'] : 
-	/*byDefault=hide search icon*/ ''
-	);
 
 	const onSubmit = (e) => {
 		e.preventDefault();
@@ -46,10 +38,14 @@ function Search(props) {
 	};
     
 	return (
-		<form className={formClassName} onSubmit={onSubmit}>
-			<div className={iconElement}>
+		<form className={cs(styles.search, {
+			[styles.horizontal]: position == 'horizontal', 
+			[styles.vertical]: position != 'horizontal'
+		})} onSubmit={onSubmit}>
+
+			<div className={cs({[styles['icon-search']]: /*display search icon*/ hasSearchIcon})}>
 				<input type="search"  
-					className={inputClassName}
+					className={styles['search-input']}
 					name="textToSearch"
 					placeholder={props.placeholder}  
 					value={searchText} 

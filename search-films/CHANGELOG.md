@@ -10,7 +10,8 @@
 
 ##### Refactors
 
-- **\*:** change path to index.module.css (fc0c9574)
+- **Flex, LinkedMenuItem, MovieCard, Search, Header:** refactoring with classnames (de1d05ba)
+- **\*:** change path to index.module.css (4f94babc)
 
 #### 0.0.4 (2024-10-18)
 

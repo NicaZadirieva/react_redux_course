@@ -1,5 +1,5 @@
 
-import { default as CssUtils } from '../shared/CssUtils';
+import cs from 'classnames';
 import styles from './index.module.css';
 
 /**
@@ -25,10 +25,6 @@ import styles from './index.module.css';
 function MovieCard(props) {
 
 	const {isLiked=/*byDefault*/false, rating=/*byDefault*/ 0} = props;
-	
-	const defaultCardClassName = styles['movie-card'];
-	const movieCardClassName = props.className ? 
-		CssUtils.addClassToDefaultClassName(defaultCardClassName, props.className): defaultCardClassName; 
 
 	const Rating = (
 		<div className={styles['rating-movie-card']}>
@@ -62,9 +58,10 @@ function MovieCard(props) {
 	);
 
 	return (
-		<div className={movieCardClassName}>
+		<div className={cs(props.className, styles['movie-card'])}>
 			{Poster}
 			{MovieTitle}
+			{/*не стала изменять для читабельности */}
 			{isLiked ? DeleteFromWishListItem : AddToWishListItem}
 		</div>
 	);

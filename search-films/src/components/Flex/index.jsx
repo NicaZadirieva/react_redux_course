@@ -1,3 +1,4 @@
+import cs from 'classnames';
 import { default as CssUtils } from '../shared/CssUtils';
 import styles from './index.module.css';
 /**
@@ -13,15 +14,13 @@ function Flex(props) {
 
 	const paddingTop = props.paddingTop ? CssUtils.addPxToCssProperty(props.paddingTop) : /*byDefault=*/ 0;
 
-	const flexContainer = position == 'vertical' ?
-		<div style={{paddingTop}} className={styles['flex-container-vertical']}>
+	return (
+		<div style={{paddingTop}} className={cs({
+			[styles['flex-container-vertical']]: position == 'vertical',
+			[styles['flex-container-horizontal']]: position == 'horizontal'
+		})}>
 			{props.children}
-		</div> :
-		<div style={{paddingTop}} className={styles['flex-container-horizontal']}>
-			{props.children}
-		</div>;
-
-	return flexContainer;
+		</div>);
 	
 }
 

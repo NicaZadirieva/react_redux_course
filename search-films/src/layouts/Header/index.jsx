@@ -1,6 +1,6 @@
+import cs from 'classnames';
 import { Logo, Menu } from '../../components';
 import styles from './index.module.css';
-
 /**
  * Layout Header component 
  * @param {boolean} isAuthenticated - authenticated user or not
@@ -10,7 +10,7 @@ import styles from './index.module.css';
 function Header({isAuthenticated=false}) {
 	return (
 		<header className={styles.header}>
-			<div className={`${styles['header-content']} restrict-content-size`}>
+			<div className={cs(styles['header-content'], 'restrict-content-size')}>
 				<Logo/>
 				<Menu isAuthenticated={isAuthenticated}/>
 			</div>
