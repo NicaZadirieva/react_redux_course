@@ -37,7 +37,7 @@ function JournalForm({onSubmit}) {
 			onSubmit(values);
 			dispatchForm({type: 'CLEAR'});
 		}
-	}, [isFormReadyToSubmit]);
+	}, [isFormReadyToSubmit, values, onSubmit]);
 	const invalidClass = styles.invalid;
 
 	return (

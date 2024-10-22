@@ -55,7 +55,7 @@ const validateRequired = (formData, requiredFields) => {
 export function formReducer(prevState, action) {
 	switch(action.type) {
 	case 'CLEAR':  
-		return {...prevState, values: INITIAL_STATE.values};
+		return {...prevState, values: INITIAL_STATE.values, isFormReadyToSubmit: false};
 	case 'SET_VALUE':  
 		return {...prevState, values: {...prevState.values, ...action.payload}};
 	case 'RESET_VALIDITY': 
