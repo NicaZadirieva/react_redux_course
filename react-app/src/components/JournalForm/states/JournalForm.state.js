@@ -56,15 +56,15 @@ export function formReducer(prevState, action) {
 	switch(action.type) {
 	case 'CLEAR':  
 		return {...prevState, values: INITIAL_STATE.values};
-	case 'UPDATE':  
+	case 'SET_VALUE':  
 		return {...prevState, values: {...prevState.values, ...action.payload}};
 	case 'RESET_VALIDITY': 
 		return {...prevState, isValid: INITIAL_STATE.isValid};
-	case 'FILL': {
-		const validateDateResult = validateDate(action.payload);
-		const validateRequiredResult = validateRequired(action.payload, /*requiredFields=*/['title', 'post']);
+	case 'SUBMIT': {
+		const validateDateResult = validateDate(prevState.values);
+		const validateRequiredResult = validateRequired(prevState.values, /*requiredFields=*/['title', 'post']);
 		return {
-			values: action.payload, 
+			...prevState, 
 			isValid: {
 				post: validateRequiredResult.post,
 				title: validateRequiredResult.title,
