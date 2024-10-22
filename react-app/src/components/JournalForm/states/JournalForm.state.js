@@ -5,9 +5,10 @@ export const INITIAL_STATE = {
 		date: true
 	},
 	values: {
-		post: undefined,
-		title: undefined,
-		date: undefined
+		post: '',
+		title: '',
+		date: '',
+		tag: ''
 	},
 	isFormReadyToSubmit: false
 };
@@ -53,6 +54,10 @@ const validateRequired = (formData, requiredFields) => {
 
 export function formReducer(prevState, action) {
 	switch(action.type) {
+	case 'CLEAR':  
+		return {...prevState, values: INITIAL_STATE.values};
+	case 'UPDATE':  
+		return {...prevState, values: {...prevState.values, ...action.payload}};
 	case 'RESET_VALIDITY': 
 		return {...prevState, isValid: INITIAL_STATE.isValid};
 	case 'FILL': {

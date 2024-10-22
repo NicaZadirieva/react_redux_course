@@ -14,15 +14,15 @@ function JournalForm({onSubmit}) {
 			timerId = setTimeout(() => {
 				dispatchForm({type: 'RESET_VALIDITY'});
 			}, 2000);
-		}
+		} 
 		// unmount // 
 		return () => {
 			clearTimeout(timerId);
 		};
 	}, [isValid]);
 
-	const inputChange = (event) => {
-		setInputData(event.target.value);
+	const formChangeByValue = (fieldName, event) => {
+		dispatchForm({type: 'UPDATE', payload: {[fieldName]: event.target.value}});
 	};
 	
 	
@@ -39,7 +39,7 @@ function JournalForm({onSubmit}) {
 	useEffect(() => {
 		if(isFormReadyToSubmit) {
 			onSubmit(values);
-			//form.reset();
+			dispatchForm({type: 'CLEAR'});
 		}
 	}, [isFormReadyToSubmit]);
 	const invalidClass = styles.invalid;
@@ -48,7 +48,7 @@ function JournalForm({onSubmit}) {
 		<>
 			<form className={styles['journal-form']} onSubmit={addJournalItem}>
 				<div>
-					<input type="text" name="title" className={cn(styles['input-title'], {
+					<input type="text" value={values.title} onChange={(event) => formChangeByValue('title', event)} name="title" className={cn(styles['input-title'], {
 						[invalidClass]: isValid.title == false
 					})}/>
 				</div>
@@ -57,7 +57,7 @@ function JournalForm({onSubmit}) {
 						<img src='/calendar.svg' alt='Иконка календаря'/>
 						<span>Дата</span>
 					</label>
-					<input id="date" type="date" name="date" className={cn(styles['input-date'], {
+					<input id="date" value={values.date} onChange={(event) => formChangeByValue('date', event)}  type="date" name="date" className={cn(styles['input-date'], {
 						[invalidClass]: isValid.date == false
 					})}/>
 				</div>
@@ -66,10 +66,10 @@ function JournalForm({onSubmit}) {
 						<img src='/folder.svg' alt='Иконка папки'/>
 						<span>Метки</span>
 					</label>
-					<input type='text' id='tag' name="tag" className={styles['input-tag']} value={inputData} onChange={inputChange}/>
+					<input type='text' value={values.tag} id='tag' name="tag" onChange={(event) => formChangeByValue('tag', event)}  className={styles['input-tag']}/>
 				</div>
 				
-				<textarea name="post" cols="30" rows="10" className={cn(styles.post, {
+				<textarea name="post" onChange={(event) => formChangeByValue('post', event)}  value={values.post} cols="30" rows="10" className={cn(styles.post, {
 					[invalidClass]: isValid.post == false
 				})}></textarea>
 
