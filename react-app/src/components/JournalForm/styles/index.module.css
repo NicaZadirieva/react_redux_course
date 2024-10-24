@@ -15,19 +15,6 @@
     min-width: 150px;
 }
 
-.input-title, .input-date,
-.input-tag {
-    border: none;
-    border-bottom: 1px solid #323;
-    background: none;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    font-family: 'Source Sans 3', sans-serif;
-    width: 100%;
-}
-
 .post {
     border: 1px solid #323;
     font-size: 16px;
@@ -35,12 +22,6 @@
     line-height: 28px;
     font-family: 'Source Sans 3', sans-serif;
     width: 100%;
-}
-.input-date, .input-tag {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 18px;
 }
 
 .invalid {
