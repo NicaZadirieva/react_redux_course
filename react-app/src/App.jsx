@@ -1,43 +1,26 @@
 
-import { useEffect, useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import JournalAdd from './components/JournalAdd';
 import JournalForm from './components/JournalForm';
 import JournalList from './components/JournalList';
+import { useLocalStorage } from './components/shared/hooks';
+import { mapItems } from './components/shared/mappers';
 import Body from './layouts/Body';
 import LeftPanel from './layouts/LeftPanel';
 
 function App() {
-	const [items, setItems] = useState([]); 
-	useEffect(() => {
-		const data = JSON.parse(localStorage.getItem('data'));
-		if(data) {
-			setItems(data.map(item => ({
-				...item,
-				date: new Date(item.date)
-			})));
-		}
-	}, []);
-
-	useEffect(() => {
-		if (items.length) {
-			localStorage.setItem('data', JSON.stringify(items));
-		}
-		console.log(items);
-	}, [items]);
+	const [items, setItems] = useLocalStorage('data'); 
+	
 	
 	const addItem = (item) => {
-		setItems(oldItems => [
-			...oldItems,
-			{
+		setItems([
+			...mapItems(items),{
+				id: items.length > 0 ? Math.max(...items.map(i => i.id)) : 1,
 				title: item.title,
-				date: new Date(item.date),
-				tag: item.tag,
 				post: item.post,
-				id: Math.max(...oldItems.map(i => i.id)) + 1
-			}
-		]);
+				date: new Date(item.date)
+			}]);
 	};
 	
 	
@@ -46,7 +29,7 @@ function App() {
 			<LeftPanel>
 				<Header/>
 				<JournalAdd/>
-				<JournalList items={items}/>
+				<JournalList items={mapItems(items)}/>
 			</LeftPanel>
 			
 			<Body>

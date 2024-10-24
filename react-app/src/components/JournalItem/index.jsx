@@ -1,4 +1,4 @@
-import { default as Utils } from '../shared/utils.js';
+import { Utils } from '../shared/utils';
 import './styles/index.css';
 function JournalItem({title, text, date}) {
 	const fmtDate = Utils.formatDate(date);

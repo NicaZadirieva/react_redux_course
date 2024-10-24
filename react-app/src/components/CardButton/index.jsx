@@ -1,4 +1,4 @@
-import { default as CssUtils } from '../shared/CssUtils';
+import { CssUtils } from '../shared/utils';
 import styles from './styles/index.module.css';
 
 export default function CardButton({children, className}) {
