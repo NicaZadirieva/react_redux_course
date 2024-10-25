@@ -1,6 +1,7 @@
 import cs from 'classnames';
 import { useState } from 'react';
 import Button from '../Button';
+import Input from '../Input';
 import styles from './index.module.css';
 
 /**
@@ -29,7 +30,6 @@ function Search(props) {
 		setSearchText(event.target.value);
 	};
 
-
 	const onSubmit = (e) => {
 		e.preventDefault();
 		const formData = new FormData(e.target);
@@ -43,14 +43,14 @@ function Search(props) {
 			[styles.vertical]: position != 'horizontal'
 		})} onSubmit={onSubmit}>
 
-			<div className={cs({[styles['icon-search']]: /*display search icon*/ hasSearchIcon})}>
-				<input type="search"  
-					className={styles['search-input']}
-					name="textToSearch"
-					placeholder={props.placeholder}  
-					value={searchText} 
-					onChange={inputChange} />
-			</div>
+			<Input ref={null} type="search"  
+				name="textToSearch"
+				placeholder={props.placeholder}  
+				inputValue={searchText} 
+				onChange={inputChange} 
+				hasIcon={hasSearchIcon}
+				iconClassName={styles['icon-search']} />
+
 			<Button text={props.searchActionName}/>
 		</form>
 	);

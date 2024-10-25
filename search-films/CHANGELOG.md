@@ -1,3 +1,9 @@
+#### 0.1.1 (2024-10-25)
+
+##### Refactors
+
+- **Search:** add Input util component (a4a4afa4)
+
 #### 0.1.0 (2024-10-20)
 
 ##### Chores
