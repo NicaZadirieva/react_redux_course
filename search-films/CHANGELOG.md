@@ -1,8 +1,12 @@
 #### 0.1.1 (2024-10-25)
 
+##### Documentation Changes
+
+- **Input:** describe all parameters of Input (faed870c)
+
 ##### Refactors
 
-- **Search:** add Input util component (a4a4afa4)
+- **Search:** add Input util component (23d0786a)
 
 #### 0.1.0 (2024-10-20)
 
