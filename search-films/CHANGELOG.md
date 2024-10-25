@@ -2,10 +2,11 @@
 
 ##### Documentation Changes
 
-- **Input:** describe all parameters of Input (faed870c)
+- **Input:** describe all parameters of Input (91abf0e0)
 
 ##### Refactors
 
+- **App:** add pages folder with FilmsPage and LoginPage (d54e0636)
 - **Search:** add Input util component (23d0786a)
 
 #### 0.1.0 (2024-10-20)
