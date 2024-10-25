@@ -1,8 +1,9 @@
-import { FilmsPage } from './pages';
+import LoginPage from './pages/LoginPage';
+
 function App() {
 
 	return (
-		<FilmsPage/>
+		<LoginPage/>
 	);
 }
 

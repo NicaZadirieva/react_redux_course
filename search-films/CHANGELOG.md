@@ -4,10 +4,14 @@
 
 - **Input:** describe all parameters of Input (91abf0e0)
 
+##### New Features
+
+- **useLocalStorage:** create hook for saving user profile (14dee758)
+
 ##### Refactors
 
 - **Search:**
-  - replacing Search to Input component element (5a5c84ca)
+  - replacing Search to Input component element (089880b9)
   - add Input util component (23d0786a)
 - **App:** add pages folder with FilmsPage and LoginPage (dcc1850f)
 

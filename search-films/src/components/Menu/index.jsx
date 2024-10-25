@@ -3,11 +3,12 @@ import MenuIconBuilder from '../shared/MenuIconBuider';
 import styles from './index.module.css';
 /**
  * Util Menu component 
- * isAuthenticated (optional, byDefault=false) authenticated user or not
+ * @params isAuthenticated (optional, byDefault=false) authenticated user or not
+ * @params userName (optional, byDefault=null) name of the user
  * @returns {component} Menu 
  * 
 */
-function Menu({isAuthenticated=false}) {
+function Menu({isAuthenticated=false, userName=null}) {
 	
 	const authMenu = (
 		<>
@@ -23,7 +24,7 @@ function Menu({isAuthenticated=false}) {
 				onClick={(event) => console.log(event)}
 			/>
 			<LinkedMenuItem
-				text="Антон" /*currentUser*/
+				text={userName} /*currentUser*/
 				icon={MenuIconBuilder.buildAvatarIcon()}
 				linkUrl="https://www.google.com"
 				onClick={(event) => console.log(event)}
