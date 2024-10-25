@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export function useLocalStorage (profileKey) {
+function useLocalStorage(profileKey) {
 	const [profile, setProfile] = useState(null);
 
 	useEffect(() => {
@@ -41,3 +41,5 @@ export function useLocalStorage (profileKey) {
 
 	return [saveAuthUser, logout];
 }
+
+export default useLocalStorage;

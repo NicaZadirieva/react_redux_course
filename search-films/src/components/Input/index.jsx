@@ -14,7 +14,7 @@ import styles from './index.module.css';
  * Util Input component 
  * @param {string} placeholder - input's placeholder
  * @param {string} position - (optional, byDefault='vertical') vertical/horizontal
- * @param {requestCallback} onInput - callback to do request after submit
+ * @param {requestCallback} onSubmit - callback to do request after submit
  * @param {string} inputActionName - action name to display on button search
  * @param {boolean} hasIcon (optional, byDefault=false) - display icon
  * @param {string} iconClassName additional CSS class for icon (used for setting icon image)
@@ -32,9 +32,7 @@ const Input = forwardRef(function Input({className, inputActionName, iconClassNa
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		const formData = new FormData(e.target);
-		const formProps = Object.fromEntries(formData);
-		props.onInput(formProps);
+		props.onSubmit(inputValue);
 	};
     
 	return (

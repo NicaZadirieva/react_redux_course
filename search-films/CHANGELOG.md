@@ -6,7 +6,8 @@
 
 ##### New Features
 
-- **useLocalStorage:** create hook for saving user profile (14dee758)
+- **LoginPage:** impl for login/logout (204d1307)
+- **useLocalStorage:** create hook for saving user profile (873c1471)
 
 ##### Refactors
 

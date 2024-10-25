@@ -3,12 +3,13 @@ import MenuIconBuilder from '../shared/MenuIconBuider';
 import styles from './index.module.css';
 /**
  * Util Menu component 
- * @params isAuthenticated (optional, byDefault=false) authenticated user or not
- * @params userName (optional, byDefault=null) name of the user
+ * @param {boolean}  (optional, byDefault=false) authenticated user or not
+ * @param {string} userName (optional, byDefault=null) name of the user
+ * @param {callback} logout (optional, byDefault=null) can be used to log out
  * @returns {component} Menu 
  * 
 */
-function Menu({isAuthenticated=false, userName=null}) {
+function Menu({isAuthenticated=false, userName=null, logout=null}) {
 	
 	const authMenu = (
 		<>
@@ -31,8 +32,7 @@ function Menu({isAuthenticated=false, userName=null}) {
 			/>
 			<LinkedMenuItem
 				text="Выйти"
-				linkUrl="https://www.google.com"
-				onClick={(event) => console.log(event)}
+				onClick={logout}
 			/>
 		</>
 	);
@@ -51,7 +51,7 @@ function Menu({isAuthenticated=false, userName=null}) {
 			/>
 			<LinkedMenuItem
 				text="Войти"
-				linkUrl="https://www.google.com"
+				canChoose={false}
 				icon={MenuIconBuilder.buildExitIcon()}
 				onClick={(event) => console.log(event)}
 			/>

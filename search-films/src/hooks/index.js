@@ -1,1 +1,2 @@
-export { useLocalStorage as default } from './useLocalStorage.hook';
+export { default as useLocalStorage } from './useLocalStorage.hook';
+
