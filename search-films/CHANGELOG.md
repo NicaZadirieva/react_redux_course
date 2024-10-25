@@ -6,8 +6,10 @@
 
 ##### Refactors
 
-- **App:** add pages folder with FilmsPage and LoginPage (d54e0636)
-- **Search:** add Input util component (23d0786a)
+- **Search:**
+  - replacing Search to Input component element (5a5c84ca)
+  - add Input util component (23d0786a)
+- **App:** add pages folder with FilmsPage and LoginPage (dcc1850f)
 
 #### 0.1.0 (2024-10-20)
 

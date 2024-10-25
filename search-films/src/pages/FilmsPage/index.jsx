@@ -1,5 +1,5 @@
 
-import { Flex, MovieCard, Paragraph, Search, Title } from '../../components';
+import { Flex, Input, MovieCard, Paragraph, Title } from '../../components';
 import { Content, Header } from '../../layouts';
 
 
@@ -15,12 +15,13 @@ function FilmsPage() {
 					text='Введите название фильма, сериала или мультфильма для поиска и добавления в избранное.'
 					fontSizeInPx='16'
 				/>
-				<Search 
+				<Input 
 					position="vertical"
 					placeholder="Введите название"
-					onSearch={(requestBody) => {console.log(requestBody.textToSearch)}}
-					searchActionName="Искать"
-					hasSearchIcon={true}
+					onInput={(requestBody) => {console.log(requestBody.textToSearch)}}
+					inputActionName="Искать"
+					iconClassName={'icon-search'}
+					hasIcon={true}
 				/>
 				<Flex paddingTop={88}>
 					<MovieCard
