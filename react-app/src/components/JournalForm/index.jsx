@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import { useEffect, useReducer, useRef } from 'react';
+import { UserContext } from '../../context/user.context';
 import Button from '../Button';
 import Input from '../Input';
 import { formReducer, INITIAL_STATE } from './states/JournalForm.state';
@@ -64,33 +65,36 @@ function JournalForm({onSubmit}) {
 	const invalidClass = styles.invalid;
 
 	return (
-		<>
-			<form className={styles['journal-form']} onSubmit={addJournalItem}>
-				<div>
-					<Input isValid={isValid.title} appearance='title' type="text" value={values.title} onChange={formChangeByValue} name="title" ref={titleRef} />
-				</div>
-				<div className={styles['form-row']}>
-					<label htmlFor="date" className={styles['form-label']}>
-						<img src='/calendar.svg' alt='Иконка календаря'/>
-						<span>Дата</span>
-					</label>
-					<Input isValid={isValid.date} id="date" ref={dateRef} value={values.date} onChange={formChangeByValue}  type="date" name="date"/>
-				</div>
-				<div className={styles['form-row']}>
-					<label htmlFor="tag" className={styles['form-label']}>
-						<img src='/folder.svg' alt='Иконка папки'/>
-						<span>Метки</span>
-					</label>
-					<Input type='text' value={values.tag} id='tag' name="tag" onChange={formChangeByValue}/>
-				</div>
+		<UserContext.Consumer>
+			{(context) => (
+				<form className={styles['journal-form']} onSubmit={addJournalItem}>
+					{context.userId}
+					<div>
+						<Input isValid={isValid.title} appearance='title' type="text" value={values.title} onChange={formChangeByValue} name="title" ref={titleRef} />
+					</div>
+					<div className={styles['form-row']}>
+						<label htmlFor="date" className={styles['form-label']}>
+							<img src='/calendar.svg' alt='Иконка календаря'/>
+							<span>Дата</span>
+						</label>
+						<Input isValid={isValid.date} id="date" ref={dateRef} value={values.date} onChange={formChangeByValue}  type="date" name="date"/>
+					</div>
+					<div className={styles['form-row']}>
+						<label htmlFor="tag" className={styles['form-label']}>
+							<img src='/folder.svg' alt='Иконка папки'/>
+							<span>Метки</span>
+						</label>
+						<Input type='text' value={values.tag} id='tag' name="tag" onChange={formChangeByValue}/>
+					</div>
 				
-				<textarea name="post" ref={postRef} onChange={formChangeByValue}  value={values.post} cols="30" rows="10" className={cn(styles.post, {
-					[invalidClass]: isValid.post == false
-				})}></textarea>
+					<textarea name="post" ref={postRef} onChange={formChangeByValue}  value={values.post} cols="30" rows="10" className={cn(styles.post, {
+						[invalidClass]: isValid.post == false
+					})}></textarea>
 
-				<Button text="Сохранить" onClick={() => {console.log('Нажали');}}/>
-			</form>
-		</>
+					<Button text="Сохранить" onClick={() => {console.log('Нажали');}}/>
+				</form>
+			)}
+		</UserContext.Consumer>
 	);
 }
 

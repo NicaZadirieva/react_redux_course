@@ -6,6 +6,7 @@ import JournalForm from './components/JournalForm';
 import JournalList from './components/JournalList';
 import { useLocalStorage } from './components/shared/hooks';
 import { mapItems } from './components/shared/mappers';
+import { UserContext } from './context/user.context';
 import Body from './layouts/Body';
 import LeftPanel from './layouts/LeftPanel';
 
@@ -25,18 +26,19 @@ function App() {
 	
 	
 	return (
-		<div className="app">
-			<LeftPanel>
-				<Header/>
-				<JournalAdd/>
-				<JournalList items={mapItems(items)}/>
-			</LeftPanel>
+		<UserContext.Provider value={{ userId: 1}}>
+			<div className="app">
+				<LeftPanel>
+					<Header/>
+					<JournalAdd/>
+					<JournalList items={mapItems(items)}/>
+				</LeftPanel>
 			
-			<Body>
-				<JournalForm onSubmit={addItem} />
-			</Body>
-		</div>
-
+				<Body>
+					<JournalForm onSubmit={addItem} />
+				</Body>
+			</div>
+		</UserContext.Provider>
 	);
 }
 
