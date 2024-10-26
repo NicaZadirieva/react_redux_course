@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import JournalAdd from './components/JournalAdd';
@@ -9,10 +10,9 @@ import { mapItems } from './components/shared/mappers';
 import { UserContext } from './context/user.context';
 import Body from './layouts/Body';
 import LeftPanel from './layouts/LeftPanel';
-
 function App() {
 	const [items, setItems] = useLocalStorage('data'); 
-	
+	const [userId, setUserId] = useState(1);
 	
 	const addItem = (item) => {
 		setItems([
@@ -26,19 +26,21 @@ function App() {
 	
 	
 	return (
-		<UserContext.Provider value={{ userId: 1}}>
-			<div className="app">
-				<LeftPanel>
-					<Header/>
-					<JournalAdd/>
-					<JournalList items={mapItems(items)}/>
-				</LeftPanel>
+		<>
+			<UserContext.Provider value={{ userId, setUserId  }}>
+				<div className="app">
+					<LeftPanel>
+						<Header/>
+						<JournalAdd/>
+						<JournalList items={mapItems(items)}/>
+					</LeftPanel>
 			
-				<Body>
-					<JournalForm onSubmit={addItem} />
-				</Body>
-			</div>
-		</UserContext.Provider>
+					<Body>
+						<JournalForm onSubmit={addItem} />
+					</Body>
+				</div>
+			</UserContext.Provider>
+		</>
 	);
 }
 
