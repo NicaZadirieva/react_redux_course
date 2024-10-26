@@ -14,10 +14,10 @@ function App() {
 	
 	const addItem = (item) => {
 		setItems([
-			...mapItems(items),{
+			...mapItems(items),
+			{
+				...item,
 				id: items.length > 0 ? Math.max(...items.map(i => i.id)) : 1,
-				title: item.title,
-				post: item.post,
 				date: new Date(item.date)
 			}]);
 	};

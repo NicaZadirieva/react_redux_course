@@ -3,7 +3,7 @@ import { useContext, useEffect, useReducer, useRef } from 'react';
 import { UserContext } from '../../context';
 import Button from '../Button';
 import Input from '../Input';
-import { formReducer, INITIAL_STATE } from './states/JournalForm.state';
+import { formReducer, INITIAL_STATE } from './reducers/JournalForm.state';
 import styles from './styles/index.module.css';
 function JournalForm({onSubmit}) {
 	const [formState, dispatchForm] = useReducer(formReducer, INITIAL_STATE);
@@ -62,6 +62,11 @@ function JournalForm({onSubmit}) {
 			dispatchForm({type: 'CLEAR'});
 		}
 	}, [isFormReadyToSubmit, values, onSubmit]);
+
+	useEffect(() => {
+		dispatchForm({ type: 'SET_VALUE', payload: { userId }})
+	}, [ userId ]);
+
 	const invalidClass = styles.invalid;
 
 	return (
