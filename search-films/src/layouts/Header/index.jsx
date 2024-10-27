@@ -9,12 +9,12 @@ import styles from './index.module.css';
  * @returns {component} Header 
  * 
 */
-function Header({isAuthenticated=false, userName=null, logout=null}) {
+function Header() {
 	return (
 		<header className={styles.header}>
 			<div className={cs(styles['header-content'], 'restrict-content-size')}>
 				<Logo/>
-				<Menu isAuthenticated={isAuthenticated} userName={userName} logout={() => logout(userName)}/>
+				<Menu/>
 			</div>
 		</header>
 	);

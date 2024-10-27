@@ -1,3 +1,13 @@
+#### 0.1.2 (2024-10-27)
+
+##### New Features
+
+- add UserContext (2e73862a)
+
+##### Bug Fixes
+
+- **useLocalStorage:** now localStorage worked (5b9364ee)
+
 #### 0.1.1 (2024-10-25)
 
 ##### Documentation Changes

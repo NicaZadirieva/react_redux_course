@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { UserContext } from '../../context/user.context';
 import LinkedMenuItem from '../LinkedMenuItem';
 import MenuIconBuilder from '../shared/MenuIconBuider';
 import styles from './index.module.css';
@@ -9,8 +11,8 @@ import styles from './index.module.css';
  * @returns {component} Menu 
  * 
 */
-function Menu({isAuthenticated=false, userName=null, logout=null}) {
-	
+function Menu() {
+	const {currentUser, isAuthenticated, logoutCurrentUser} = useContext(UserContext);
 	const authMenu = (
 		<>
 			<LinkedMenuItem
@@ -25,14 +27,14 @@ function Menu({isAuthenticated=false, userName=null, logout=null}) {
 				onClick={(event) => console.log(event)}
 			/>
 			<LinkedMenuItem
-				text={userName} /*currentUser*/
+				text={currentUser}
 				icon={MenuIconBuilder.buildAvatarIcon()}
 				linkUrl="https://www.google.com"
 				onClick={(event) => console.log(event)}
 			/>
 			<LinkedMenuItem
 				text="Выйти"
-				onClick={logout}
+				onClick={logoutCurrentUser}
 			/>
 		</>
 	);

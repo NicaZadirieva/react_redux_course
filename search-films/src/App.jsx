@@ -1,9 +1,12 @@
+import { UserProvider } from './context/user.context';
 import LoginPage from './pages/LoginPage';
 
 function App() {
 
 	return (
-		<LoginPage/>
+		<UserProvider> 
+			<LoginPage/>
+		</UserProvider>
 	);
 }
 

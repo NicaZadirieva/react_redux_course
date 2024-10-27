@@ -1,20 +1,17 @@
-import { useRef, useState } from 'react';
+import { useContext, useRef } from 'react';
 import { Input, Title } from '../../components';
-import { useLocalStorage } from '../../hooks';
+import { UserContext } from '../../context/user.context';
 import { Content, Header } from '../../layouts';
 
 function LoginPage() {
-	const [userName, setUserName] = useState(null);
-	const [isAuthenticated, setIsAuthenticated] = useState(false); 
-	const [saveAuthUser, logout] = useLocalStorage('users');
+	const { saveCurrentUser } = useContext(UserContext);
+			
 	const inputRef = useRef();
 
 	const onSubmit = (text) => {
 		// if text is not empty set isAuthenticated to true
 		if(text.trim().length > 0) {
-			setIsAuthenticated(true);
-			setUserName(text);
-			saveAuthUser(text);
+			saveCurrentUser(text);
 		} else {
 			inputRef.current.focus();
 			alert('Пожалуйста, введите имя');
@@ -22,14 +19,10 @@ function LoginPage() {
 		}
 	};
 
-	const logoutHandler = () => {
-		setIsAuthenticated(false);
-		logout(userName);
-	};
 
 	return (
 		<>
-			<Header isAuthenticated={isAuthenticated} userName={userName} logout={logoutHandler}/>	
+			<Header/>	
 			<Content>
 				<Title text='Вход'/>
 				<Input 

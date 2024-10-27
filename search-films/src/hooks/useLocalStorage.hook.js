@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
 
 function useLocalStorage(profileKey) {
-	const [profile, setProfile] = useState();
+	const [profile, setProfile] = useState([]);
+	const [currentUser, setCurrentUser] = useState();
 
 	useEffect(() => {
 		if (profile) {
 			localStorage.setItem(profileKey, JSON.stringify(profile));
-		} else {
-			const localStorageValue = JSON.parse(localStorage.getItem(profileKey));
-			setProfile(localStorageValue);
-		}
+			setCurrentUser(profile[profile.length - 1]?.name); // save current user as a last saved user in profile
+		} 
         
 	}, [profile, profileKey]);
 
@@ -21,13 +20,13 @@ function useLocalStorage(profileKey) {
 		if( index == -1 ) {
 			// this is a new user
 			setProfile([...oldProfile, {name: userName, isLogined: true}]);
+			// save current user as a last saved user in profile
 		} else {
 			// this is an existing user
 			const newProfile = [...oldProfile];
 			newProfile[index].isLogined = true;
 			setProfile(newProfile);
 		}
-		
 	};
 
 	const logout = (userName) => {
@@ -42,7 +41,7 @@ function useLocalStorage(profileKey) {
 		}
 	};
 
-	return [saveAuthUser, logout];
+	return [saveAuthUser, logout, currentUser];
 }
 
 export default useLocalStorage;
