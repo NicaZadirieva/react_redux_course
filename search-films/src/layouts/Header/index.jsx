@@ -14,7 +14,7 @@ function Header({isAuthenticated=false, userName=null, logout=null}) {
 		<header className={styles.header}>
 			<div className={cs(styles['header-content'], 'restrict-content-size')}>
 				<Logo/>
-				<Menu isAuthenticated={isAuthenticated} userName={userName} logout={logout}/>
+				<Menu isAuthenticated={isAuthenticated} userName={userName} logout={() => logout(userName)}/>
 			</div>
 		</header>
 	);

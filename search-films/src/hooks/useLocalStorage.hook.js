@@ -1,21 +1,23 @@
 import { useEffect, useState } from 'react';
 
 function useLocalStorage(profileKey) {
-	const [profile, setProfile] = useState(null);
+	const [profile, setProfile] = useState();
 
 	useEffect(() => {
-		const res = JSON.parse(localStorage.getItem(profileKey));
-		if (res) {
-			setProfile(res);
+		if (profile) {
+			localStorage.setItem(profileKey, JSON.stringify(profile));
+		} else {
+			const localStorageValue = JSON.parse(localStorage.getItem(profileKey));
+			setProfile(localStorageValue);
 		}
         
-	}, [profile]);
+	}, [profile, profileKey]);
 
 	const saveAuthUser = (userName) => {
 		// [{name: 'Вася', isLogined: true}] успешный вход
 		// [{name: 'Вася', isLogined: false}] выход
-		const oldProfile = JSON.parse(localStorage.getItem(profileKey));
-		const index = oldProfile.findIndex(user => user.name === userName);
+		const oldProfile = [...profile];
+		const index = oldProfile.findIndex((user) => user.name === userName);
 		if( index == -1 ) {
 			// this is a new user
 			setProfile([...oldProfile, {name: userName, isLogined: true}]);
@@ -29,8 +31,9 @@ function useLocalStorage(profileKey) {
 	};
 
 	const logout = (userName) => {
-		const oldProfile = JSON.parse(localStorage.getItem(profileKey));
-		const index = oldProfile.findIndex(user => user.name === userName);
+		const oldProfile = [...profile];
+		const index = oldProfile.findIndex((user) => user.name === userName);
+		console.log(index);
 		if( index != -1 ) {
 			// this is an existing user
 			const newProfile = [...oldProfile];

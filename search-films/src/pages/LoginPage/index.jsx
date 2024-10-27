@@ -24,7 +24,7 @@ function LoginPage() {
 
 	const logoutHandler = () => {
 		setIsAuthenticated(false);
-		logout();
+		logout(userName);
 	};
 
 	return (
