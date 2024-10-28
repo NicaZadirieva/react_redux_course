@@ -1,5 +1,5 @@
 
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import './App.css';
 import Header from './components/Header';
 import JournalAdd from './components/JournalAdd';
@@ -13,7 +13,7 @@ import LeftPanel from './layouts/LeftPanel';
 function App() {
 	const [items, setItems] = useLocalStorage('data'); 
 	console.log('App');
-	const addItem = (item) => {
+	const addItem = useCallback((item) => {
 		setItems([
 			...mapItems(items),
 			{
@@ -21,7 +21,7 @@ function App() {
 				id: items.length > 0 ? Math.max(...items.map(i => i.id)) : 1,
 				date: new Date(item.date)
 			}]);
-	};
+	}, []);
 	
 	
 	return (

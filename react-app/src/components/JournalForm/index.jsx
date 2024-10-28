@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { useContext, useEffect, useReducer, useRef } from 'react';
+import { useCallback, useContext, useEffect, useReducer, useRef } from 'react';
 import { UserContext } from '../../context';
 import Button from '../Button';
 import Input from '../Input';
@@ -45,17 +45,17 @@ function JournalForm({onSubmit}) {
 		};
 	}, [isValid]);
 
-	const formChangeByValue = (event) => {
+	const formChangeByValue = useCallback((event) => {
 		dispatchForm({type: 'SET_VALUE', payload: {[event.target.name]: event.target.value}});
-	};
+	}, []);
 	
 	
 	
-	const addJournalItem = (e) => {
+	const addJournalItem = useCallback((e) => {
 		e.preventDefault();
 		dispatchForm({type: 'SUBMIT'});
 		
-	};
+	}, []);
 
 	useEffect(() => {
 		if(isFormReadyToSubmit) {
