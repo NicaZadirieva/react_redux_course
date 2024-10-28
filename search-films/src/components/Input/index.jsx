@@ -1,5 +1,5 @@
 import cs from 'classnames';
-import { forwardRef, useState } from 'react';
+import { forwardRef } from 'react';
 import Button from '../Button';
 import styles from './index.module.css';
 
@@ -24,14 +24,9 @@ import styles from './index.module.css';
 */
 const Input = forwardRef(function Input({className, inputActionName, iconClassName, position=/*byDefault=*/'vertical', hasIcon=/*byDefault=*/false, ...props}, ref) {
 
-	let [inputValue, setInputValue] = useState(/*byDefault=*/'');
-
-	const onChange = (event) => {
-		setInputValue(event.target.value);
-	};
-
 	const onSubmit = (e) => {
 		e.preventDefault();
+		const inputValue = e.target.elements.textToAction.value;
 		props.onSubmit(inputValue);
 	};
     
@@ -42,9 +37,7 @@ const Input = forwardRef(function Input({className, inputActionName, iconClassNa
 		})} onSubmit={onSubmit}>
 			<div className={cs({[styles['icon']]: /*display search icon*/ hasIcon, 
 				[styles[iconClassName]]: hasIcon})}>
-				<input name='textToAction' ref={ref} {...props} className={cs(styles['input'], className)}
-					value={inputValue} 
-					onChange={onChange} />
+				<input name='textToAction' ref={ref} {...props} className={cs(styles['input'], className)} />
 			</div>
 
 			<Button text={inputActionName}/>

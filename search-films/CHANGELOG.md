@@ -1,4 +1,4 @@
-#### 0.1.2 (2024-10-27)
+#### 0.1.2 (2024-10-28)
 
 ##### New Features
 
@@ -7,6 +7,10 @@
 ##### Bug Fixes
 
 - **useLocalStorage:** now localStorage worked (5b9364ee)
+
+##### Refactors
+
+- **Input:** remove useless useState (1c8bd834)
 
 #### 0.1.1 (2024-10-25)
 
