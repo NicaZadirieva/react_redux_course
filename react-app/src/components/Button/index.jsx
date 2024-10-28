@@ -1,8 +1,8 @@
 import styles from './styles/index.module.css';
 
-export default function Button({text, onClick}) {
+export default function Button({children, onClick}) {
 
 	return (
-		<button onClick={onClick} className={`${styles.button} ${styles.accent}`}>{text}</button>
+		<button onClick={onClick} className={`${styles.button} ${styles.accent}`}>{children}</button>
 	);
 }

@@ -94,7 +94,7 @@ function JournalForm({onSubmit}) {
 				[invalidClass]: isValid.post == false
 			})}></textarea>
 
-			<Button text="Сохранить" onClick={() => {console.log('Нажали');}}/>
+			<Button onClick={() => {console.log('Нажали');}}>Сохранить</Button>
 		</form>
 	);
 }
