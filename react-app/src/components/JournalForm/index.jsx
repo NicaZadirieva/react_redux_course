@@ -6,6 +6,7 @@ import Input from '../Input';
 import { formReducer, INITIAL_STATE } from './reducers/JournalForm.state';
 import styles from './styles/index.module.css';
 function JournalForm({onSubmit}) {
+	console.log('JournalForm');
 	const [formState, dispatchForm] = useReducer(formReducer, INITIAL_STATE);
 	const { isValid, isFormReadyToSubmit, values } = formState; 
 	const { userId } = useContext(UserContext);

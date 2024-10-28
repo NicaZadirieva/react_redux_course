@@ -5,7 +5,7 @@ import JournalItem from '../JournalItem';
 import './styles/index.css';
 export default function JournalList({items}) {
 	const { userId } = useContext(UserContext);
-
+	console.log('JournalList');
 	if(items.length === 0) {
 		return <p>Записей пока нет, добавьте первую</p>;
 	}

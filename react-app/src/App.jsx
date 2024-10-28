@@ -1,4 +1,5 @@
 
+import { memo } from 'react';
 import './App.css';
 import Header from './components/Header';
 import JournalAdd from './components/JournalAdd';
@@ -11,7 +12,7 @@ import Body from './layouts/Body';
 import LeftPanel from './layouts/LeftPanel';
 function App() {
 	const [items, setItems] = useLocalStorage('data'); 
-	
+	console.log('App');
 	const addItem = (item) => {
 		setItems([
 			...mapItems(items),
@@ -42,4 +43,4 @@ function App() {
 	);
 }
 
-export default App;
+export default memo(App);
