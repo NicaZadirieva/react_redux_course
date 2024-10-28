@@ -7,7 +7,7 @@ const logos = ['/logo.svg', 'vite.svg'];
 
 export default function Header() {
 	const [logoIndex, setLogoIndex] = useState(0);
-
+	console.log('Header');
 	const toggleLogo = () => {
 		setLogoIndex(state => Number(!state));
 	};
