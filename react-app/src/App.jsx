@@ -21,7 +21,7 @@ function App() {
 				id: items.length > 0 ? Math.max(...items.map(i => i.id)) : 1,
 				date: new Date(item.date)
 			}]);
-	}, []);
+	}, [items, setItems]);
 	
 	
 	return (
