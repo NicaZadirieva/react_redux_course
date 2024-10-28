@@ -1,13 +1,18 @@
+import { useContext } from 'react';
+import { UserContext } from '../../context/user.context';
 import LinkedMenuItem from '../LinkedMenuItem';
 import MenuIconBuilder from '../shared/MenuIconBuider';
-import './styles/index.css';
+import styles from './index.module.css';
 /**
  * Util Menu component 
- * isAuthenticated (optional, byDefault=false) authenticated user or not
+ * @param {boolean}  (optional, byDefault=false) authenticated user or not
+ * @param {string} userName (optional, byDefault=null) name of the user
+ * @param {callback} logout (optional, byDefault=null) can be used to log out
  * @returns {component} Menu 
  * 
 */
-function Menu({isAuthenticated=false}) {
+function Menu() {
+	const {currentUser, isAuthenticated, logoutCurrentUser} = useContext(UserContext);
 	const authMenu = (
 		<>
 			<LinkedMenuItem
@@ -22,15 +27,14 @@ function Menu({isAuthenticated=false}) {
 				onClick={(event) => console.log(event)}
 			/>
 			<LinkedMenuItem
-				text="Антон" /*currentUser*/
+				text={currentUser}
 				icon={MenuIconBuilder.buildAvatarIcon()}
 				linkUrl="https://www.google.com"
 				onClick={(event) => console.log(event)}
 			/>
 			<LinkedMenuItem
 				text="Выйти"
-				linkUrl="https://www.google.com"
-				onClick={(event) => console.log(event)}
+				onClick={logoutCurrentUser}
 			/>
 		</>
 	);
@@ -49,14 +53,14 @@ function Menu({isAuthenticated=false}) {
 			/>
 			<LinkedMenuItem
 				text="Войти"
-				linkUrl="https://www.google.com"
+				canChoose={false}
 				icon={MenuIconBuilder.buildExitIcon()}
 				onClick={(event) => console.log(event)}
 			/>
 		</>
 	);
 	return (
-		<ul className='menu'>
+		<ul className={styles.menu}>
 			{isAuthenticated ? authMenu: defaultMenuItems}
 		</ul>
 	);

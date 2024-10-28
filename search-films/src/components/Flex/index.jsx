@@ -1,26 +1,26 @@
+import cs from 'classnames';
 import { default as CssUtils } from '../shared/CssUtils';
-import './styles/index.css';
+import styles from './index.module.css';
 /**
  * util Flex component 
- * @param {string} position - (beDefault=vertical) vertical/horizontal flex container
- * @param {number} paddingTop - (beDefault=0) vertical/horizontal flex container
+ * @param {string} position - (byDefault=vertical) vertical/horizontal flex container
+ * @param {number} paddingTop - (byDefault=0) vertical/horizontal flex container
  * @returns {component} Flex 
  * 
 */
-function Flex({position='vertical', paddingTop=0, children}) {
-	
-	// Add your CSS styles here, then pass them to the component as a prop.
-	const styles = {paddingTop: CssUtils.addPxToCssProperty(paddingTop)};
+function Flex(props) {
 
-	const flexContainer = position == 'vertical' ?
-		<div style={styles} className='flex-container-vertical'>
-			{children}
-		</div> :
-		<div style={styles} className='flex-container-horizontal'>
-			{children}
-		</div>;
+	const {position=/*byDefault=*/ 'vertical'} = props;
 
-	return flexContainer;
+	const paddingTop = props.paddingTop ? CssUtils.addPxToCssProperty(props.paddingTop) : /*byDefault=*/ 0;
+
+	return (
+		<div style={{paddingTop}} className={cs({
+			[styles['flex-container-vertical']]: position == 'vertical',
+			[styles['flex-container-horizontal']]: position == 'horizontal'
+		})}>
+			{props.children}
+		</div>);
 	
 }
 

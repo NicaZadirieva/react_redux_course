@@ -1,3 +1,54 @@
+#### 0.1.2 (2024-10-27)
+
+##### New Features
+
+- add UserContext (2e73862a)
+
+##### Bug Fixes
+
+- **useLocalStorage:** now localStorage worked (5b9364ee)
+
+#### 0.1.1 (2024-10-25)
+
+##### Documentation Changes
+
+- **Input:** describe all parameters of Input (91abf0e0)
+
+##### New Features
+
+- **LoginPage:** impl for login/logout (204d1307)
+- **useLocalStorage:** create hook for saving user profile (873c1471)
+
+##### Refactors
+
+- **Search:**
+  - replacing Search to Input component element (089880b9)
+  - add Input util component (23d0786a)
+- **App:** add pages folder with FilmsPage and LoginPage (dcc1850f)
+
+#### 0.1.0 (2024-10-20)
+
+##### Chores
+
+- **\*:** create module css styles (index.module.css) (a9e69139)
+
+##### Bug Fixes
+
+- **Header:** change class 'restrict-content-size ' to global class (da86a871)
+
+##### Refactors
+
+- **Flex, LinkedMenuItem, MovieCard, Search, Header:** refactoring with classnames (de1d05ba)
+- **\*:** change path to index.module.css (4f94babc)
+
+#### 0.0.4 (2024-10-18)
+
+##### Refactors
+
+- **components:**
+  - minimal code reducing (fce88542)
+  - minimal changes in parameters of components (833a166c)
+
 #### 0.0.3 (2024-10-13)
 
 ##### New Features

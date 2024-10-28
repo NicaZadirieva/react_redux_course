@@ -1,6 +1,6 @@
-import { default as CssUtils } from '../shared/CssUtils';
-import './styles/index.css';
-/**TODO: (me) исправить, чтобы информация о параметрах onClick появлялась в JSDoc.*/
+import cs from 'classnames';
+import styles from './index.module.css';
+
 /**
  * @callback eventHandler
  * @param {SyntheticBaseEvent} event
@@ -19,43 +19,39 @@ import './styles/index.css';
  * @returns {component} MenuItem 
  * 
 */
-function LinkedMenuItem({text, linkUrl, onClick, icon, canChoose=true}) {
+function LinkedMenuItem(props) {
 
+	const {canChoose=/*byDefault*/true} = props;
+	
 	const createIconItem = (icon) => {
-		const defaultIconClassName = 'menu-item-icon';
-
+		
 		if(icon && icon.type == 'svg') {
-			return <img className="menu-item-icon" alt="Icon" src={icon.dataSource}/>;
+			return <img className={styles['menu-item-icon']} alt="Icon" src={icon.dataSource}/>;
 		}
 		if(icon && icon.type == 'iconText') {
-
-			const roundedIconClassName = CssUtils.addClassToDefaultClassName(
-				defaultIconClassName, 
-				'rounded-text-icon');
-
-			return <span className={roundedIconClassName}>{icon.dataSource}</span>;
+			
+			return <span className={cs(
+				styles['menu-item-icon'], 
+				styles['rounded-text-icon'])}>{icon.dataSource}</span>;
 		}
 		/**wrong format of icon object or icon not present */
 		return;
 	};
 
-	const iconItem = createIconItem(icon);
-	const defaultMenuItemClassName = 'menu-item';
-	const menuItemClassName = canChoose ? (
-	/*byDefault*/ CssUtils.addClassToDefaultClassName(defaultMenuItemClassName, 'can-choose')) : defaultMenuItemClassName;
+	const iconItem = createIconItem(props.icon);
+
 	const onMenuClick = (e) =>{
-		const handleEnabled = onClick && canChoose;
+		const handleEnabled = props.onClick && canChoose;
 		if(handleEnabled) {
-			onClick(e);
+			props.onClick(e);
 		}
 	};
-	const defaultLinkClassName = 'menu-link';
-	const disabledLink = CssUtils.addClassToDefaultClassName(defaultLinkClassName, 'disable');
-	const linkClassName = canChoose ? /*enable link byDefault*/ defaultLinkClassName : disabledLink;
+
 	return (
-		<li className={menuItemClassName} onClick={onMenuClick}>
-			<a href={linkUrl} className={linkClassName}>{text} {iconItem}</a>
-			
+		<li className={cs(styles['menu-item'], {[styles['can-choose']]: canChoose})} onClick={onMenuClick}>
+			<a href={props.linkUrl} className={cs(styles['menu-link'], {[styles['disable']]: canChoose == false})}>
+				{props.text} {iconItem}
+			</a>
 		</li>
 	);
 }

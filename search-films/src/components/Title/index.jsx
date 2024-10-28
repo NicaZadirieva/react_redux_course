@@ -1,8 +1,8 @@
-import './styles/index.css';
+import styles from './index.module.css';
 
 function Title({text}) {
 	return (
-		<h1 className="title">{text}</h1>
+		<h1 className={styles.title}>{text}</h1>
 	);
 }
 

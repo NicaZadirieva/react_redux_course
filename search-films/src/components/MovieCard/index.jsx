@@ -1,6 +1,6 @@
 
-import { default as CssUtils } from '../shared/CssUtils';
-import './styles/index.css';
+import cs from 'classnames';
+import styles from './index.module.css';
 
 /**
  * @callback requestCallback
@@ -22,46 +22,46 @@ import './styles/index.css';
  * @returns {component} MovieCard 
  * 
 */
-function MovieCard({movieName, movieId, posterUrl, className, addToWishList, deleteFromWishList, isLiked=false, rating=0}) {
-	const defaultCardClassName = 'movie-card';
-	const movieCardClassName = className ? 
-		CssUtils.addClassToDefaultClassName(defaultCardClassName, className): defaultCardClassName; 
+function MovieCard(props) {
+
+	const {isLiked=/*byDefault*/false, rating=/*byDefault*/ 0} = props;
 
 	const Rating = (
-		<div className={'rating-movie-card'}>
+		<div className={styles['rating-movie-card']}>
 			<img src='star-icon.svg'/>
-			<div className='rating-value'>{rating}</div>
+			<div className={styles['rating-value']}>{rating}</div>
 		</div>
 	);
 
 	const Poster = (
-		<div className={'poster-movie-card'} style={{background: `url(/poster/${posterUrl})`}}>{Rating}</div>
+		<div className={styles['poster-movie-card']} style={{background: `url(/poster/${props.posterUrl})`}}>{Rating}</div>
 	);
     
 	const MovieTitle = (
-		<div className='title-movie-card'>{movieName}</div>
+		<div className={styles['title-movie-card']}>{props.movieName}</div>
 	);
 
 	// Добавить в избранное
 	const AddToWishListItem = (
-		<div className='wishlist-item' onClick={() => {addToWishList(movieId);}}>
-			<div className='can-be-added-icon'></div>
-			<p className='can-be-added-desc'>{'В избранное'}</p>
+		<div className={styles['wishlist-item']} onClick={() => {props.addToWishList(props.movieId);}}>
+			<div className={styles['can-be-added-icon']}></div>
+			<p className={styles['can-be-added-desc']}>{'В избранное'}</p>
 		</div>
 	);
 
 	// Удалить из избранного
 	const DeleteFromWishListItem = (
-		<div className='wishlist-item' onClick={() => {deleteFromWishList(movieId);}}>
-			<div className='delete-added-icon'></div>
-			<p className='delete-added-desc'>{'В избранном'}</p>
+		<div className={styles['wishlist-item']} onClick={() => {props.deleteFromWishList(props.movieId);}}>
+			<div className={styles['delete-added-icon']}></div>
+			<p className={styles['delete-added-desc']}>{'В избранном'}</p>
 		</div>
 	);
 
 	return (
-		<div className={movieCardClassName}>
+		<div className={cs(props.className, styles['movie-card'])}>
 			{Poster}
 			{MovieTitle}
+			{/*не стала изменять для читабельности */}
 			{isLiked ? DeleteFromWishListItem : AddToWishListItem}
 		</div>
 	);
