@@ -4,7 +4,7 @@ class Utils {
 	}
 
 	static parseDateString(dateString) {
-		return dateString.toISOString()
+		return new Date(dateString).toISOString()
 			.slice(0, 10) /**обрезать только то что касается даты */;
 	}
 }

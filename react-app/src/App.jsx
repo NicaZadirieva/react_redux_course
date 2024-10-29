@@ -16,13 +16,23 @@ function App() {
 	const [selectedItem, setSelectedItem] = useState({});
 	console.log('App');
 	const addItem = useCallback((item) => {
-		setItems([
-			...mapItems(items),
-			{
-				...item,
-				id: items.length > 0 ? Math.max(...items.map(i => i.id)) : 1,
-				date: new Date(item.date)
-			}]);
+		if (!item.id) {
+			setItems([
+				...mapItems(items),
+				{
+					...item,
+					id: items.length > 0 ? Math.max(...items.map(i => i.id)) + 1 : 1,
+					date: new Date(item.date)
+				}]);
+		} else {
+			setItems([
+				...mapItems(items).map(i => {
+					if (i.id == item.id) {
+						return {...item};
+					} 
+					return i;
+				})]);
+		}
 	}, [items, setItems]);
 	
 	
