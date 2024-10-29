@@ -3,8 +3,9 @@ import { UserContext } from '../../context';
 import CardButton from '../CardButton';
 import JournalItem from '../JournalItem';
 import './styles/index.css';
-export default function JournalList({items}) {
+export default function JournalList({items, setItem}) {
 	const { userId } = useContext(UserContext);
+	
 	console.log('JournalList');
 	const sortItems = (a, b) => {
 		if(a.date < b.date) {
@@ -13,7 +14,7 @@ export default function JournalList({items}) {
 			return -1;
 		}
 	};
-	
+
 	const filteredItems = useMemo(() => items
 		.filter((el) => el.userId == userId)
 		.sort(sortItems), [items, userId]);
@@ -23,13 +24,12 @@ export default function JournalList({items}) {
 	}
 	
 	
-
 	return (
 		<>
 			{filteredItems
 				.map(el => {
 					return (
-						<CardButton key={el.id}>
+						<CardButton key={el.id} onClick={()=> setItem(el)}>
 							<JournalItem
 								title={el.title}
 								post={el.post}

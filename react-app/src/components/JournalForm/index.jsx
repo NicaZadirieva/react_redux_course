@@ -3,9 +3,10 @@ import { useCallback, useContext, useEffect, useReducer, useRef } from 'react';
 import { UserContext } from '../../context';
 import Button from '../Button';
 import Input from '../Input';
+import { Utils } from '../shared/utils';
 import { formReducer, INITIAL_STATE } from './reducers/JournalForm.state';
 import styles from './styles/index.module.css';
-function JournalForm({onSubmit}) {
+function JournalForm({onSubmit, data}) {
 	console.log('JournalForm');
 	const [formState, dispatchForm] = useReducer(formReducer, INITIAL_STATE);
 	const { isValid, isFormReadyToSubmit, values } = formState; 
@@ -61,12 +62,17 @@ function JournalForm({onSubmit}) {
 		if(isFormReadyToSubmit) {
 			onSubmit(values);
 			dispatchForm({type: 'CLEAR'});
+			dispatchForm({ type: 'SET_VALUE', payload: { userId }});
 		}
-	}, [isFormReadyToSubmit, values, onSubmit]);
+	}, [isFormReadyToSubmit, values, onSubmit, userId]);
 
 	useEffect(() => {
-		dispatchForm({ type: 'SET_VALUE', payload: { userId }})
+		dispatchForm({ type: 'SET_VALUE', payload: { userId }});
 	}, [ userId ]);
+
+	useEffect(() => {
+		dispatchForm({ type: 'SET_VALUE', payload: { ...data }});
+	}, [data]);
 
 	const invalidClass = styles.invalid;
 
@@ -81,7 +87,7 @@ function JournalForm({onSubmit}) {
 					<img src='/calendar.svg' alt='Иконка календаря'/>
 					<span>Дата</span>
 				</label>
-				<Input isValid={isValid.date} id="date" ref={dateRef} value={values.date} onChange={formChangeByValue}  type="date" name="date"/>
+				<Input isValid={isValid.date} id="date" ref={dateRef} value={values.date ? Utils.parseDateString(values.date) : ''} onChange={formChangeByValue}  type="date" name="date"/>
 			</div>
 			<div className={styles['form-row']}>
 				<label htmlFor="tag" className={styles['form-label']}>

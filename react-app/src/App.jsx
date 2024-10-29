@@ -1,5 +1,5 @@
 
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import JournalAdd from './components/JournalAdd';
@@ -12,6 +12,8 @@ import Body from './layouts/Body';
 import LeftPanel from './layouts/LeftPanel';
 function App() {
 	const [items, setItems] = useLocalStorage('data'); 
+	// item selected by user. need to be showed in the form (into the body)
+	const [selectedItem, setSelectedItem] = useState({});
 	console.log('App');
 	const addItem = useCallback((item) => {
 		setItems([
@@ -31,11 +33,12 @@ function App() {
 					<LeftPanel>
 						<Header/>
 						<JournalAdd/>
-						<JournalList items={mapItems(items)}/>
+						<JournalList items={mapItems(items)}
+							setItem={setSelectedItem}/>
 					</LeftPanel>
 			
 					<Body>
-						<JournalForm onSubmit={addItem} />
+						<JournalForm data={selectedItem} onSubmit={addItem} />
 					</Body>
 				</div>
 			</UserContextProvider>

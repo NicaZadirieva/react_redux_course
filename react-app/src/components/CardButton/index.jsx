@@ -1,12 +1,14 @@
 import { CssUtils } from '../shared/utils';
 import styles from './styles/index.module.css';
 
-export default function CardButton({children, className}) {
+function CardButton({children, className, ...props}) {
 	const cl = CssUtils.addClassToClassNameProperty(styles['card-button'], className);
 
 	return (
-		<button className={cl}>
+		<button className={cl} {...props}>
 			{children}
 		</button>
 	);
 }
+
+export default CardButton;
