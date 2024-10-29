@@ -14,7 +14,7 @@ function App() {
 	const [items, setItems] = useLocalStorage('data'); 
 	// item selected by user. need to be showed in the form (into the body)
 	const [selectedItem, setSelectedItem] = useState({});
-	console.log('App');
+
 	const addItem = useCallback((item) => {
 		if (!item.id) {
 			setItems([

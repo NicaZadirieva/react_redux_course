@@ -5,8 +5,7 @@ import JournalItem from '../JournalItem';
 import './styles/index.css';
 export default function JournalList({items, setItem}) {
 	const { userId } = useContext(UserContext);
-	
-	console.log('JournalList');
+
 	const sortItems = (a, b) => {
 		if(a.date < b.date) {
 			return 1;
