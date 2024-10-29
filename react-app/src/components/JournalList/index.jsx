@@ -6,6 +6,14 @@ import './styles/index.css';
 export default function JournalList({items}) {
 	const { userId } = useContext(UserContext);
 	console.log('JournalList');
+	const sortItems = (a, b) => {
+		if(a.date < b.date) {
+			return 1;
+		} else {
+			return -1;
+		}
+	};
+	
 	const filteredItems = useMemo(() => items
 		.filter((el) => el.userId == userId)
 		.sort(sortItems), [items, userId]);
@@ -14,13 +22,7 @@ export default function JournalList({items}) {
 		return <p>Записей пока нет, добавьте первую</p>;
 	}
 	
-	const sortItems = (a, b) => {
-		if(a.date < b.date) {
-			return 1;
-		} else {
-			return -1;
-		}
-	};
+	
 
 	return (
 		<>
