@@ -16,7 +16,10 @@
     background: url('/delete-icon.svg') no-repeat;
     border: none;
 }
-
+.journal-header__delete-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
 .journal-header__title {
     font-size: 32px;
     font-weight: 600;
