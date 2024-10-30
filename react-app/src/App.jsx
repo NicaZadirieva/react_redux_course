@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header';
 import JournalAdd from './components/JournalAdd';
 import JournalBody from './components/JournalBody';
+import JournalForm from './components/JournalForm';
 import JournalHeader from './components/JournalHeader';
 import JournalList from './components/JournalList';
 import { useLocalStorage } from './components/shared/hooks';
@@ -16,7 +17,7 @@ function App() {
 	const [items, setItems] = useLocalStorage('data'); 
 	// item selected by user. need to be showed in the form (into the body)
 	const [selectedItem, setSelectedItem] = useState({});
-
+	const [isEdit, toggleEdit] = useState(false);
 	const addItem = useCallback((item) => {
 		if (!item.id) {
 			setItems([
@@ -37,27 +38,32 @@ function App() {
 		}
 	}, [items, setItems]);
 	
-	
+	const deleteItem = useCallback((item) => {
+		setItems([
+			...mapItems(items.filter(i => i.id !== item.id))]);
+		setSelectedItem({});
+	}, [items, setItems]);
+
 	return (
 		<>
 			<UserContextProvider>
 				<div className="app">
 					<LeftPanel>
 						<Header/>
-						<JournalAdd/>
+						<JournalAdd onClick={() => {toggleEdit(true); setSelectedItem({});}}/>
 						<JournalList items={mapItems(items)}
-							setItem={setSelectedItem}/>
+							setItem={setSelectedItem}
+							canShowItem={() => toggleEdit(false)}/>
 					</LeftPanel>
 			
 					<Body>
-						{/**<JournalForm data={selectedItem} onSubmit={addItem} />*/}
-						{selectedItem.title && selectedItem.date && selectedItem.post ? (
+						{!isEdit && selectedItem.title && selectedItem.date && selectedItem.post ? (
 							<>
-								<JournalHeader text={selectedItem.title}/>
+								<JournalHeader text={selectedItem.title} onDelete={() => deleteItem(selectedItem)}/>
 								<JournalBody post={selectedItem.post} date={Utils.formatDate(selectedItem.date)} 
 									label={selectedItem.tags} />
 							</>
-						): ''}
+						): <JournalForm onSubmit={addItem} data={selectedItem}/>}
 					</Body>
 				</div>
 			</UserContextProvider>
