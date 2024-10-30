@@ -3,10 +3,12 @@ import { memo, useCallback, useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import JournalAdd from './components/JournalAdd';
+import JournalBody from './components/JournalBody';
 import JournalHeader from './components/JournalHeader';
 import JournalList from './components/JournalList';
 import { useLocalStorage } from './components/shared/hooks';
 import { mapItems } from './components/shared/mappers';
+import { Utils } from './components/shared/utils';
 import { UserContextProvider } from './context';
 import Body from './layouts/Body';
 import LeftPanel from './layouts/LeftPanel';
@@ -49,7 +51,13 @@ function App() {
 			
 					<Body>
 						{/**<JournalForm data={selectedItem} onSubmit={addItem} />*/}
-						{selectedItem.title && selectedItem.date && selectedItem.post ? <JournalHeader text={selectedItem.title} /> : ''}
+						{selectedItem.title && selectedItem.date && selectedItem.post ? (
+							<>
+								<JournalHeader text={selectedItem.title}/>
+								<JournalBody post={selectedItem.post} date={Utils.formatDate(selectedItem.date)} 
+									label={selectedItem.tags} />
+							</>
+						): ''}
 					</Body>
 				</div>
 			</UserContextProvider>

@@ -1,0 +1,40 @@
+.journal-body {
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    margin: 30px 0px;
+    min-width: 938px;
+}
+
+.journal-body__date, .journal-body__label{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 200px;
+    align-items: center;
+    margin: 20px 0;
+}
+.journal-body__date-header, .journal-body__label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.journal-body__date-header img,
+.journal-body__label img{
+    margin-right: 8px;
+    display: inline-block;
+}
+
+.journal-body__date-content , .journal-body__label-content{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+}
+
+.journal-body__text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0%;
+}
