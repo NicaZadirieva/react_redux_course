@@ -9,11 +9,11 @@
 }
 
 .accent:hover {
-    background: #222096;
+    background: var(--primary-hover-color);
 }
 
 .accent {
-    background: #312EB5;
+    background: var(--primary-color);
 }
 
 /*.button:focus,
