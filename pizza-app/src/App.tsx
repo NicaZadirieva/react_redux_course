@@ -10,9 +10,9 @@ function App() {
 
 	return (
 		<>
-			<Button onClick={addCounter}>Кнопка</Button>
+			<Button onClick={addCounter} appearance='big'>Кнопка</Button>
 		</>
 	)
 }
 
-export default App
+export default App;
