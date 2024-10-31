@@ -1,3 +1,3 @@
 # react_redux_course
 
-Репозиторий для приложения "Воспоминание" React и Redux Toolkit от purpleschool
+Репозиторий для приложений "Воспоминание" и "Заказ еды" React и Redux Toolkit от purpleschool
