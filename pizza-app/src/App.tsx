@@ -1,18 +1,13 @@
-import { MouseEvent, useState } from 'react';
 import Button from './components/Button';
+import Input from './components/Input';
 
 function App() {
-	const [counter, setCounter] = useState(0);
-
-	const addCounter = (e: MouseEvent) => {
-		console.log(e);
-	};
-
 	return (
 		<>
-			<Button onClick={addCounter} appearance='big'>Кнопка</Button>
+			<Button appearance='big'>Кнопка</Button>
+			<Input placeholder='Email'/>
 		</>
-	)
+	);
 }
 
 export default App;
