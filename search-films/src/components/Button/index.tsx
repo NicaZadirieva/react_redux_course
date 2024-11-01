@@ -1,8 +1,10 @@
+import cn from 'classnames';
+import { ButtonProps } from './Button.props';
 import styles from './index.module.css';
 
-function Button({text}) {
+function Button({children, className, ...props}: ButtonProps) {
 	return (
-		<button className={styles.button}>{text}</button>
+		<button {...props} className={cn(className, styles.button)}>{children}</button>
 	);
 }
 

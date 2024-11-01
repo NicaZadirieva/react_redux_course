@@ -1,8 +1,12 @@
 #### 0.1.3 (2024-11-01)
 
+##### Bug Fixes
+
+- add css-module support (need to test) (4647619e)
+
 ##### Other Changes
 
-- renaming extension of files (ef83cc2a)
+- renaming extension of files (60d26ba5)
 - now app is broken, because of new cfg files (1ab86c83)
 
 #### 0.1.2 (2024-10-28)
