@@ -2,6 +2,7 @@
 
 ##### Other Changes
 
+- renaming extension of files (ef83cc2a)
 - now app is broken, because of new cfg files (1ab86c83)
 
 #### 0.1.2 (2024-10-28)
