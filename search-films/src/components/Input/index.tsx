@@ -1,7 +1,8 @@
 import cs from 'classnames';
-import { forwardRef } from 'react';
+import { FormEvent, forwardRef } from 'react';
 import Button from '../Button';
 import styles from './index.module.css';
+import { InputFormField, InputProps } from './Input.props';
 
 /**
  * @callback requestCallback
@@ -22,12 +23,13 @@ import styles from './index.module.css';
  * @returns {component} Input 
  * 
 */
-const Input = forwardRef(function Input({className, inputActionName, iconClassName, position=/*byDefault=*/'vertical', hasIcon=/*byDefault=*/false, ...props}, ref) {
+const Input = forwardRef(function Input({className, inputActionName, iconClassName, position=/*byDefault=*/'vertical', hasIcon=/*byDefault=*/false, ...props}: InputProps, ref) {
 
-	const onSubmit = (e) => {
+	const onSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		const inputValue = e.target.elements.textToAction.value;
-		props.onSubmit(inputValue);
+		const target = (e.target as HTMLFormElement);
+		const inputValue = (target.elements as InputFormField).textToAction.value;
+		props.onSend(inputValue);
 	};
     
 	return (
@@ -40,7 +42,7 @@ const Input = forwardRef(function Input({className, inputActionName, iconClassNa
 				<input name='textToAction' ref={ref} {...props} className={cs(styles['input'], className)} />
 			</div>
 
-			<Button text={inputActionName}/>
+			<Button>{inputActionName}</Button>
 		</form>
 	);
 });
