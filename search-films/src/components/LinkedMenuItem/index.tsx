@@ -1,5 +1,7 @@
 import cs from 'classnames';
+import { MouseEventHandler } from 'react';
 import styles from './index.module.css';
+import { IconImage, LinkedMenuItemProps } from './LinkedMenuItem.props';
 
 /**
  * @callback eventHandler
@@ -15,15 +17,15 @@ import styles from './index.module.css';
  * @param {string} icon.type - (svg/iconText) type of icon to display (please "*.svg")
  * @param {string} icon.dataSource - text to display if type == "iconText" or url (please "*.svg") if type == "svg" 
  * @param {boolean} canChoose - (byDefault=true) enable menu item to be clicked
- * @param {eventHandler} onClick - (optional, enabled if canChoose) function to handle clicks on menu button
+ * @param {eventHandler} handleClicks - (optional, enabled if canChoose) function to handle clicks on menu button
  * @returns {component} MenuItem 
  * 
 */
-function LinkedMenuItem(props) {
+function LinkedMenuItem(props: LinkedMenuItemProps) {
 
 	const {canChoose=/*byDefault*/true} = props;
 	
-	const createIconItem = (icon) => {
+	const createIconItem = (icon: IconImage) => {
 		
 		if(icon && icon.type == 'svg') {
 			return <img className={styles['menu-item-icon']} alt="Icon" src={icon.dataSource}/>;
@@ -40,10 +42,10 @@ function LinkedMenuItem(props) {
 
 	const iconItem = createIconItem(props.icon);
 
-	const onMenuClick = (e) =>{
+	const onMenuClick : MouseEventHandler<HTMLLIElement> = (e) =>{
 		const handleEnabled = props.onClick && canChoose;
 		if(handleEnabled) {
-			props.onClick(e);
+			props.handleClicks(e);
 		}
 	};
 

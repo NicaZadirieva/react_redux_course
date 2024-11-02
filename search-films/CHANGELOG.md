@@ -2,8 +2,9 @@
 
 ##### Chores
 
+- **LinkedMenuItem:** finish (need to test) (a239ef85)
 - **Input:**
-  - finished with Input need to test (e5e38b04)
+  - finished with Input need to test (11af3d09)
   - intermediate commit (some problems with forwardRef) (37dfdfbc)
 - **Flex:** add FlexProps (9c6ade0c)
 
