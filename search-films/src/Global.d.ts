@@ -1,1 +1,3 @@
-declare module "*.module.css";
+declare module '*.module.css';
+
+type DivProps = React.JSX.IntrinsicElements['div'];
