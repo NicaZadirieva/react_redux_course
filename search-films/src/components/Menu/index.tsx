@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { UserContext } from '../../context/user.context';
+import { IUserContext, UserContext } from '../../context/user.context';
 import LinkedMenuItem from '../LinkedMenuItem';
 import MenuIconBuilder from '../shared/MenuIconBuider';
 import styles from './index.module.css';
@@ -12,7 +12,7 @@ import styles from './index.module.css';
  * 
 */
 function Menu() {
-	const {currentUser, isAuthenticated, logoutCurrentUser} = useContext(UserContext);
+	const {currentUser, isAuthenticated, logoutCurrentUser} = useContext(UserContext) as IUserContext;
 	const authMenu = (
 		<>
 			<LinkedMenuItem

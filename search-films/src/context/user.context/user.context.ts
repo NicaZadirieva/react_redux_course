@@ -1,5 +1,10 @@
 import { createContext } from 'react';
 
-const UserContext = createContext({userName: null});
+const defaultValue = {
+	currentUser: null,
+	isAuthenticated: false
+};
+
+const UserContext = createContext(defaultValue);
 
 export default UserContext;
