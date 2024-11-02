@@ -23,13 +23,13 @@ import { InputFormField, InputProps } from './Input.props';
  * @returns {component} Input 
  * 
 */
-const Input = forwardRef(function Input({className, inputActionName, iconClassName, position=/*byDefault=*/'vertical', hasIcon=/*byDefault=*/false, ...props}: InputProps, ref) {
-
+const Input = forwardRef<HTMLInputElement>((props, ref) => {
+	const {className, inputActionName, iconClassName, position=/*byDefault=*/'vertical', hasIcon=/*byDefault=*/false} = props as InputProps;
 	const onSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const target = (e.target as HTMLFormElement);
 		const inputValue = (target.elements as InputFormField).textToAction.value;
-		props.onSend(inputValue);
+		(props as InputProps).onSend(inputValue);
 	};
     
 	return (

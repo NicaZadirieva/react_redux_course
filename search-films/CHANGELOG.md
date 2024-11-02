@@ -2,11 +2,14 @@
 
 ##### Chores
 
-- **Flex:** add FlexProps (cfe837d3)
+- **Input:**
+  - finished with Input need to test (e5e38b04)
+  - intermediate commit (some problems with forwardRef) (37dfdfbc)
+- **Flex:** add FlexProps (9c6ade0c)
 
 ##### Bug Fixes
 
-- add css-module support (need to test) (4647619e)
+- add css-module support (need to test) (ac617337)
 
 ##### Other Changes
 
