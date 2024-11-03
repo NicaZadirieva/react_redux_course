@@ -18,23 +18,22 @@ function Menu() {
 			<LinkedMenuItem
 				text="Поиск фильмов"
 				canChoose={false} /**if it is current page */
-				onClick={(event) => console.log(event)}
 			/>
 			<LinkedMenuItem
 				text="Мои фильмы"
 				icon={MenuIconBuilder.buildCounterIcon(3)}
 				linkUrl="https://www.google.com"
-				onClick={(event) => console.log(event)}
+				handleClicks={(event) => console.log(event)}
 			/>
-			<LinkedMenuItem
-				text={currentUser}
+			<LinkedMenuItem 
+				text={currentUser as string} /** if currentUser not null */
 				icon={MenuIconBuilder.buildAvatarIcon()}
 				linkUrl="https://www.google.com"
-				onClick={(event) => console.log(event)}
+				handleClicks={(event) => console.log(event)}
 			/>
 			<LinkedMenuItem
 				text="Выйти"
-				onClick={logoutCurrentUser}
+				handleClicks={logoutCurrentUser}
 			/>
 		</>
 	);
@@ -43,19 +42,17 @@ function Menu() {
 			<LinkedMenuItem
 				text="Поиск фильмов"
 				canChoose={false} /**if it is current page */
-				onClick={(event) => console.log(event)}
 			/>
 			<LinkedMenuItem
 				text="Мои фильмы"
 				linkUrl="https://www.google.com"
 				icon={MenuIconBuilder.buildCounterIcon(3)}
-				onClick={(event) => console.log(event)}
+				handleClicks={(event) => console.log(event)}
 			/>
 			<LinkedMenuItem
 				text="Войти"
 				canChoose={false}
 				icon={MenuIconBuilder.buildExitIcon()}
-				onClick={(event) => console.log(event)}
 			/>
 		</>
 	);

@@ -25,7 +25,7 @@ function LinkedMenuItem(props: LinkedMenuItemProps) {
 
 	const {canChoose=/*byDefault*/true} = props;
 	
-	const createIconItem = (icon: IconImage) => {
+	const createIconItem = (icon?: IconImage) => {
 		
 		if(icon && icon.type == 'svg') {
 			return <img className={styles['menu-item-icon']} alt="Icon" src={icon.dataSource}/>;
@@ -43,8 +43,7 @@ function LinkedMenuItem(props: LinkedMenuItemProps) {
 	const iconItem = createIconItem(props.icon);
 
 	const onMenuClick : MouseEventHandler<HTMLLIElement> = (e) =>{
-		const handleEnabled = props.onClick && canChoose;
-		if(handleEnabled) {
+		if(props.handleClicks && canChoose) {
 			props.handleClicks(e);
 		}
 	};
