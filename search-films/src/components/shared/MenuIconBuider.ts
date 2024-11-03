@@ -1,4 +1,9 @@
 class MenuIconBuilder {
+	static constants = {
+		$SVG_TYPE: 'svg',
+		$ICON_TEXT_TYPE: 'iconText'
+	};
+
 	static buildExitIcon() {
 		return {
 			type: MenuIconBuilder.constants.$SVG_TYPE,
@@ -11,19 +16,12 @@ class MenuIconBuilder {
 			dataSource: '/avatar-icon.svg'
 		};
 	}
-	static buildCounterIcon(counter) {
+	static buildCounterIcon(counter: number) {
 		return {
 			type: MenuIconBuilder.constants.$ICON_TEXT_TYPE,
 			dataSource: counter
 		};
 	}
-	static addClassToDefaultClassName(defaultClassName, addedClass) {
-		return defaultClassName + (addedClass ? ' ' + addedClass : '');
-	}
 }
-MenuIconBuilder.constants = {
-	$SVG_TYPE: 'svg',
-	$ICON_TEXT_TYPE: 'iconText'
-};
 
 export default MenuIconBuilder;
