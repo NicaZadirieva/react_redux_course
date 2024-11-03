@@ -2,14 +2,16 @@
 
 ##### Chores
 
-- **MovieCard:** finish (need to test) (2c058828)
-- **Menu:** finish (need to test) (5514831d)
-- **Menu, UserContext:** intermediate commit (32b65d7d)
-- **LinkedMenuItem:** finish (need to test) (9309c1f4)
-- **Input:**
+- **Paragraph:** finish with types (211120d5)
+
+* **MovieCard:** finish (need to test) (2c058828)
+* **Menu:** finish (need to test) (5514831d)
+* **Menu, UserContext:** intermediate commit (32b65d7d)
+* **LinkedMenuItem:** finish (need to test) (9309c1f4)
+* **Input:**
   - finished with Input need to test (11af3d09)
   - intermediate commit (some problems with forwardRef) (37dfdfbc)
-- **Flex:** add FlexProps (9c6ade0c)
+* **Flex:** add FlexProps (9c6ade0c)
 
 ##### Bug Fixes
 
