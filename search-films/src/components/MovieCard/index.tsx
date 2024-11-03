@@ -1,6 +1,7 @@
 
 import cs from 'classnames';
 import styles from './index.module.css';
+import type { MovieCardProps } from './MovieCard.props';
 
 /**
  * @callback requestCallback
@@ -22,13 +23,13 @@ import styles from './index.module.css';
  * @returns {component} MovieCard 
  * 
 */
-function MovieCard(props) {
+function MovieCard(props: MovieCardProps) {
 
 	const {isLiked=/*byDefault*/false, rating=/*byDefault*/ 0} = props;
 
 	const Rating = (
 		<div className={styles['rating-movie-card']}>
-			<img src='star-icon.svg'/>
+			<img alt='Иконка рейтинга' src='star-icon.svg'/>
 			<div className={styles['rating-value']}>{rating}</div>
 		</div>
 	);

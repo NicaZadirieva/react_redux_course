@@ -2,7 +2,8 @@
 
 ##### Chores
 
-- **Menu:** finish (need to test) (4c1ae222)
+- **MovieCard:** finish (need to test) (2c058828)
+- **Menu:** finish (need to test) (5514831d)
 - **Menu, UserContext:** intermediate commit (32b65d7d)
 - **LinkedMenuItem:** finish (need to test) (9309c1f4)
 - **Input:**
@@ -13,6 +14,7 @@
 ##### Bug Fixes
 
 - add css-module support (need to test) (ac617337)
+- add exports from components and styles for Logo (1ef7abca)
 
 ##### Other Changes
 
