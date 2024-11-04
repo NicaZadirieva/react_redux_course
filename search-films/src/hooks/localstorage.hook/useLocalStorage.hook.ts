@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { ProfileElement } from './useLocalStorage';
+import { LocalStorageValue, ProfileElement } from './useLocalStorage';
 
-function useLocalStorage(profileKey: string) {
+function useLocalStorage(profileKey: string) : LocalStorageValue {
 	const [profile, setProfile] = useState<ProfileElement[]>([]);
 	const [currentUser, setCurrentUser] = useState(/*defaultValue=*/'');
 
@@ -34,7 +34,6 @@ function useLocalStorage(profileKey: string) {
 	const logout = (userName: string) => {
 		const oldProfile = [...profile];
 		const index = oldProfile.findIndex((user) => user.name === userName);
-		console.log(index);
 		if( index != -1 ) {
 			// this is an existing user
 			const newProfile = [...oldProfile];
@@ -43,7 +42,7 @@ function useLocalStorage(profileKey: string) {
 		}
 	};
 
-	return [saveAuthUser, logout, currentUser];
+	return {saveAuthUser, logout, currentUser};
 }
 
 export default useLocalStorage;

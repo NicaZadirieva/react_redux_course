@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useLocalStorage } from '../../../hooks';
-import UserContext from '../../user.context/user.context';
+import UserContext from '../user.context';
+import { UserProviderProps } from './user.provider.props';
 
-const UserProvider = ({ children }) => {
-	const [saveAuthUser, logout, currentUser] = useLocalStorage('users');
+const UserProvider = ({ children } : UserProviderProps) => {
+	const {saveAuthUser, logout, currentUser} = useLocalStorage('users');
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
     
 	const logoutCurrentUser = () => {
@@ -14,7 +15,7 @@ const UserProvider = ({ children }) => {
 
 	};
 
-	const saveCurrentUser = (newCurrentUser) => {
+	const saveCurrentUser = (newCurrentUser: string) => {
 		saveAuthUser(newCurrentUser);
 		setIsAuthenticated(true);
 	};

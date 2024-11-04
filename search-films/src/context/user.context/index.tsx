@@ -1,5 +1,5 @@
-import UserProvider from '../provider/user.provider/user.provider';
 import UserContext from './user.context';
-export type { IUserContext } from './user.context.d';
+import UserProvider from './user.provider/user.provider';
+export type { IUserContext } from './user.context';
 export { UserContext, UserProvider };
 
