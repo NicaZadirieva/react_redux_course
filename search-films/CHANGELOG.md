@@ -2,7 +2,9 @@
 
 ##### Chores
 
-- **useLocalStorage:** finish types (a871072a)
+- **userContext:** finish with type (3b843672)
+- **Title:** finish type (d2865cd0)
+- **useLocalStorage:** finish types (05173e61)
 - **shared:** finish with utils (9eefa3cc)
 - **Paragraph:** finish with types (53ca1317)
 - **MovieCard:** finish (need to test) (0c181f57)
