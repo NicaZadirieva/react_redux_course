@@ -1,4 +1,6 @@
-function Content({children}) {
+import type { ContentProps } from './content.props';
+
+function Content({children}: ContentProps) {
 	return (
 		<div className="restrict-content-size">
 			{children}
