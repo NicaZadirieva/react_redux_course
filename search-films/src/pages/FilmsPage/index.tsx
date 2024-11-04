@@ -7,18 +7,18 @@ function FilmsPage() {
 
 	return (
 		<>
-			<Header isAuthenticated={true}/>
+			<Header/>
 			<Content>
 
 				<Title text='Поиск'/>
 				<Paragraph 
 					text='Введите название фильма, сериала или мультфильма для поиска и добавления в избранное.'
-					fontSizeInPx='16'
+					fontSizeInPx={16}
 				/>
 				<Input 
-					position="vertical"
+					position='vertical'
 					placeholder="Введите название"
-					onInput={(requestBody) => {console.log(requestBody.textToSearch)}}
+					onSend={(textToSearch: string) => {console.log(textToSearch);}}
 					inputActionName="Искать"
 					iconClassName={'icon-search'}
 					hasIcon={true}
@@ -26,7 +26,7 @@ function FilmsPage() {
 				<Flex paddingTop={88}>
 					<MovieCard
 						movieName="Black Window"
-						movieId={1}
+						movieId={'1'}
 						posterUrl={'Black_Widow.png'}
 						isLiked={false}
 						rating={324}
@@ -35,7 +35,7 @@ function FilmsPage() {
 					/>
 					<MovieCard
 						movieName="Money Heist"
-						movieId={2}
+						movieId={'2'}
 						posterUrl={'money_heist.png'}
 						isLiked={true}
 						rating={8125}
