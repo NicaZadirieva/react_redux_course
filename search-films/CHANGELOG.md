@@ -1,8 +1,9 @@
-#### 0.1.3 (2024-11-03)
+#### 0.1.3 (2024-11-04)
 
 ##### Chores
 
-- **shared:** finish with utils (66475eee)
+- **useLocalStorage:** finish types (a871072a)
+- **shared:** finish with utils (9eefa3cc)
 - **Paragraph:** finish with types (53ca1317)
 - **MovieCard:** finish (need to test) (0c181f57)
 - **Menu:** finish (need to test) (5514831d)
@@ -16,6 +17,7 @@
 ##### Bug Fixes
 
 - add css-module support (need to test) (ac617337)
+- add exports from components and styles for Logo (1ef7abca)
 
 ##### Other Changes
 

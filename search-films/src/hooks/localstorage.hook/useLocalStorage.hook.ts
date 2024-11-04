@@ -1,21 +1,23 @@
 import { useEffect, useState } from 'react';
+import { ProfileElement } from './useLocalStorage';
 
-function useLocalStorage(profileKey) {
-	const [profile, setProfile] = useState([]);
-	const [currentUser, setCurrentUser] = useState();
+function useLocalStorage(profileKey: string) {
+	const [profile, setProfile] = useState<ProfileElement[]>([]);
+	const [currentUser, setCurrentUser] = useState(/*defaultValue=*/'');
 
 	useEffect(() => {
 		if (profile) {
+			const profileLastElement : ProfileElement = profile[profile.length - 1];
 			localStorage.setItem(profileKey, JSON.stringify(profile));
-			setCurrentUser(profile[profile.length - 1]?.name); // save current user as a last saved user in profile
+			setCurrentUser(profileLastElement.name); // save current user as a last saved user in profile
 		} 
         
 	}, [profile, profileKey]);
 
-	const saveAuthUser = (userName) => {
+	const saveAuthUser = (userName: string) => {
 		// [{name: 'Вася', isLogined: true}] успешный вход
 		// [{name: 'Вася', isLogined: false}] выход
-		const oldProfile = [...profile];
+		const oldProfile : Array<ProfileElement> = [...profile];
 		const index = oldProfile.findIndex((user) => user.name === userName);
 		if( index == -1 ) {
 			// this is a new user
@@ -29,7 +31,7 @@ function useLocalStorage(profileKey) {
 		}
 	};
 
-	const logout = (userName) => {
+	const logout = (userName: string) => {
 		const oldProfile = [...profile];
 		const index = oldProfile.findIndex((user) => user.name === userName);
 		console.log(index);
