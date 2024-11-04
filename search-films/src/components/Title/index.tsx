@@ -1,6 +1,7 @@
 import styles from './index.module.css';
+import { TitleProps } from './Title.props';
 
-function Title({text}) {
+function Title({text}: TitleProps) {
 	return (
 		<h1 className={styles.title}>{text}</h1>
 	);
