@@ -1,5 +1,16 @@
+/**
+ * * [{name: 'Вася', isLogined: true}] успешный вход
+ * * [{name: 'Вася', isLogined: false}] выход
+ */
 export interface ProfileElement {
+    /**
+     * authenticated user's name'
+     */
     name: string;
+
+    /**
+     * (true - user is authenticated)
+     */
     isLogined: boolean
 };
 // TODO: (me) как-то не нравится что нужно типизировать еще и это. 

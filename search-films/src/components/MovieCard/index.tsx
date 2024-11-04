@@ -3,26 +3,6 @@ import cs from 'classnames';
 import styles from './index.module.css';
 import type { MovieCardProps } from './MovieCard.props';
 
-/**
- * @callback requestCallback
- * @param {Object} requestBody
- * @param {string} requestBody.movieId - id of the movie
- * @returns {any}
- */
-
-/**
- * Util MovieCard component 
- * @param {string} movieName - name of the movie
- * @param {string} movieId - id of the movie
- * @param {string} posterUrl -  url to use for the poster image
- * @param {string} className (optional) - additional classes for special movie card
- * @param {boolean} isLiked - (optional, byDefault = false)
- * @param {number} rating - (optional, byDefault = 0) value to describe a rating of the movie
- * @param {requestCallback} addToWishList - callback to do request for adding to wish list
- * @param {requestCallback} deleteFromWishList - callback to do request for deleting from wish list
- * @returns {component} MovieCard 
- * 
-*/
 function MovieCard(props: MovieCardProps) {
 
 	const {isLiked=/*byDefault*/false, rating=/*byDefault*/ 0} = props;

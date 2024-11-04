@@ -12,8 +12,6 @@ import { InputFormField, InputProps } from './Input.props';
 
 /**
  * Util Input component 
- * @param {string} placeholder - input's placeholder
- * @param {string} position - (optional, byDefault='vertical') vertical/horizontal
  * @param {requestCallback} onSend - callback to do request after submit
  * @param {string} inputActionName - action name to display on button search
  * @param {boolean} hasIcon (optional, byDefault=false) - display icon
