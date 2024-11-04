@@ -22,7 +22,7 @@ import { InputFormField, InputProps } from './Input.props';
  * @returns {component} Input 
  * 
 */
-const Input = forwardRef((props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
+const Input = forwardRef(function Input(props: InputProps, ref: ForwardedRef<HTMLInputElement>) {
 	const {className, inputActionName, iconClassName, position=/*byDefault=*/'vertical', hasIcon=/*byDefault=*/false} = props as InputProps;
 	const onSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -36,11 +36,14 @@ const Input = forwardRef((props: InputProps, ref: ForwardedRef<HTMLInputElement>
 			[styles.horizontal]: position == 'horizontal', 
 			[styles.vertical]: position == 'vertical'
 		})} onSubmit={onSubmit}>
-			<div className={cs({[styles['icon']]: /*display search icon*/ hasIcon, 
-				[styles[iconClassName]]: hasIcon})}>
-				<input name='textToAction' ref={ref} className={cs(styles['input'], className)} />
-			</div>
-
+			{iconClassName && hasIcon /*can have icon*/ ? 
+				<div className={cs(styles['icon'], styles[iconClassName])}>
+					<input name='textToAction' ref={ref} className={cs(styles['input'], className)} />
+				</div>:
+				<div className={styles['icon']}>
+					<input name='textToAction' ref={ref} className={cs(styles['input'], className)} />
+				</div>
+			}
 			<Button>{inputActionName}</Button>
 		</form>
 	);

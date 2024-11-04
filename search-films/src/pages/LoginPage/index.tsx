@@ -1,19 +1,21 @@
 import { useContext, useRef } from 'react';
 import { Input, Title } from '../../components';
-import { UserContext } from '../../context/user.context';
+import { IUserContext, UserContext } from '../../context/user.context';
 import { Content, Header } from '../../layouts';
 
 function LoginPage() {
-	const { saveCurrentUser } = useContext(UserContext);
+	const { saveCurrentUser } = useContext(UserContext) as IUserContext;
 			
-	const inputRef = useRef();
+	const inputRef = useRef(null);
 
-	const onSubmit = (text) => {
+	const onSubmit = (text: string) => {
 		// if text is not empty set isAuthenticated to true
 		if(text.trim().length > 0) {
-			saveCurrentUser(text);
+			saveCurrentUser?.(text);
 		} else {
-			inputRef.current.focus();
+			if (inputRef.current) {
+				(inputRef.current as HTMLElement).focus();
+			}
 			alert('Пожалуйста, введите имя');
 			console.log('Invalid user name');
 		}
@@ -28,7 +30,7 @@ function LoginPage() {
 				<Input 
 					position="horizontal"
 					placeholder="Ваше имя"
-					onSubmit={onSubmit}
+					onSend={onSubmit}
 					ref={inputRef}
 					inputActionName="Войти в профиль"
 				/>
