@@ -2,7 +2,8 @@
 
 ##### Chores
 
-- **Input, LoginPage:** changes for LoginPage (ae186b0a)
+- **main.tsx:** add only one type (as HTMLElement) (cd4b9d72)
+- **Input, LoginPage:** changes for LoginPage (6346b3f2)
 - **FilmsPage:** finish with type, add rule to .hintrc add rule to disable label checking for input form's fields (67adc757)
 - **Content:** finish with type (8acad620)
 - **context, hooks:** finish with type (need to test) (f093bc28)
