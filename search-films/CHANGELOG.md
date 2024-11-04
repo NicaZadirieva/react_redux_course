@@ -2,7 +2,7 @@
 
 ##### Chores
 
-- **main.tsx:** add only one type (as HTMLElement) (cd4b9d72)
+- **main.tsx:** add only one type (as HTMLElement) (2cfce361)
 - **Input, LoginPage:** changes for LoginPage (6346b3f2)
 - **FilmsPage:** finish with type, add rule to .hintrc add rule to disable label checking for input form's fields (67adc757)
 - **Content:** finish with type (8acad620)
@@ -23,6 +23,7 @@
 
 ##### Bug Fixes
 
+- **index.html, useLocalStorage:** minimal changes app now worked (495b6e6f)
 - add css-module support (need to test) (ac617337)
 - add exports from components and styles for Logo (1ef7abca)
 

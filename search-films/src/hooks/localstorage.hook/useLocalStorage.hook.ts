@@ -9,7 +9,7 @@ function useLocalStorage(profileKey: string) : LocalStorageValue {
 		if (profile) {
 			const profileLastElement : ProfileElement = profile[profile.length - 1];
 			localStorage.setItem(profileKey, JSON.stringify(profile));
-			setCurrentUser(profileLastElement.name); // save current user as a last saved user in profile
+			setCurrentUser(profileLastElement?.name); // save current user as a last saved user in profile
 		} 
         
 	}, [profile, profileKey]);
