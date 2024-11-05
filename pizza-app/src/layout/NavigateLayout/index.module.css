@@ -57,6 +57,9 @@
     text-decoration: none;
     color: var(--text-color);
 }
+.link-container:hover {
+    color: var(--primary-hover-color);
+}
 .link-icon {
     width: 19px;
     height: 19px;
@@ -87,4 +90,8 @@
     justify-content: center;
     gap: 9px;
     color: var(--white-color);
+}
+
+.active {
+    color: var(--primary-hover-color);
 }
