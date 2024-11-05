@@ -1,15 +1,9 @@
 import cn from 'classnames';
-import { useEffect } from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import Button from '../../components/Button';
 import styles from './index.module.css';
 
-function LinkLayout() {
-	const location = useLocation();
-
-	useEffect(() => {
-		console.log(location);
-	}, [location]);
+function NavigateLayout() {
 
 	return (
 		<div className={styles['layout']}>
@@ -20,23 +14,23 @@ function LinkLayout() {
 					<div className={styles['user-email']}>alaricode@ya.ru</div>
 				</div>
 				<div className={styles['menu']}>
-					<Link to='/' className={cn(styles['link-container'], styles['menu-container'], {
-						[styles.active]: location.pathname === '/'
+					<NavLink to='/' className={({ isActive }) => cn(styles['link-container'], styles['menu-container'], {
+						[styles.active]: isActive
 					}
 					)}>
 						<div className={cn(styles['link-icon'], styles['menu-icon'])}></div>
 						<div>Меню</div>
-					</Link>
+					</NavLink>
 
 					
-					<Link to='/cart' className={cn(styles['link-container'], styles['cart-container'], {
-						[styles.active]: location.pathname === '/cart'
+					<NavLink to='/cart' className={({ isActive} ) => cn(styles['link-container'], styles['cart-container'], {
+						[styles.active]: isActive
 					}
 					)}>
 						<div className={cn(styles['link-icon'], styles['cart-icon'])}></div>
 						<div>Корзина</div>
 						<div className={styles['goods-icon']}>2</div>
-					</Link>
+					</NavLink>
 
 				
 				</div>
@@ -52,4 +46,4 @@ function LinkLayout() {
 	);
 }
 
-export default LinkLayout;
+export default NavigateLayout;
