@@ -95,3 +95,8 @@
 .active {
     color: var(--primary-hover-color);
 }
+
+.layout-content {
+    padding: 40px 60px;
+    width: 100%;
+}

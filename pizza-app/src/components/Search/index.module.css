@@ -1,0 +1,26 @@
+.input {
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--text-color);
+    box-sizing: border-box;
+    border: 1px solid rgb(239, 239, 239);
+    border-radius: 10px;
+    box-shadow: 15px 20px 45px 0px rgba(233, 233, 233, 0.25);
+    background: rgb(252, 252, 253);
+    padding: 16px 30px 16px 44px;
+    min-width: 200px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+.icon {
+    position: absolute;
+    left: 17px;
+    top: 17px;
+}
+.invalid {
+    border: 1px solid red;
+    background: rgb(113, 13, 13);
+}
