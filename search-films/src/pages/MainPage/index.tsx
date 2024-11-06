@@ -3,7 +3,7 @@ import { Flex, Input, MovieCard, Paragraph, Title } from '../../components';
 import { Content, Header } from '../../layouts';
 
 
-function FilmsPage() {
+function MainPage() {
 
 	return (
 		<>
@@ -51,4 +51,4 @@ function FilmsPage() {
 	);
 }
 
-export default FilmsPage;
+export default MainPage;

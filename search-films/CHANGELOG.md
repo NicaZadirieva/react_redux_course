@@ -1,40 +1,46 @@
+#### 0.2.0 (2024-11-06)
+
+##### New Features
+
+- renaming of FilmsPage now MainPage is FilmsPage (5ab353e5)
+
 #### 0.1.3 (2024-11-04)
 
 ##### Chores
 
-* **main.tsx:**  add only one type (as HTMLElement) (2cfce361)
-* **Input, LoginPage:**  changes for LoginPage (6346b3f2)
-* **FilmsPage:**  finish with type, add rule to .hintrc add rule to disable label checking for input form's fields (67adc757)
-* **Content:**  finish with type (8acad620)
-* **context, hooks:**  finish with type (need to test) (f093bc28)
-* **userContext:**  finish with type (af237212)
-* **Title:**  finish type (d2865cd0)
-* **useLocalStorage:**  finish types (05173e61)
-* **shared:**  finish with utils (9eefa3cc)
-* **Paragraph:**  finish with types (53ca1317)
-* **MovieCard:**  finish (need to test) (0c181f57)
-* **Menu:**  finish (need to test) (5514831d)
-* **Menu, UserContext:**  intermediate commit (32b65d7d)
-* **LinkedMenuItem:**  finish (need to test) (9309c1f4)
-* **Input:**
-  *  finished with Input need to test (11af3d09)
-  *  intermediate commit (some problems with forwardRef) (37dfdfbc)
-* **Flex:**  add FlexProps (9c6ade0c)
+- **main.tsx:** add only one type (as HTMLElement) (2cfce361)
+- **Input, LoginPage:** changes for LoginPage (6346b3f2)
+- **FilmsPage:** finish with type, add rule to .hintrc add rule to disable label checking for input form's fields (67adc757)
+- **Content:** finish with type (8acad620)
+- **context, hooks:** finish with type (need to test) (f093bc28)
+- **userContext:** finish with type (af237212)
+- **Title:** finish type (d2865cd0)
+- **useLocalStorage:** finish types (05173e61)
+- **shared:** finish with utils (9eefa3cc)
+- **Paragraph:** finish with types (53ca1317)
+- **MovieCard:** finish (need to test) (0c181f57)
+- **Menu:** finish (need to test) (5514831d)
+- **Menu, UserContext:** intermediate commit (32b65d7d)
+- **LinkedMenuItem:** finish (need to test) (9309c1f4)
+- **Input:**
+  - finished with Input need to test (11af3d09)
+  - intermediate commit (some problems with forwardRef) (37dfdfbc)
+- **Flex:** add FlexProps (9c6ade0c)
 
 ##### Documentation Changes
 
-*  remove JSDoc, use only ts to show description (0d784844)
+- remove JSDoc, use only ts to show description (0d784844)
 
 ##### Bug Fixes
 
-* **index.html, useLocalStorage:**  minimal changes app now worked (8471ebde)
-*  add css-module support (need to test) (ac617337)
-*  add exports from components and styles for Logo (1ef7abca)
+- **index.html, useLocalStorage:** minimal changes app now worked (8471ebde)
+- add css-module support (need to test) (ac617337)
+- add exports from components and styles for Logo (1ef7abca)
 
 ##### Other Changes
 
-*  renaming extension of files (60d26ba5)
-*  now app is broken, because of new cfg files (1ab86c83)
+- renaming extension of files (60d26ba5)
+- now app is broken, because of new cfg files (1ab86c83)
 
 #### 0.1.2 (2024-10-28)
 
