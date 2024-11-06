@@ -71,4 +71,7 @@ button:focus-visible {
     margin: 0 auto;
 }
 
+.no-justify-content {
+  justify-content: flex-start;
+}
 

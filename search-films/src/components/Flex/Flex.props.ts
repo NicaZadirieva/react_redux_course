@@ -11,6 +11,16 @@ export interface FlexProps extends DivProps {
     /**
      * (byDefault=0) padding top for flex container
      **/
-    paddingTop: number;
+    paddingTop?: number;
+
+    /**
+     * (byDefault=undefined) space between children
+     */
+    gap?: number;
+
+    /**
+     * (optional) class name for flex container
+     */
+    className?: string;
 
 }

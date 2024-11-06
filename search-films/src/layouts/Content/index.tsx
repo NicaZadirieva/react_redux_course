@@ -1,8 +1,8 @@
+import cn from 'classnames';
 import type { ContentProps } from './content.props';
-
-function Content({children}: ContentProps) {
+function Content({children, className}: ContentProps) {
 	return (
-		<div className="restrict-content-size">
+		<div className={cn('restrict-content-size', className)}>
 			{children}
 		</div>
 	);

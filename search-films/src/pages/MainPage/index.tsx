@@ -23,7 +23,7 @@ function MainPage() {
 					iconClassName={'icon-search'}
 					hasIcon={true}
 				/>
-				<Flex paddingTop={88}>
+				<Flex position='horizontal' paddingTop={88}>
 					<MovieCard
 						movieName="Black Window"
 						movieId={'1'}
