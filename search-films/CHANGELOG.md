@@ -2,7 +2,8 @@
 
 ##### New Features
 
-- renaming of FilmsPage now MainPage is FilmsPage (5ab353e5)
+- **FavoritesPage:** create FavoritesPage (d3e44f02)
+- renaming of FilmsPage now MainPage is FilmsPage (779f8182)
 
 #### 0.1.3 (2024-11-04)
 
