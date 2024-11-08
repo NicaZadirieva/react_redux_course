@@ -11,10 +11,11 @@
 
 ##### Bug Fixes
 
-- involved userProvider (44d3545e)
+- involved userProvider (b1fa5898)
 
 ##### Refactors
 
+- **MenuLayout:** wrap routes into layout (c32fd177)
 - **components:**
   - add util SimpleMenuItem (7dfcd9cd)
 

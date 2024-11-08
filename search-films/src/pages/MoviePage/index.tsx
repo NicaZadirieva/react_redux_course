@@ -8,6 +8,7 @@ import Rating from '../../components/Rating';
 import { Content, Header } from '../../layouts';
 import styles from './index.module.css';
 
+// Этот компонент не используется в текущей версии дз
 function MoviePage() {
 	const { id } = useParams();
 	// использую пока так.

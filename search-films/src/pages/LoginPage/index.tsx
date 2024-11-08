@@ -1,7 +1,6 @@
 import { useContext, useRef } from 'react';
 import { Input, Title } from '../../components';
 import { IUserContext, UserContext } from '../../context/user.context';
-import { Content, Header } from '../../layouts';
 
 function LoginPage() {
 	const { saveCurrentUser } = useContext(UserContext) as IUserContext;
@@ -24,17 +23,14 @@ function LoginPage() {
 
 	return (
 		<>
-			<Header/>	
-			<Content>
-				<Title text='Вход'/>
-				<Input 
-					position="horizontal"
-					placeholder="Ваше имя"
-					onSend={onSubmit}
-					ref={inputRef}
-					inputActionName="Войти в профиль"
-				/>
-			</Content>
+			<Title text='Вход'/>
+			<Input 
+				position="horizontal"
+				placeholder="Ваше имя"
+				onSend={onSubmit}
+				ref={inputRef}
+				inputActionName="Войти в профиль"
+			/>
 		</>
 	);
 }
