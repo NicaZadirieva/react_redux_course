@@ -1,11 +1,11 @@
 import { UserProvider } from './context/user.context';
-import MoviePage from './pages/MoviePage';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
 
 	return (
 		<UserProvider> 
-			<MoviePage/>
+			<ErrorPage/>
 		</UserProvider>
 	);
 }
