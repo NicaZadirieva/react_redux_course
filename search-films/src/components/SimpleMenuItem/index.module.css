@@ -1,8 +1,9 @@
 .menu-item {
-  list-style-type: none;
-  padding: 12px 32px 12px 32px;
+    list-style-type: none;
+    padding: 12px 32px 12px 32px;
 }
-.menu-item .menu-link{
+
+.menu-item .menu-link {
     display: flex;
     gap: 8px;
     flex-direction: row;
@@ -22,19 +23,21 @@
     color: rgb(255, 255, 255);
 }
 
-.menu-item .menu-link:hover {
+.menu-item.can-choose .menu-link {
+    cursor: pointer;
+}
+
+.menu-item.can-choose .menu-link:hover {
     color: rgb(255, 255, 255);
 }
+
 .menu-link {
     color: rgb(168, 174, 191);
 }
 
-.menu-item.is-active .menu-link {
-    color: rgb(255, 255, 255);
-}
-
-.menu-item.is-active {
+.menu-link.disable {
     pointer-events: none;
     cursor: default;
     text-decoration: none;
+    color: rgb(255, 255, 255);
 }

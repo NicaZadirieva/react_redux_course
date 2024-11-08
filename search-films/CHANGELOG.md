@@ -2,11 +2,16 @@
 
 ##### New Features
 
-- **ErrorPage:** create 404 page (0e02c75d)
+- **ErrorPage:** create 404 page (befe169e)
 - **Heading:** create util component Heading (acdb5808)
 - **MoviePage:** first impl for movie page NB!: has TODO: (fd0fceea)
 - intermediate commit (fe990cb3)
 - renaming of FilmsPage now MainPage is FilmsPage (779f8182)
+
+##### Refactors
+
+- **components:**
+  - add util SimpleMenuItem (fa958154)
 
 #### 0.1.3 (2024-11-04)
 

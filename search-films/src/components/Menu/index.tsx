@@ -1,7 +1,8 @@
 import { useContext } from 'react';
 import { IUserContext, UserContext } from '../../context/user.context';
 import LinkedMenuItem from '../LinkedMenuItem';
-import MenuIconBuilder from '../shared/MenuIconBuider';
+import MenuIconBuilder from '../shared/MenuIconBuilder';
+import SimpleMenuItem from '../SimpleMenuItem';
 import styles from './index.module.css';
 
 function Menu() {
@@ -10,21 +11,20 @@ function Menu() {
 		<>
 			<LinkedMenuItem
 				text="Поиск фильмов"
-				canChoose={false} /**if it is current page */
+				linkUrl="/"
 			/>
 			<LinkedMenuItem
 				text="Мои фильмы"
 				icon={MenuIconBuilder.buildCounterIcon(3)}
-				linkUrl="https://www.google.com"
+				linkUrl="/favorites"
 				handleClicks={(event) => console.log(event)}
 			/>
-			<LinkedMenuItem 
+			<SimpleMenuItem 
 				text={currentUser as string} /** if currentUser not null */
 				icon={MenuIconBuilder.buildAvatarIcon()}
-				linkUrl="https://www.google.com"
-				handleClicks={(event) => console.log(event)}
+				canChoose={false}
 			/>
-			<LinkedMenuItem
+			<SimpleMenuItem
 				text="Выйти"
 				handleClicks={logoutCurrentUser}
 			/>
@@ -34,18 +34,17 @@ function Menu() {
 		<>
 			<LinkedMenuItem
 				text="Поиск фильмов"
-				canChoose={false} /**if it is current page */
+				linkUrl="/"
 			/>
 			<LinkedMenuItem
 				text="Мои фильмы"
-				linkUrl="https://www.google.com"
 				icon={MenuIconBuilder.buildCounterIcon(3)}
+				linkUrl="/favorites"
 				handleClicks={(event) => console.log(event)}
 			/>
 			<LinkedMenuItem
 				text="Войти"
-				canChoose={false}
-				icon={MenuIconBuilder.buildExitIcon()}
+				linkUrl="/login"
 			/>
 		</>
 	);

@@ -1,12 +1,12 @@
 import cs from 'classnames';
 import { MouseEventHandler } from 'react';
+import { NavLink } from 'react-router-dom';
+import { IconImage } from '../shared/MenuIconBuilder';
 import styles from './index.module.css';
-import { IconImage, LinkedMenuItemProps } from './LinkedMenuItem.props';
+import { LinkedMenuItemProps } from './LinkedMenuItem.props';
 
 function LinkedMenuItem(props: LinkedMenuItemProps) {
 
-	const {canChoose=/*byDefault*/true} = props;
-	
 	const createIconItem = (icon?: IconImage) => {
 		
 		if(icon && icon.type == 'svg') {
@@ -24,19 +24,32 @@ function LinkedMenuItem(props: LinkedMenuItemProps) {
 
 	const iconItem = createIconItem(props.icon);
 
-	const onMenuClick : MouseEventHandler<HTMLLIElement> = (e) =>{
-		if(props.handleClicks && canChoose) {
+	const onMenuClick : MouseEventHandler<HTMLDivElement | HTMLLIElement> = (e) =>{
+		if(props.handleClicks) {
 			props.handleClicks(e);
 		}
 	};
 
-	return (
-		<li className={cs(styles['menu-item'], {[styles['can-choose']]: canChoose})} onClick={onMenuClick}>
-			<a href={props.linkUrl} className={cs(styles['menu-link'], {[styles['disable']]: canChoose == false})}>
-				{props.text} {iconItem}
-			</a>
-		</li>
-	);
+	if (props.linkUrl) {
+		return (
+			<NavLink to={props.linkUrl}  className={({isActive}) => {
+				return cs(styles['menu-item'], {[styles['is-active']]: isActive});
+			}}>
+				<div onClick={onMenuClick} className={styles['menu-link']}>{props.text} {iconItem}</div>
+			</NavLink>
+		);
+	} else {
+		return (
+			<li className={cs(styles['menu-item'], styles['is-active'])} onClick={onMenuClick}>
+				<div className={cs(styles['menu-link'])}>
+					{props.text} {iconItem}
+				</div>
+			</li>
+		);
+	}
+		
+
+	;
 }
 
 export default LinkedMenuItem;
