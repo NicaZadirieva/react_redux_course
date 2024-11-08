@@ -2,12 +2,16 @@
 
 ##### New Features
 
-- **pages:** minimal changes (37c8a2c8)
+- **pages:** minimal changes (907b332b)
 - **ErrorPage:** create 404 page (befe169e)
 - **Heading:** create util component Heading (acdb5808)
 - **MoviePage:** first impl for movie page NB!: has TODO: (fd0fceea)
 - intermediate commit (fe990cb3)
 - renaming of FilmsPage now MainPage is FilmsPage (779f8182)
+
+##### Bug Fixes
+
+- involved userProvider (44d3545e)
 
 ##### Refactors
 

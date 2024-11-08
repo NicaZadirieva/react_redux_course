@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter } from 'react-router-dom';
-import App from './App.jsx';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { UserProvider } from './context/user.context';
 import './index.css';
 import ErrorPage from './pages/ErrorPage/index.js';
 import FavoritesPage from './pages/FavoritesPage/index.js';
@@ -37,6 +37,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
-		<App/>
+		<UserProvider> 
+			<RouterProvider router={router}/>
+		</UserProvider>
 	</React.StrictMode>
 );
