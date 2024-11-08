@@ -2,6 +2,7 @@
 
 ##### New Features
 
+- **pages:** minimal changes (37c8a2c8)
 - **ErrorPage:** create 404 page (befe169e)
 - **Heading:** create util component Heading (acdb5808)
 - **MoviePage:** first impl for movie page NB!: has TODO: (fd0fceea)
@@ -11,7 +12,7 @@
 ##### Refactors
 
 - **components:**
-  - add util SimpleMenuItem (fa958154)
+  - add util SimpleMenuItem (7dfcd9cd)
 
 #### 0.1.3 (2024-11-04)
 

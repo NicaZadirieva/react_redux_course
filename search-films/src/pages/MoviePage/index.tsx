@@ -1,5 +1,7 @@
 
 import cn from 'classnames';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { Flex, Paragraph, Title } from '../../components';
 import AddToWishListItem from '../../components/AddToWishItem';
 import Rating from '../../components/Rating';
@@ -7,7 +9,12 @@ import { Content, Header } from '../../layouts';
 import styles from './index.module.css';
 
 function MoviePage() {
-
+	const { id } = useParams();
+	// использую пока так.
+	useEffect(() => {
+		console.log(id);
+	}, [id]);
+	
 	return (
 		<>
 			<Header/>
