@@ -12,6 +12,7 @@ function MoviePage() {
 		<>
 			<Header/>
 			<Content className={styles['movie-restrict-content']}>
+				{/**TODO: надо будет подумать над именем классов */}
 				<div className={styles['head']}>
 					<Paragraph 
 						text='Поиск фильмов'
@@ -38,16 +39,55 @@ function MoviePage() {
 							<AddToWishListItem movieId={'1'} addToWishList={(movieId) => console.log(movieId)}/>
 						</Flex>
 
-						<div>
+						<div className='property-container'>
 							<Paragraph 
 								text='Тип'
 								fontSizeInPx={16}
-								className={styles['head-desc']}
+								className={styles['property']}
 							/>
 							<Paragraph 
 								text='Movie'
+								fontSizeInPx={20}
+								className={styles['property-value']}
+							/>
+						</div>
+
+						<div className='property-container'>
+							<Paragraph 
+								text='Дата выхода'
 								fontSizeInPx={16}
-								className={styles['head-desc']}
+								className={styles['property']}
+							/>
+							<Paragraph 
+								text='2019-04-24'
+								fontSizeInPx={20}
+								className={styles['property-value']}
+							/>
+						</div>
+
+						<div className='property-container'>
+							<Paragraph 
+								text='Длительность'
+								fontSizeInPx={16}
+								className={styles['property']}
+							/>
+							<Paragraph 
+								text='181 мин'
+								fontSizeInPx={20}
+								className={styles['property-value']}
+							/>
+						</div>
+
+						<div className='property-container'>
+							<Paragraph 
+								text='Жанр'
+								fontSizeInPx={16}
+								className={styles['property']}
+							/>
+							<Paragraph 
+								text='Adventure, Science Fiction, Action'
+								fontSizeInPx={20}
+								className={styles['property-value']}
 							/>
 						</div>
 
@@ -55,7 +95,36 @@ function MoviePage() {
 
 
 				</Flex>
-				
+
+				<div className={styles['feedback-section']}>Отзывы</div>
+				{/**TODO: надо будет вынести в отдельный компонент Feedback */}
+				<Flex gap={14} position='vertical' className={'no-justify-content'}>
+					<div className={styles['movie-desc']}>
+						<Flex position='horizontal'>
+							<Title className={styles['movie-desc-title']} text='Not as good as infinity war'/>
+							<Paragraph 
+								text='2019-04-29'
+								fontSizeInPx={14}
+								className={styles['movie-desc-date']}
+							/>
+						</Flex>
+						
+						<Paragraph 
+							text={`But its a pretty good film. 
+							A bit of a mess in some parts, 
+							lacking the cohesive and effortless feel infinity war 
+							somehow managed to accomplish. 
+							Some silly plot holes and characters 
+							that could&apos;ve been cut (Ahem, captain marvel and thanos). 
+							The use of Captain marvel in this film was just ridiculous. 
+							Shes there at the start, bails for some reason? 
+							And then pops up at the end to serve no purpose but deux ex machina a space ship...`}
+							fontSizeInPx={20}
+							className={styles['movie-desc-short-info']}
+						/>
+					</div>
+				</Flex>
+
 			</Content>
 			
 		</>

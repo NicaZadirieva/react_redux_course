@@ -1,8 +1,9 @@
-#### 0.2.0 (2024-11-06)
+#### 0.2.0 (2024-11-08)
 
 ##### New Features
 
-- **FavoritesPage:** create FavoritesPage (d3e44f02)
+- **MoviePage:** first impl for movie page NB!: has TODO: (546b2593)
+- intermediate commit (fe990cb3)
 - renaming of FilmsPage now MainPage is FilmsPage (779f8182)
 
 #### 0.1.3 (2024-11-04)
