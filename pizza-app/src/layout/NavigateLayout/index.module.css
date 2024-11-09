@@ -1,6 +1,7 @@
 .layout {
     display: flex;
     flex-direction: row;
+
 }
 
 
@@ -99,4 +100,5 @@
 .layout-content {
     padding: 40px 60px;
     width: 100%;
+
 }
