@@ -1,18 +1,52 @@
-import { FormEvent } from 'react';
+import axios, { AxiosError } from 'axios';
+import { FormEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../../components/Button';
 import Heading from '../../components/Heading';
 import Input from '../../components/Input';
+import { PREFIX } from '../../helpers/API';
 import styles from './index.module.css';
+export type LoginForm = {
+    email: {
+        value: string;
+    },
+    password: {
+        value: string;
+    }
 
+}
 function Login() {
+    const [error, setError] = useState<string | null>(null);
+
 	const submit = (e: FormEvent) => {
 		e.preventDefault();
-		console.log(e);
+		setError(null);
+		const target = e.target as typeof e.target & LoginForm;
+		const {email, password} = target;
+		console.log(email.value, password.value);
+		sendLogin(email.value, password.value);
 	};
+
+	const sendLogin = async (email: string, password: string) => {   
+		try {
+			const { data } = await axios.post(`${PREFIX}/auth/login`, {
+				email,
+				password
+			});
+        	console.log(data);
+		} catch(e) {
+			if (e instanceof AxiosError) {
+				setError(e.response?.data.message);
+			}
+
+		}
+
+	};
+
 	return (
 		<div className={styles['login']}>
 			<Heading>Вход</Heading>
+			{error && <div className={styles['error']}>{error}</div>}
 			<form className={styles['form']} onSubmit={submit}>
 				<div className={styles['field']}>
 					<label htmlFor='email'>Ваш email</label>
