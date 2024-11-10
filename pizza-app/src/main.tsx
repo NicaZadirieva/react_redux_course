@@ -8,7 +8,10 @@ import NavigateLayout from './layout/NavigateLayout/index.tsx';
 import Cart from './pages/Cart/index.tsx';
 import ErrorPage from './pages/ErrorPage/index.tsx';
 
+import AuthLayout from './layout/AuthLayout/index.tsx';
+import Login from './pages/Login/index.tsx';
 import { Product } from './pages/Product/index.tsx';
+import Register from './pages/Register/index.tsx';
 
 const Menu = lazy(() => import('./pages/Menu'));
 const router = createBrowserRouter([
@@ -34,6 +37,20 @@ const router = createBrowserRouter([
 					});
 
 				}
+			}
+		]
+	},
+	{
+		path: '/auth',
+		element: <AuthLayout/>,
+		children: [
+			{ 
+				path: 'login',
+				element: <Login/>
+			},
+			{ 
+				path:'register',
+				element: <Register/>
 			}
 		]
 	},
