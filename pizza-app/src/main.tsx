@@ -8,11 +8,13 @@ import NavigateLayout from './layout/NavigateLayout/index.tsx';
 import Cart from './pages/Cart/index.tsx';
 import ErrorPage from './pages/ErrorPage/index.tsx';
 
+import { Provider } from 'react-redux';
 import { RequireAuth } from './helpers/RequireAuth.tsx';
 import AuthLayout from './layout/AuthLayout/index.tsx';
 import Login from './pages/Login/index.tsx';
 import { Product } from './pages/Product/index.tsx';
 import Register from './pages/Register/index.tsx';
+import { store } from './store/store.ts';
 
 const Menu = lazy(() => import('./pages/Menu'));
 const router = createBrowserRouter([
@@ -64,6 +66,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
-		<RouterProvider router={router}/>
+		<Provider store={store}>
+			<RouterProvider router={router}/>
+		</Provider>
 	</StrictMode>
 );
