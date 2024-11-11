@@ -8,6 +8,7 @@ import NavigateLayout from './layout/NavigateLayout/index.tsx';
 import Cart from './pages/Cart/index.tsx';
 import ErrorPage from './pages/ErrorPage/index.tsx';
 
+import { RequireAuth } from './helpers/RequireAuth.tsx';
 import AuthLayout from './layout/AuthLayout/index.tsx';
 import Login from './pages/Login/index.tsx';
 import { Product } from './pages/Product/index.tsx';
@@ -17,7 +18,7 @@ const Menu = lazy(() => import('./pages/Menu'));
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <NavigateLayout/>,
+		element: <RequireAuth><NavigateLayout/></RequireAuth>,
 		children: [
 			{
 				path: '/',
