@@ -1,11 +1,14 @@
 import axios, { AxiosError } from 'axios';
 import { FormEvent, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import Heading from '../../components/Heading';
 import Input from '../../components/Input';
 import { PREFIX } from '../../helpers/API';
 import { LoginResponse } from '../../interfaces/auth.interface';
+import { appDispatch } from '../../store/store';
+import { userActions } from '../../store/user.slice';
 import styles from './index.module.css';
 export type LoginForm = {
     email: {
@@ -19,6 +22,8 @@ export type LoginForm = {
 function Login() {
 	const [error, setError] = useState<string | null>(null);
 	const navigate = useNavigate();
+
+	const dispatch = useDispatch<appDispatch>();
 
 
 	const submit = (e: FormEvent) => {
@@ -37,6 +42,7 @@ function Login() {
 				password
 			});
         	localStorage.setItem('jwt', data.access_token);
+			dispatch(userActions.addJwt(data.access_token));
 			navigate('/');
 		} catch(e) {
 			if (e instanceof AxiosError) {
