@@ -1,6 +1,8 @@
 
 // В момент написания дз не работал сервер с данными (смотри URL в константах), пришлось сделать моки
 
+import { FilmDescApi } from './film.request';
+
 const success_mock_data = {
 	getDetails: {
 		'@short': {
@@ -41,7 +43,7 @@ const success_mock_data = {
 				'#AKA': 'Avengers: Endgame',
 				'#IMDB_URL': 'https://www.imdb.com/title/tt4154796',
 				'#IMDB_IV': 'https://html.imdbot.workers.dev/tt4154796',
-				'#IMG_POSTER': 'https://m.media-amazon.com/images/M/MV5BNzkwOTRjZDItOGNhOS00YjRkLTg3NmEtYWE2MWY5NDcyZDAwXkEyXkFqcGc@._V1_.jpg',
+				'#IMG_POSTER': '/poster/big_band.png',
 				'photo_width': 763,
 				'photo_height': 1080
 			},
@@ -54,7 +56,7 @@ const success_mock_data = {
 				'#AKA': 'Marvel Studios\' Avengers: Endgame LIVE Red Carpet World Premiere',
 				'#IMDB_URL': 'https://www.imdb.com/title/tt10240638',
 				'#IMDB_IV': 'https://html.imdbot.workers.dev/tt10240638',
-				'#IMG_POSTER': 'https://m.media-amazon.com/images/M/MV5BM2E4Nzk0NDQtZTFmOC00MDI5LWFmYmEtNWNlMzhkMDA1MzZmXkEyXkFqcGc@._V1_.jpg',
+				'#IMG_POSTER': '/poster/big_band.png',
 				'photo_width': 2560,
 				'photo_height': 1348
 			},
@@ -67,7 +69,7 @@ const success_mock_data = {
 				'#AKA': 'Avengers Endgame: the Butt Plan',
 				'#IMDB_URL': 'https://www.imdb.com/title/tt10399328',
 				'#IMDB_IV': 'https://html.imdbot.workers.dev/tt10399328',
-				'#IMG_POSTER': 'https://m.media-amazon.com/images/M/MV5BYjVhM2E5ZjItMTY3Yi00YWM0LTkxYWYtMzBhYjRkZTUyN2E4XkEyXkFqcGc@._V1_.jpg',
+				'#IMG_POSTER': '/poster/big_band.png',
 				'photo_width': 3840,
 				'photo_height': 2160
 			},
@@ -80,7 +82,7 @@ const success_mock_data = {
 				'#AKA': 'Avengers: Endgame and the Latest Captain Marvel Outrage!!',
 				'#IMDB_URL': 'https://www.imdb.com/title/tt10025738',
 				'#IMDB_IV': 'https://html.imdbot.workers.dev/tt10025738',
-				'#IMG_POSTER': 'https://m.media-amazon.com/images/M/MV5BNjBmYzdjYWUtNmQ0Yi00YWZlLTk1OTYtZjIxYWU0ODE5NTczXkEyXkFqcGc@._V1_.jpg',
+				'#IMG_POSTER': '/poster/big_band.png',
 				'photo_width': 1920,
 				'photo_height': 1080
 			}
@@ -108,12 +110,6 @@ export async function getDetails(filmId: string) {
 	}
 }
 
-export type FilmDescApi = {
-    '#TITLE': string, // name of the film
-    '#IMDB_ID': string, // id of the film
-    '#IMG_POSTER': string, // url of the film's poster 
-}
-
 /**
  * Search film descriptions 
  * @param filmName 
@@ -122,12 +118,24 @@ export type FilmDescApi = {
 export async function searchFilmDescByName(filmName: string) {
 	console.log(filmName);
 	try {
-		const response = await new Promise((resolve) => {
+		const filmDesc = await new Promise((resolve) => {
 			setTimeout(() => {
 				resolve(success_mock_data.searchFilmDescByName);
 			}, 2000);
+		}) as typeof success_mock_data.searchFilmDescByName;
+		
+		const ratingPromises = filmDesc
+			.description.map(async (description: FilmDescApi) => {
+				return getDetails(description['#IMDB_ID'])
+				;
+			});
+		
+		const ratings = await Promise.all(ratingPromises);
+		const res = filmDesc.description.map((description, index) => {
+			return {...description, rating: ratings[index].aggregateRating.ratingValue}
 		});
-		return (response as typeof success_mock_data.searchFilmDescByName)['description'];
+
+		return res;
 	} catch (err) {
 		console.error(err);
 		throw new Error('Failed to fetch film details');

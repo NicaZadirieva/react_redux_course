@@ -2,7 +2,11 @@
 
 ##### New Features
 
-- impl of requests (mock, real) (2ee9f5a3)
+- impl of requests (mock, real) (9cca891b)
+
+##### Bug Fixes
+
+- **searchFilmDescByName:** fix request (81a6d62b)
 
 #### 0.2.0 (2024-11-08)
 

@@ -20,3 +20,6 @@ export const doSearchFilmDescByName = async (filmId: string) => {
 	}
 };
 
+
+export type { FilmDescApi, FilmDetailsApi } from './film.request';
+
