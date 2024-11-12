@@ -1,8 +1,12 @@
 #### 0.3.0 (2024-11-12)
 
+##### Chores
+
+- add prefix to search request (06806877)
+
 ##### New Features
 
-- add Loader's support (b8b1dc81)
+- add Loader's support (247a47a9)
 - update routes (09340df1)
 - impl of requests (mock, real) (9cca891b)
 

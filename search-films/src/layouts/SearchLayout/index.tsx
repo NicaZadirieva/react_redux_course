@@ -6,7 +6,7 @@ function SearchLayout({children} : {children: React.ReactNode}) {
 
 	const saveTextToSearch = (textToSearch: string) => {
 		if (textToSearch) {
-			navigate('/' + textToSearch);
+			navigate('/movies/' + textToSearch);
 		} 
 	};
 

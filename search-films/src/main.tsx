@@ -21,7 +21,7 @@ const router = createBrowserRouter([
 				element: <SearchLayout><MainPage/></SearchLayout>
 			},
 			{
-				path: '/:movieName',
+				path: '/movies/:movieName',
 				element: <SearchLayout><SearchPage/></SearchLayout>,
 				errorElement: <ErrorPage/>,
 				loader: async ({ params }) => {
