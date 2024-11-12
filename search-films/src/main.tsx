@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { doSearchFilmDescByName } from './api';
 import { UserProvider } from './context/user.context';
 import './index.css';
 import MenuLayout from './layouts/MenuLayout';
@@ -16,6 +17,18 @@ const router = createBrowserRouter([
 			{
 				path: '/',
 				element: <MainPage/>
+			},
+			{
+				path: '/:movieName',
+				element: <MainPage/>,
+				errorElement: <ErrorPage/>,
+				loader: async ({ params }) => {
+					if (params.movieName == undefined) {
+						throw new Error('Invalid movie name');
+					}
+					const data = await doSearchFilmDescByName(params.movieName);
+					return data;
+				}
 			},
 			{
 				path: '/favorites',

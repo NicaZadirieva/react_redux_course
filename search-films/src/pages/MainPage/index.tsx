@@ -1,8 +1,18 @@
 
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import { FilmDescApi } from '../../api';
 import { Flex, Input, MovieCard, Paragraph, Title } from '../../components';
 
 
 function MainPage() {
+	const data = useLoaderData() as FilmDescApi[];
+	const navigate = useNavigate();
+
+	const saveTextToSearch = (textToSearch: string) => {
+		if (textToSearch) {
+			navigate('/' + textToSearch);
+		} 
+	};
 
 	return (
 		<>
@@ -14,30 +24,28 @@ function MainPage() {
 			<Input 
 				position='vertical'
 				placeholder="Введите название"
-				onSend={(textToSearch: string) => {console.log(textToSearch);}}
+				onSend={(textToSearch: string) => {saveTextToSearch(textToSearch);}}
 				inputActionName="Искать"
 				iconClassName={'icon-search'}
 				hasIcon={true}
 			/>
 			<Flex position='horizontal' paddingTop={88}>
-				<MovieCard
-					movieName="Black Window"
-					movieId={'1'}
-					posterUrl={'Black_Widow.png'}
-					isLiked={false}
-					rating={324}
-					addToWishList={() => {}}
-					deleteFromWishList={() => {}}
-				/>
-				<MovieCard
-					movieName="Money Heist"
-					movieId={'2'}
-					posterUrl={'money_heist.png'}
-					isLiked={true}
-					rating={8125}
-					addToWishList={() => {}}
-					deleteFromWishList={() => {}}
-				/>
+				{
+					data && data.map((d: FilmDescApi) => {
+						return (
+							<MovieCard
+								movieName={d['#TITLE']}
+								movieId={d['#IMDB_ID']}
+								key={d['#IMDB_ID']}
+								posterUrl={d['#IMG_POSTER']}
+								isLiked={false}
+								rating={d.rating}
+								addToWishList={() => {}}
+								deleteFromWishList={() => {}}
+							/>
+						);
+					})
+				}
 
 			</Flex>
 		</>

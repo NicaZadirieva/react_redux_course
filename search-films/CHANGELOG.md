@@ -2,11 +2,12 @@
 
 ##### New Features
 
+- update routes (be32f075)
 - impl of requests (mock, real) (9cca891b)
 
 ##### Bug Fixes
 
-- **MovieCard:** remove useless postfix (60f7374c)
+- **MovieCard:** remove useless postfix (d1a05746)
 - **searchFilmDescByName:** fix request (f2302a15)
 
 #### 0.2.0 (2024-11-08)
