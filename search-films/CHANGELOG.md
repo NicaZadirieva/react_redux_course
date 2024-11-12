@@ -1,3 +1,9 @@
+#### 0.3.0 (2024-11-12)
+
+##### New Features
+
+- impl of requests (mock, real) (2ee9f5a3)
+
 #### 0.2.0 (2024-11-08)
 
 ##### New Features
