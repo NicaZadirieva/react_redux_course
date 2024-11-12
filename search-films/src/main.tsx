@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, defer, RouterProvider } from 'react-router-dom';
 import { doSearchFilmDescByName } from './api';
 import { UserProvider } from './context/user.context';
 import './index.css';
 import MenuLayout from './layouts/MenuLayout';
+import SearchLayout from './layouts/SearchLayout';
 import ErrorPage from './pages/ErrorPage/index.js';
 import FavoritesPage from './pages/FavoritesPage/index.js';
 import { LoginPage, MainPage } from './pages/index.js';
+import SearchPage from './pages/SearchPage';
 
 const router = createBrowserRouter([
 	{
@@ -16,18 +18,18 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: '/',
-				element: <MainPage/>
+				element: <SearchLayout><MainPage/></SearchLayout>
 			},
 			{
 				path: '/:movieName',
-				element: <MainPage/>,
+				element: <SearchLayout><SearchPage/></SearchLayout>,
 				errorElement: <ErrorPage/>,
 				loader: async ({ params }) => {
 					if (params.movieName == undefined) {
 						throw new Error('Invalid movie name');
 					}
-					const data = await doSearchFilmDescByName(params.movieName);
-					return data;
+					return defer({data: doSearchFilmDescByName(params.movieName)});
+
 				}
 			},
 			{
