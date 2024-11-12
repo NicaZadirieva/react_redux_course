@@ -2,6 +2,24 @@
 
 ##### Chores
 
+- add prefix to search request (b5ec193c)
+
+##### New Features
+
+- include MoviePage (ce924075)
+- add Loader's support (247a47a9)
+- update routes (09340df1)
+- impl of requests (mock, real) (9cca891b)
+
+##### Bug Fixes
+
+- **MovieCard:** remove useless postfix (d1a05746)
+- **searchFilmDescByName:** fix request (f2302a15)
+
+#### 0.3.0 (2024-11-12)
+
+##### Chores
+
 - add prefix to search request (06806877)
 
 ##### New Features

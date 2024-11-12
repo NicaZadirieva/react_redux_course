@@ -7,9 +7,9 @@
     gap: 8px;
 }
 
-.movie-restrict-content {
-    margin: 51px auto 0px auto !important;
-    max-width: 1050px !important;
+.film-container {
+    margin: 51px auto 0px auto;
+    max-width: 1050px;
 }
 
 .movie-photo {
