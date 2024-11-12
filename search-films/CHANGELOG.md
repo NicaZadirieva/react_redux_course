@@ -6,7 +6,8 @@
 
 ##### Bug Fixes
 
-- **searchFilmDescByName:** fix request (81a6d62b)
+- **MovieCard:** remove useless postfix (60f7374c)
+- **searchFilmDescByName:** fix request (f2302a15)
 
 #### 0.2.0 (2024-11-08)
 

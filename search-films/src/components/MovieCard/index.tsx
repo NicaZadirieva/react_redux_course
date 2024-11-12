@@ -11,7 +11,7 @@ function MovieCard(props: MovieCardProps) {
 	const {isLiked=/*byDefault*/false, rating=/*byDefault*/ 0} = props;
 
 	const Poster = (
-		<div className={styles['poster-movie-card']} style={{background: `url(/poster/${props.posterUrl})`}}><Rating value={rating}/></div>
+		<div className={styles['poster-movie-card']} style={{background: `url(${props.posterUrl})`}}><Rating value={rating}/></div>
 	);
     
 	const MovieTitle = (
