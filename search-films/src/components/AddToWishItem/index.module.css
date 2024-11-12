@@ -1,0 +1,25 @@
+.wishlist-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    /*24px (icon) + 8px (margin icon) + 109px (desc) */
+    width: 141px;
+    height: 24px;
+    box-sizing: border-box;
+    
+}
+
+.can-be-added-icon {
+    background: url("like-icon.svg") no-repeat;
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    margin-top: 7px;
+}
+
+.can-be-added-desc {
+    width: 109px;
+    color: rgb(123, 110, 246);
+    margin-top: 20px;
+}

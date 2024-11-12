@@ -1,12 +1,12 @@
 .flex-container-vertical {
     display: flex;
-    flex-direction: vertical;
+    flex-direction: column;
     justify-content: space-between;
 }
 
 .flex-container-horizontal {
     display: flex;
-    flex-direction: horizontal;
+    flex-direction: row;
     justify-content: space-between;
 }
 
