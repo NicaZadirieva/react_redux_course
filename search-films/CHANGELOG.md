@@ -13,9 +13,13 @@
 
 ##### Bug Fixes
 
-- **movie card, favoritesPage:** fix design (44784dce)
+- **movie card, favoritesPage:** fix design (c3e503b5)
 - **MovieCard:** remove useless postfix (d1a05746)
 - **searchFilmDescByName:** fix request (f2302a15)
+
+##### Refactors
+
+- add Feedback component (bdfd020c)
 
 #### 0.2.0 (2024-11-08)
 

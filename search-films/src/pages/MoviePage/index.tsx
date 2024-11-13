@@ -5,6 +5,7 @@ import { Await, useLoaderData, useLocation } from 'react-router-dom';
 import { FilmDetailsApi } from '../../api';
 import { Flex, Paragraph, Title } from '../../components';
 import AddToWishListItem from '../../components/AddToWishItem';
+import Feedback from '../../components/Feedback';
 import Rating from '../../components/Rating';
 import styles from './index.module.css';
 
@@ -101,25 +102,7 @@ function MoviePage() {
 						</Flex>
 
 						<div className={styles['feedback-section']}>Отзывы</div>
-						{/**TODO: надо будет вынести в отдельный компонент Feedback */}
-						<Flex gap={14} position='vertical' className={'no-justify-content'}>
-							<div className={styles['movie-desc']}>
-								<Flex position='horizontal'>
-									<Title className={styles['movie-desc-title']} text={data.description}/>
-									<Paragraph 
-										text={data.review.author.dateCreated}
-										fontSizeInPx={14}
-										className={styles['movie-desc-date']}
-									/>
-								</Flex>
-						
-								<Paragraph 
-									text={data.review.author.reviewBody}
-									fontSizeInPx={20}
-									className={styles['movie-desc-short-info']}
-								/>
-							</div>
-						</Flex>
+						<Feedback data={data}/>
 					</div>);}}
 
 			</Await>
