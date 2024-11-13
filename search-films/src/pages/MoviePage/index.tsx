@@ -15,7 +15,7 @@ function MoviePage() {
 
 
 	return (
-		<Suspense fallback={'Загружаю'}>
+		<Suspense fallback={<Title text='Загружаю...'/>}>
 			<Await
 				resolve={data.data}>
 				{(data: FilmDetailsApi) => {

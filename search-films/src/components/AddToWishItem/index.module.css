@@ -11,7 +11,7 @@
 }
 
 .can-be-added-icon {
-    background: url("like-icon.svg") no-repeat;
+    background: url("/like-icon.svg") no-repeat;
     width: 24px;
     height: 24px;
     margin-right: 8px;

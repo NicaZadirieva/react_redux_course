@@ -11,7 +11,7 @@ function FavoritesPage() {
 				<MovieCard
 					movieName="Black Window"
 					movieId={'1'}
-					posterUrl={'Black_Widow.png'}
+					posterUrl={'/poster/Black_Widow.png'}
 					isLiked={true}
 					rating={324}
 					addToWishList={() => {}}
@@ -20,9 +20,9 @@ function FavoritesPage() {
 				<MovieCard
 					movieName="Money Heist"
 					movieId={'2'}
-					posterUrl={'money_heist.png'}
+					posterUrl={'poster/money_heist.png'}
 					isLiked={true}
-					rating={8125}
+					rating={812}
 					addToWishList={() => {}}
 					deleteFromWishList={() => {}}
 				/>

@@ -2,10 +2,11 @@ import axios from 'axios';
 import { FILM_ID_PARAMETER, FILM_NAME_PARAMETER, URL_TO_DATA } from './film.constants';
 
 export type FilmReviewApi = {
-    author: {'name': string},
-    dateCreated: string,
-    name: string,
-    reviewBody: string
+    author: {
+		name: string,
+		dateCreated: string,
+    	reviewBody: string
+	}
 }
 
 export type FilmDetailsApi = {
