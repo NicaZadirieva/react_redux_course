@@ -1,14 +1,11 @@
-import axios, { AxiosError } from 'axios';
-import { FormEvent, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { FormEvent, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import Heading from '../../components/Heading';
 import Input from '../../components/Input';
-import { PREFIX } from '../../helpers/API';
-import { LoginResponse } from '../../interfaces/auth.interface';
-import { appDispatch } from '../../store/store';
-import { userActions } from '../../store/user.slice';
+import { appDispatch, RootState } from '../../store/store';
+import { login } from '../../store/user.slice';
 import styles from './index.module.css';
 export type LoginForm = {
     email: {
@@ -22,9 +19,14 @@ export type LoginForm = {
 function Login() {
 	const [error, setError] = useState<string | null>(null);
 	const navigate = useNavigate();
-
+	const jwt = useSelector((s: RootState) => s.user.jwt);
 	const dispatch = useDispatch<appDispatch>();
 
+	useEffect(() => {
+		if (jwt) { 
+			navigate('/');
+		}
+	}, [jwt, navigate]);
 
 	const submit = (e: FormEvent) => {
 		e.preventDefault();
@@ -36,19 +38,20 @@ function Login() {
 	};
 
 	const sendLogin = async (email: string, password: string) => {   
-		try {
-			const { data } = await axios.post<LoginResponse>(`${PREFIX}/auth/login`, {
-				email,
-				password
-			});
-			dispatch(userActions.addJwt(data.access_token));
-			navigate('/');
-		} catch(e) {
-			if (e instanceof AxiosError) {
-				setError(e.response?.data.message);
-			}
+		// try {
+		// 	const { data } = await axios.post<LoginResponse>(`${PREFIX}/auth/login`, {
+		// 		email,
+		// 		password
+		// 	});
+		// 	dispatch(userActions.addJwt(data.access_token));
+		// 	navigate('/');
+		// } catch(e) {
+		// 	if (e instanceof AxiosError) {
+		// 		setError(e.response?.data.message);
+		// 	}
 
-		}
+		// }
+		dispatch(login({email, password}));
 
 	};
 
