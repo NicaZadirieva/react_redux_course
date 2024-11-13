@@ -5,6 +5,7 @@ import { doGetDetails, doSearchFilmDescByName } from './api';
 import { UserProvider } from './context/user.context';
 import './index.css';
 import MenuLayout from './layouts/MenuLayout';
+import { RequireAuth } from './layouts/RequireAuth';
 import SearchLayout from './layouts/SearchLayout';
 import ErrorPage from './pages/ErrorPage/index.js';
 import FavoritesPage from './pages/FavoritesPage/index.js';
@@ -15,7 +16,7 @@ import SearchPage from './pages/SearchPage';
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <MenuLayout/>,
+		element: <RequireAuth><MenuLayout/></RequireAuth>,
 		children: [
 			{
 				path: '/',
@@ -48,7 +49,14 @@ const router = createBrowserRouter([
 			{
 				path: '/favorites',
 				element: <FavoritesPage/>
-			},
+			}
+		]
+	
+	},
+	{
+		path: '/',
+		element: <MenuLayout/>,
+		children: [
 			{
 				path: '/login',
 				element: <LoginPage/>
@@ -56,10 +64,10 @@ const router = createBrowserRouter([
 			{
 				path: '*',
 				element: <ErrorPage/>
-
 			}
 		]
 	}
+	
 ]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
