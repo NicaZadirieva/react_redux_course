@@ -1,3 +1,9 @@
+#### 0.3.1 (2024-11-13)
+
+##### New Features
+
+- add private route for only auth user (25aa858f)
+
 #### 0.3.0 (2024-11-13)
 
 ##### Chores
