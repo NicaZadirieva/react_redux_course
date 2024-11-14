@@ -13,7 +13,7 @@ import { RequireAuth } from './helpers/RequireAuth.tsx';
 import AuthLayout from './layout/AuthLayout/index.tsx';
 import Login from './pages/Login/index.tsx';
 import { Product } from './pages/Product/index.tsx';
-import Register from './pages/Register/index.tsx';
+import RegisterPage from './pages/RegisterPage/index.tsx';
 import { store } from './store/store.ts';
 
 const Menu = lazy(() => import('./pages/Menu'));
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
 			},
 			{ 
 				path:'register',
-				element: <Register/>
+				element: <RegisterPage/>
 			}
 		]
 	},

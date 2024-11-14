@@ -13,6 +13,7 @@ export interface UserPersistentState {
 export interface UserState {
     jwt: string | null;
 	loginErrorMsg?: string;
+	registerErrorMsg?: string;
 	profile?: ProfileResponse;
 }
 
@@ -47,6 +48,24 @@ export const getProfile = createAsyncThunk<ProfileResponse, void, {state: RootSt
 	}
 );
 
+export const register = createAsyncThunk('user/register', 
+	async (params: {email: string, password: string, name: string}) => {
+		try {
+			const { data } = await axios.post<LoginResponse>(`${PREFIX}/auth/register`, {
+				email: params.email,
+				password: params.password,
+				name: params.name
+			});
+			return data;
+		} catch (error) {
+			if (error instanceof AxiosError) {
+				throw new Error(error.response?.data?.message);
+			}
+
+		}
+	}
+);
+
 const userSlice = createSlice({
 	name: 'user',
 	initialState,
@@ -56,6 +75,9 @@ const userSlice = createSlice({
 		},
 		clearLoginError: (state) => {
 			state.loginErrorMsg = undefined;
+		},
+		clearRegisterError: (state) => {
+			state.registerErrorMsg = undefined;
 		}
 	},
 	extraReducers: (builder) => {
@@ -70,6 +92,10 @@ const userSlice = createSlice({
 
 		builder.addCase(getProfile.fulfilled, (state, action) => {
 			state.profile = action.payload;
+		});
+
+		builder.addCase(register.rejected, (state, action) => {
+			state.registerErrorMsg = action.error.message;
 		});
 	}
 });
