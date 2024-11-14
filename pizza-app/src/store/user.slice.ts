@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { PREFIX } from '../helpers/API';
 import { LoginResponse } from '../interfaces/auth.interface';
 import { loadState } from './storage';
 
@@ -9,10 +10,12 @@ export interface UserPersistentState {
 }
 export interface UserState {
     jwt: string | null;
+	loginState: null | 'rejected'
 }
 
 const initialState : UserState = {
-	jwt: loadState<UserPersistentState>(JWT_PERSISTENT_STATE)?.jwt ?? null
+	jwt: loadState<UserPersistentState>(JWT_PERSISTENT_STATE)?.jwt ?? null,
+	loginState: null
 };
 
 export const login = createAsyncThunk('user/login', 
@@ -38,9 +41,8 @@ const userSlice = createSlice({
 			state.jwt = action.payload.access_token;
 			localStorage.setItem(JWT_PERSISTENT_STATE, JSON.stringify({ jwt: action.payload.access_token }));
 		});
-		builder.addCase(login.rejected, (state) => {
-			state.jwt = null;
-			localStorage.removeItem(JWT_PERSISTENT_STATE);
+		builder.addCase(login.rejected, (state, action) => {
+			console.log(action);
 		});
 	}
 });
