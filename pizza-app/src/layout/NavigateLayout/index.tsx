@@ -1,17 +1,24 @@
 import cn from 'classnames';
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
-import { appDispatch } from '../../store/store';
-import { userActions } from '../../store/user.slice';
+import { appDispatch, RootState } from '../../store/store';
+import { getProfile, userActions } from '../../store/user.slice';
 import styles from './index.module.css';
 
 function NavigateLayout() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch<appDispatch>();
+
+	const jwt = useSelector((s: RootState) => s.user.jwt);
+	
+	useEffect(() => {
+		dispatch(getProfile({ jwt }));
+	}, [jwt, dispatch]);
+	
 	const logout = () => 
 	{
-		
 		dispatch(userActions.logout());
 		navigate('/auth/login');
 	};
