@@ -10,12 +10,11 @@ import styles from './index.module.css';
 function NavigateLayout() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch<appDispatch>();
+	const profile = useSelector((s: RootState) => s.user.profile);
 
-	const jwt = useSelector((s: RootState) => s.user.jwt);
-	
 	useEffect(() => {
-		dispatch(getProfile({ jwt }));
-	}, [jwt, dispatch]);
+		dispatch(getProfile());
+	}, [dispatch]);
 	
 	const logout = () => 
 	{
@@ -28,8 +27,8 @@ function NavigateLayout() {
 			<div className={styles['sidebar']}>
 				<div className={styles['user']}>
 					<img alt='Аватар' src='/user-avatar.svg' className={styles['user-avatar']}/>
-					<div className={styles['user-name']}>Антон Ларичев</div>
-					<div className={styles['user-email']}>alaricode@ya.ru</div>
+					<div className={styles['user-name']}>{profile?.name}</div>
+					<div className={styles['user-email']}>{profile?.email}</div>
 				</div>
 				<div className={styles['menu']}>
 					<NavLink to='/' className={({ isActive }) => cn(styles['link-container'], styles['menu-container'], {
