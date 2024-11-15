@@ -11,7 +11,7 @@ function NavigateLayout() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch<appDispatch>();
 	const profile = useSelector((s: RootState) => s.user.profile);
-
+	const items = useSelector((s: RootState) => s.cart.items);
 	useEffect(() => {
 		dispatch(getProfile());
 	}, [dispatch]);
@@ -46,7 +46,9 @@ function NavigateLayout() {
 					)}>
 						<div className={cn(styles['link-icon'], styles['cart-icon'])}></div>
 						<div>Корзина</div>
-						<div className={styles['goods-icon']}>2</div>
+						<div className={styles['goods-icon']}>
+							{items.reduce((acc, i) => acc += i.count, 0)}
+						</div>
 					</NavLink>
 
 				
