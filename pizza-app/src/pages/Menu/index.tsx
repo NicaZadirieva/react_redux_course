@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios';
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import Heading from '../../components/Heading';
 import { MenuList } from '../../components/MenuList';
 import Search from '../../components/Search';
@@ -11,9 +11,17 @@ function Menu() {
 	const [products, setProducts] = useState<Product[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string | undefined>();
+	const [filter, setFilter] = useState<string>();
 
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	const getMenu = async () => {
+	useEffect(() => {
+		getMenu(filter);
+	}, [filter]);
+
+	const updateFilter = (e: ChangeEvent<HTMLInputElement>) => {
+		setFilter(e.target.value);
+	};
+
+	const getMenu = async (name?: string) => {
 		try {
 			setIsLoading(true);
 			// Simulate delay to show loading state for a moment before fetching data
@@ -22,7 +30,11 @@ function Menu() {
 					resolve();
 				}, 2000);
 			});
-			const { data } = await axios.get<Product[]>(`${PREFIX}/products`);
+			const { data } = await axios.get<Product[]>(`${PREFIX}/products`, {
+				params: {
+					name
+				}
+			});
 			setProducts(data);
 			setIsLoading(false);
 		} catch(err) {
@@ -36,19 +48,16 @@ function Menu() {
 		}
 	};
 
-	useEffect(() => {
-		getMenu();
-	}, []);
 	
 	return (
 		<>
 			<div className={styles['head']}>
 				<Heading>Menu</Heading>
-				<Search placeholder='Введите блюдо или состав'/>
+				<Search placeholder='Введите блюдо или состав' onChange={updateFilter}/>
 			</div>
 			<div>
 				{error && <>{error}</>}
-				{!isLoading && !error && <MenuList products={products}/>}
+				{!isLoading && !error && products.length > 0 && <MenuList products={products}/>}
 				{isLoading && !error && <>Загружаем продукты...</>}
 			</div>
 		</>
