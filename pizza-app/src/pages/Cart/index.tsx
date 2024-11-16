@@ -6,7 +6,7 @@ import Heading from '../../components/Heading';
 import { PREFIX } from '../../helpers/API';
 import { Product } from '../../interfaces/product.interface';
 import { RootState } from '../../store/store';
-
+import styles from './index.module.css';
 
 function Cart() {
 	const [cartProducts, setCardProducts] = useState<Product[]>([]);
@@ -28,7 +28,7 @@ function Cart() {
 	
 	return (
 		<>
-			<Heading>Корзина</Heading>
+			<Heading className={styles['heading']}>Корзина</Heading>
 			{items.map((i) => {
 				const product = cartProducts.find(p => i.id == p.id);
 				if(!product) return;
