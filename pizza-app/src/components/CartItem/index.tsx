@@ -13,10 +13,10 @@ function CartItem(props : CartItemProps) {
 		dispatch(cartActions.add(props.id));
 	};
 	const decrease = () => {
-		
+		dispatch(cartActions.removeOnlyOneItem(props.id));
 	};
 	const remove = () => {
-		
+		dispatch(cartActions.deleteAllSuchItem(props.id));
 	};
 	
 	return (
