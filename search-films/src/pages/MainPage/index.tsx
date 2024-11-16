@@ -1,43 +1,30 @@
 
-import { Flex, Input, MovieCard, Paragraph, Title } from '../../components';
+import { useLoaderData } from 'react-router-dom';
+import { FilmDescApi } from '../../api';
+import { Flex, MovieCard } from '../../components';
 
 
 function MainPage() {
-
+	const data = useLoaderData() as FilmDescApi[];
 	return (
 		<>
-			<Title text='Поиск'/>
-			<Paragraph 
-				text='Введите название фильма, сериала или мультфильма для поиска и добавления в избранное.'
-				fontSizeInPx={16}
-			/>
-			<Input 
-				position='vertical'
-				placeholder="Введите название"
-				onSend={(textToSearch: string) => {console.log(textToSearch);}}
-				inputActionName="Искать"
-				iconClassName={'icon-search'}
-				hasIcon={true}
-			/>
 			<Flex position='horizontal' paddingTop={88}>
-				<MovieCard
-					movieName="Black Window"
-					movieId={'1'}
-					posterUrl={'Black_Widow.png'}
-					isLiked={false}
-					rating={324}
-					addToWishList={() => {}}
-					deleteFromWishList={() => {}}
-				/>
-				<MovieCard
-					movieName="Money Heist"
-					movieId={'2'}
-					posterUrl={'money_heist.png'}
-					isLiked={true}
-					rating={8125}
-					addToWishList={() => {}}
-					deleteFromWishList={() => {}}
-				/>
+				{
+					data && data.map((d: FilmDescApi) => {
+						return (
+							<MovieCard
+								movieName={d['#TITLE']}
+								movieId={d['#IMDB_ID']}
+								key={d['#IMDB_ID']}
+								posterUrl={d['#IMG_POSTER']}
+								isLiked={false}
+								rating={d.rating}
+								addToWishList={() => {}}
+								deleteFromWishList={() => {}}
+							/>
+						);
+					})
+				}
 
 			</Flex>
 		</>

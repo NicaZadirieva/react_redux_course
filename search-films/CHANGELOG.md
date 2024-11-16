@@ -1,3 +1,32 @@
+#### 0.3.1 (2024-11-13)
+
+##### New Features
+
+- add private route for only auth user (25aa858f)
+
+#### 0.3.0 (2024-11-13)
+
+##### Chores
+
+- add prefix to search request (b5ec193c)
+
+##### New Features
+
+- include MoviePage (492f305f)
+- add Loader's support (247a47a9)
+- update routes (09340df1)
+- impl of requests (mock, real) (9cca891b)
+
+##### Bug Fixes
+
+- **movie card, favoritesPage:** fix design (c3e503b5)
+- **MovieCard:** remove useless postfix (d1a05746)
+- **searchFilmDescByName:** fix request (f2302a15)
+
+##### Refactors
+
+- add Feedback component (bdfd020c)
+
 #### 0.2.0 (2024-11-08)
 
 ##### New Features

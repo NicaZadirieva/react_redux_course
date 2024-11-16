@@ -11,7 +11,7 @@
 }
 
 .delete-added-icon {
-    background: url("hand-icon.svg") no-repeat;
+    background: url("/hand-icon.svg") no-repeat;
     width: 24px;
     height: 24px;
     margin-right: 8px;
