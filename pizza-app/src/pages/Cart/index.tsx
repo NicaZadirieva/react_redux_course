@@ -22,9 +22,11 @@ function Cart() {
 		setCardProducts(res);
 	};
 
+
 	useEffect(() => {
 		loadAllItems();
 	}, [items]);
+
 	
 	return (
 		<>

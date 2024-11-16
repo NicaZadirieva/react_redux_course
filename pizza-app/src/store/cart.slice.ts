@@ -2,20 +2,21 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios, { AxiosError } from 'axios';
 import { PREFIX } from '../helpers/API';
 import { LoginResponse } from '../interfaces/auth.interface';
+import { loadState } from './storage';
 
+export const CART_PERSISTENT_STATE = 'cartData';
 
 export interface CartItem{
     id: number;
     count: number;
 }
+
 export interface CartState {
     items: CartItem[]
 }
 
 
-const initialState : CartState = {
-	items : []
-};
+const initialState : CartState = loadState<CartState>(CART_PERSISTENT_STATE) ?? {items: []};
 
 export const login = createAsyncThunk('user/login', 
 	async (params: {email: string, password: string}) => {
@@ -33,6 +34,7 @@ export const login = createAsyncThunk('user/login',
 		}
 	}
 );
+
 
 const cartSlice = createSlice({
 	name: 'cart',
@@ -57,10 +59,13 @@ const cartSlice = createSlice({
 			if (existed) {
 				state.items = state.items.map(item => {
 					if(item.id == action.payload) {
-						item.count--;
-					} 
+						if(item.count > 0) {
+							item.count--;
+						} 
+					}
 					return item;
 				});
+				state.items = state.items.filter(i => i.count > 0);
 			} 
 		},
 		deleteAllSuchItem (state, action: PayloadAction<number>) {
