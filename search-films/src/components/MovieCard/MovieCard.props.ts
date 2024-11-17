@@ -28,16 +28,4 @@ export interface MovieCardProps extends DivProps {
      * (optional, byDefault = 0) value to describe a rating of the movie
      */
     rating?: number;
-
-    /**
-     * callback to do request for adding to wish list
-     * @param {string} movieId - id of the movie
-     */
-    addToWishList: (movieId: string) => void;
-
-    /**
-     * callback to do request for deleting from wish list
-     * @param {string} movieId - id of the movie
-     */
-    deleteFromWishList: (movieId: string) => void;
 }

@@ -1,14 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
-
+import favourSlice, { FILMS_PERSISTENT_STATE } from './films.slice';
+import { saveState } from './storage';
 
 export const store = configureStore({
 	reducer: {
+        favors: favourSlice
 	}
-
 });
 
 store.subscribe(() => {
-	//saveState({ favorites: store.getState().films.favorites}, FILM_PERSISTENT_STATE);
+	saveState({ favorites: store.getState().favors.favorites}, FILMS_PERSISTENT_STATE);
 });
 
 export type RootState = ReturnType<typeof store.getState>;

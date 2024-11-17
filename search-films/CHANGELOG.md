@@ -3,8 +3,13 @@
 ##### Chores
 
 - **store:**
-  - add draft to configure store (20989ff9)
+  - add draft to configure store (5926b3b3)
   - add storage.ts to load and save data (a9860c92)
+
+##### New Features
+
+- **MovieCard:**
+  - impl of add/remove from favour (b9385e43)
 
 #### 0.3.1 (2024-11-13)
 

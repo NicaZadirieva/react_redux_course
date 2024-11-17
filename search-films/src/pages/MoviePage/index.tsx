@@ -13,8 +13,7 @@ import styles from './index.module.css';
 function MoviePage() {
 	const data  = useLoaderData() as {data: FilmDetailsApi};
 	const { pathname } = useLocation();
-
-
+	
 	return (
 		<Suspense fallback={<Title text='Загружаю...'/>}>
 			<Await
@@ -41,7 +40,7 @@ function MoviePage() {
 								/>
 								<Flex gap={35} className={'no-justify-content'} position='horizontal'>
 									<Rating value={data.aggregateRating.ratingValue}/>
-									<AddToWishListItem movieId={pathname.split('/movie/')[1]} addToWishList={(movieId) => console.log(movieId)}/>
+									<AddToWishListItem movieId={pathname.split('/movie/')[1]} addToWishList={() => console.log('not implemented')}/>
 								</Flex>
 
 								<div className='property-container'>

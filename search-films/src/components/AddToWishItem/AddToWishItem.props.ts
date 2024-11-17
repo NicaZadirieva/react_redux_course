@@ -13,5 +13,5 @@ export interface AddToWishItemProps {
      * @param movieId id for the movie
      * @returns 
      */
-    addToWishList: (movieId: string) => void;
+    addToWishList: () => void;
 }

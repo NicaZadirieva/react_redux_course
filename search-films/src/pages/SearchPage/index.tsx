@@ -23,8 +23,6 @@ function SearchPage() {
 										posterUrl={d['#IMG_POSTER']}
 										isLiked={false}
 										rating={d.rating}
-										addToWishList={() => {}}
-										deleteFromWishList={() => {}}
 									/>
 								);
 							})

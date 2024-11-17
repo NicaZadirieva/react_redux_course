@@ -1,31 +1,30 @@
 
+import { useSelector } from 'react-redux';
+import { FilmDescApi } from '../../api';
 import { Flex, MovieCard, Title } from '../../components';
+import { RootState } from '../../store/store';
 
 
 function FavoritesPage() {
+	const favors = useSelector((f: RootState) => f.favors.favorites) as FilmDescApi[];
 
 	return (
 		<>
-			<Title text='Избранное'/>
+		<Title text='Избранное'/>
 			<Flex position='horizontal' paddingTop={88}>
-				<MovieCard
-					movieName="Black Window"
-					movieId={'1'}
-					posterUrl={'/poster/Black_Widow.png'}
-					isLiked={true}
-					rating={324}
-					addToWishList={() => {}}
-					deleteFromWishList={() => {}}
-				/>
-				<MovieCard
-					movieName="Money Heist"
-					movieId={'2'}
-					posterUrl={'poster/money_heist.png'}
-					isLiked={true}
-					rating={812}
-					addToWishList={() => {}}
-					deleteFromWishList={() => {}}
-				/>
+				{
+					favors && favors.map((d: FilmDescApi) => {
+						return (
+							<MovieCard
+								movieName={d['#TITLE']}
+								movieId={d['#IMDB_ID']}
+								key={d['#IMDB_ID']}
+								posterUrl={d['#IMG_POSTER']}
+								rating={d.rating}
+							/>
+						);
+					})
+				}
 
 			</Flex>
 		</>

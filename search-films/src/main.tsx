@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 import { createBrowserRouter, defer, RouterProvider } from 'react-router-dom';
 import { doGetDetails, doSearchFilmDescByName } from './api';
 import { UserProvider } from './context/user.context';
@@ -12,6 +13,7 @@ import FavoritesPage from './pages/FavoritesPage/index.js';
 import { LoginPage, MainPage } from './pages/index.js';
 import MoviePage from './pages/MoviePage';
 import SearchPage from './pages/SearchPage';
+import { store } from './store/store';
 
 const router = createBrowserRouter([
 	{
@@ -72,8 +74,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
-		<UserProvider> 
-			<RouterProvider router={router}/>
-		</UserProvider>
+		<Provider store={store}>
+			<UserProvider> 
+				<RouterProvider router={router}/>
+			</UserProvider>
+		</Provider>
 	</React.StrictMode>
 );
