@@ -2,7 +2,9 @@
 
 ##### Chores
 
-- **store:** add storage.ts to load and save data (e8f0d350)
+- **store:**
+  - add draft to configure store (20989ff9)
+  - add storage.ts to load and save data (a9860c92)
 
 #### 0.3.1 (2024-11-13)
 
