@@ -3,6 +3,7 @@ import favourSlice, { FILMS_PERSISTENT_STATE } from './films.slice';
 import { saveState } from './storage';
 
 export const store = configureStore({
+	// TODO: для полноценной работы приложения необходимо дореализовать user.slice.ts по аналогии с pizza-app
 	reducer: {
         favors: favourSlice
 	}
