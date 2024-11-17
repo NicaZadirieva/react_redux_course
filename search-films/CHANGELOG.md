@@ -8,8 +8,9 @@
 
 ##### New Features
 
+- add counter of favour films (6bbfec66)
 - **MovieCard:**
-  - impl of add/remove from favour (b9385e43)
+  - impl of add/remove from favour (5f9266a3)
 
 #### 0.3.1 (2024-11-13)
 
