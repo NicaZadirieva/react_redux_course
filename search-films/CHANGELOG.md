@@ -1,3 +1,9 @@
+#### 0.4.0 (2024-11-17)
+
+##### Chores
+
+- **store:** add storage.ts to load and save data (e8f0d350)
+
 #### 0.3.1 (2024-11-13)
 
 ##### New Features
