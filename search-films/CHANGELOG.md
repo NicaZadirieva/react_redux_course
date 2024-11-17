@@ -2,15 +2,17 @@
 
 ##### Chores
 
+- add TODO (88809265)
 - **store:**
   - add draft to configure store (5926b3b3)
   - add storage.ts to load and save data (a9860c92)
 
 ##### New Features
 
-- add counter of favour films (6bbfec66)
+- add counter of favour films (e59887a1)
 - **MovieCard:**
   - impl of add/remove from favour (5f9266a3)
+  - add util component MovieCard, minimal refactoring (a652f0d6)
 
 #### 0.3.1 (2024-11-13)
 
