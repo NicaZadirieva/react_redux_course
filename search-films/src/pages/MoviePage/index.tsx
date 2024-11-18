@@ -70,7 +70,7 @@ function MoviePage() {
 								/>
 								<Flex gap={35} className={'no-justify-content'} position='horizontal'>
 									<Rating value={data.details.aggregateRating.ratingValue}/>
-									{isLiked ? <DeleteFromWishListItem marginTop={16} movieId={data.desc['#IMDB_ID']} deleteFromWishList={() => deleteFromWishList(data)}/> : <AddToWishListItem movieId={pathname.split('/movie/')[1]} addToWishList={() => addToWishList(data)}/>}
+									{isLiked ? <DeleteFromWishListItem movieId={movieId} deleteFromWishList={() => deleteFromWishList(data)}/> : <AddToWishListItem movieId={movieId} addToWishList={() => addToWishList(data)}/>}
 								
 								</Flex>
 

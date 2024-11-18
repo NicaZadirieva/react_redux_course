@@ -19,6 +19,10 @@
   * impl of add/remove from favour (5f9266a3)
   * add util component MovieCard, minimal refactoring (a652f0d6)
 
+##### Refactors
+
+- minimal, delete useless code (7237fb03)
+
 #### 0.3.1 (2024-11-13)
 
 ##### New Features

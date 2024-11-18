@@ -20,18 +20,17 @@ const favorsSlice = createSlice({
 	name: 'favors',
 	initialState,
 	reducers: {
-        deleteFilm: (state, action: PayloadAction<string>) => {
-            state.favorites = state.favorites.filter(item => {
-                return item['#IMDB_ID'] != action.payload
-            });
-        },
         addFilm: (state, action: PayloadAction<FilmDescApi>) => {
             const existed = state.favorites.find(item => item['#IMDB_ID'] == action.payload['#IMDB_ID']);
             if(!existed) {
                 state.favorites.push(action.payload);
             }
         },
-        
+        deleteFilm: (state, action: PayloadAction<string>) => {
+            state.favorites = state.favorites.filter(item => {
+                return item['#IMDB_ID'] != action.payload
+            });
+        }
 	}
 });
 

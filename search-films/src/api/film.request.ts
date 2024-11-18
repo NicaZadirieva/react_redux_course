@@ -91,6 +91,7 @@ export async function searchFilmDescByName(filmName: string) {
 
 export async function getBothDetailsAndDesc(filmId: string) {
 	const details = await getDetails(filmId);
-    const desc = (await searchFilmDescByName(details.name)).filter((d) => d['#IMDB_ID'] == filmId)[0];
-    return {details, desc};
+	const allDescriptionsByName = await searchFilmDescByName(details.name);
+    const descAboutThisFilm = allDescriptionsByName.find((desc) => desc['#IMDB_ID'] == filmId);
+    return {details, desc: descAboutThisFilm};
 }
