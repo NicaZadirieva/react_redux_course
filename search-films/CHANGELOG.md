@@ -11,8 +11,10 @@
 
 ##### New Features
 
-- add counter of favour films (e59887a1)
-- **MovieCard:**
+- add util function to get duration (dd3101ef)
+
+* add counter of favour films (e59887a1)
+* **MovieCard:**
   - impl of add/remove from favour (5f9266a3)
   - add util component MovieCard, minimal refactoring (a652f0d6)
 

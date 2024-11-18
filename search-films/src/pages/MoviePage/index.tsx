@@ -7,6 +7,7 @@ import { Flex, Paragraph, Title } from '../../components';
 import AddToWishListItem from '../../components/AddToWishItem';
 import Feedback from '../../components/Feedback';
 import Rating from '../../components/Rating';
+import { convertDurationToRus } from './helpers';
 import styles from './index.module.css';
 
 
@@ -78,7 +79,7 @@ function MoviePage() {
 										className={styles['property']}
 									/>
 									<Paragraph 
-										text='181 мин'
+										text={convertDurationToRus(data.duration)}
 										fontSizeInPx={20}
 										className={styles['property-value']}
 									/>
