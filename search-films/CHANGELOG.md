@@ -2,19 +2,19 @@
 
 ##### Chores
 
-- delete context from app (66776700)
-
-* add TODO (88809265)
-* **store:**
+- delete deprecated code (6f05b117)
+- delete context from app (49effc4a)
+- add TODO (88809265)
+- **store:**
   - add draft to configure store (5926b3b3)
   - add storage.ts to load and save data (a9860c92)
 
 ##### New Features
 
-- add util function to get duration (dd3101ef)
-
-* add counter of favour films (e59887a1)
-* **MovieCard:**
+- add util function to get duration (15af2af4)
+- add counter of favour films (e59887a1)
+- **user.slice:** add user.slice (need to test) (ea751c63)
+- **MovieCard:**
   - impl of add/remove from favour (5f9266a3)
   - add util component MovieCard, minimal refactoring (a652f0d6)
 
