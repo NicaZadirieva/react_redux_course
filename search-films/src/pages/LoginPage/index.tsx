@@ -1,17 +1,22 @@
-import { useContext, useRef } from 'react';
+import { useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Input, Title } from '../../components';
-import { IUserContext, UserContext } from '../../context/user.context';
+import { userActions } from '../../store/user.slice';
 
 function LoginPage() {
-	const { saveCurrentUser } = useContext(UserContext) as IUserContext;
 	const navigate = useNavigate();
 	const inputRef = useRef(null);
+	const dispatch = useDispatch();
+
+	const saveCurrentUser = (name: string) => {
+		dispatch(userActions.login({ name }));
+	}
 
 	const onSubmit = (text: string) => {
 		// if text is not empty set isAuthenticated to true
 		if(text.trim().length > 0) {
-			saveCurrentUser?.(text);
+			saveCurrentUser(text);
 			navigate('/');
 
 		} else {

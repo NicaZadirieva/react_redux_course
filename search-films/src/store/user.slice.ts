@@ -40,7 +40,7 @@ const userSlice = createSlice({
 		},
 		logout: (state, action : PayloadAction<UserState>) => {
             state.data = state.data.filter(user => user.id !== action.payload.id);
-            state.currentUser = state.data.find(user => user.isLogined) || null;
+            state.currentUser = null;
         }
 	}
 	}

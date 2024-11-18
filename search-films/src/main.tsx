@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { createBrowserRouter, defer, RouterProvider } from 'react-router-dom';
 import { doGetDetails, doSearchFilmDescByName } from './api';
-import { UserProvider } from './context/user.context';
 import './index.css';
 import MenuLayout from './layouts/MenuLayout';
 import { RequireAuth } from './layouts/RequireAuth';
@@ -74,10 +73,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
-		<Provider store={store}>
-			<UserProvider> 
+		<Provider store={store}> 
 				<RouterProvider router={router}/>
-			</UserProvider>
 		</Provider>
 	</React.StrictMode>
 );

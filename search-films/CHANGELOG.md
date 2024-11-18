@@ -1,9 +1,11 @@
-#### 0.4.0 (2024-11-17)
+#### 0.4.0 (2024-11-18)
 
 ##### Chores
 
-- add TODO (88809265)
-- **store:**
+- delete context from app (66776700)
+
+* add TODO (88809265)
+* **store:**
   - add draft to configure store (5926b3b3)
   - add storage.ts to load and save data (a9860c92)
 

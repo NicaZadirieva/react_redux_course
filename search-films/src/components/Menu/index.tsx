@@ -1,15 +1,22 @@
-import { useContext } from 'react';
-import { useSelector } from 'react-redux';
-import { IUserContext, UserContext } from '../../context/user.context';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
+import { userActions } from '../../store/user.slice';
 import LinkedMenuItem from '../LinkedMenuItem';
 import MenuIconBuilder from '../shared/MenuIconBuilder';
 import SimpleMenuItem from '../SimpleMenuItem';
 import styles from './index.module.css';
 
 function Menu() {
-	const {currentUser, isAuthenticated, logoutCurrentUser} = useContext(UserContext) as IUserContext;
+	const currentUser = useSelector((s: RootState) => s.users.currentUser);
 	const favors = useSelector((f: RootState) => f.favors.favorites);
+	const dispatch = useDispatch();
+
+	const logoutCurrentUser = () => {
+		if (currentUser) {
+			dispatch(userActions.logout(currentUser));
+		}
+	};
+
 
 	const authMenu = (
 		<>
@@ -24,7 +31,7 @@ function Menu() {
 				handleClicks={(event) => console.log(event)}
 			/>
 			<SimpleMenuItem 
-				text={currentUser as string} /** if currentUser not null */
+				text={currentUser?.name as string} /** if currentUser not null */
 				icon={MenuIconBuilder.buildAvatarIcon()}
 				canChoose={false}
 			/>
@@ -54,7 +61,7 @@ function Menu() {
 	);
 	return (
 		<ul className={styles.menu}>
-			{isAuthenticated ? authMenu: defaultMenuItems}
+			{currentUser ? authMenu: defaultMenuItems}
 		</ul>
 	);
 }
