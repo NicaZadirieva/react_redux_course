@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { LocalStorageValue, ProfileElement } from './useLocalStorage';
 
+// TODO: Deprecated
 function useLocalStorage(profileKey: string) : LocalStorageValue {
 	const [profile, setProfile] = useState<ProfileElement[]>([]);
 	const [currentUser, setCurrentUser] = useState(/*defaultValue=*/'');

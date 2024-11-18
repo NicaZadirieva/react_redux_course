@@ -18,8 +18,10 @@ function MoviePage() {
 		<Suspense fallback={<Title text='Загружаю...'/>}>
 			<Await
 				resolve={data.data}>
+
 				{(data: FilmDetailsApi) => {
-					return (<div className={styles['film-container']}>
+					return (
+					<div className={styles['film-container']}>
 						
 						<div className={styles['head']}>
 							<Paragraph 
@@ -102,13 +104,10 @@ function MoviePage() {
 
 						<div className={styles['feedback-section']}>Отзывы</div>
 						<Feedback data={data}/>
-					</div>);}}
-
+					</div>
+					);
+					}}
 			</Await>
-       
-
-			
-			
 		</Suspense>
 	);
 }
