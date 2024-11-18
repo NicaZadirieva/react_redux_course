@@ -26,7 +26,7 @@ function MovieCard(props: MovieCardProps) {
 
 	const deleteFromWishList = () => {
 		const movieData = mapToFilmDescApi(props);
-		dispatch(favorsActions.deleteFilm(movieData))
+		dispatch(favorsActions.deleteFilm(movieData['#IMDB_ID']))
 		setIsLiked(false);
 	};
 

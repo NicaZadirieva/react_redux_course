@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { createBrowserRouter, defer, RouterProvider } from 'react-router-dom';
-import { doGetDetails, doSearchFilmDescByName } from './api';
+import { doGetBothDetailsAndDesc, doSearchFilmDescByName } from './api';
 import './index.css';
 import MenuLayout from './layouts/MenuLayout';
 import { RequireAuth } from './layouts/RequireAuth';
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
 					if (params.movieId == undefined) {
 						throw new Error('Invalid movie id');
 					}
-					return defer({data: doGetDetails(params.movieId)});
+					return defer({data: doGetBothDetailsAndDesc(params.movieId)});
 
 				}
 			},
