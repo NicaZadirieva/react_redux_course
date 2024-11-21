@@ -6,6 +6,7 @@ import { Flex, MovieCard } from '../../components';
 
 function MainPage() {
 	const data = useLoaderData() as FilmDescApi[];
+
 	return (
 		<>
 			<Flex position='horizontal' paddingTop={88}>
@@ -17,10 +18,7 @@ function MainPage() {
 								movieId={d['#IMDB_ID']}
 								key={d['#IMDB_ID']}
 								posterUrl={d['#IMG_POSTER']}
-								isLiked={false}
 								rating={d.rating}
-								addToWishList={() => {}}
-								deleteFromWishList={() => {}}
 							/>
 						);
 					})

@@ -7,6 +7,7 @@ import { Flex, MovieCard, Title } from '../../components';
 
 function SearchPage() {
 	const data = useLoaderData() as {data: FilmDescApi[]};
+	
 	return (
 		<Suspense fallback={<Title text='Загружаю...'/>}>
 			<Await
@@ -21,10 +22,7 @@ function SearchPage() {
 										movieId={d['#IMDB_ID']}
 										key={d['#IMDB_ID']}
 										posterUrl={d['#IMG_POSTER']}
-										isLiked={false}
 										rating={d.rating}
-										addToWishList={() => {}}
-										deleteFromWishList={() => {}}
 									/>
 								);
 							})

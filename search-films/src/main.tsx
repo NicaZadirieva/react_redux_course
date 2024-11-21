@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 import { createBrowserRouter, defer, RouterProvider } from 'react-router-dom';
-import { doGetDetails, doSearchFilmDescByName } from './api';
-import { UserProvider } from './context/user.context';
+import { doGetBothDetailsAndDesc, doSearchFilmDescByName } from './api';
 import './index.css';
 import MenuLayout from './layouts/MenuLayout';
 import { RequireAuth } from './layouts/RequireAuth';
@@ -12,6 +12,7 @@ import FavoritesPage from './pages/FavoritesPage/index.js';
 import { LoginPage, MainPage } from './pages/index.js';
 import MoviePage from './pages/MoviePage';
 import SearchPage from './pages/SearchPage';
+import { store } from './store/store';
 
 const router = createBrowserRouter([
 	{
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
 					if (params.movieId == undefined) {
 						throw new Error('Invalid movie id');
 					}
-					return defer({data: doGetDetails(params.movieId)});
+					return defer({data: doGetBothDetailsAndDesc(params.movieId)});
 
 				}
 			},
@@ -72,8 +73,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
-		<UserProvider> 
-			<RouterProvider router={router}/>
-		</UserProvider>
+		<Provider store={store}> 
+				<RouterProvider router={router}/>
+		</Provider>
 	</React.StrictMode>
 );

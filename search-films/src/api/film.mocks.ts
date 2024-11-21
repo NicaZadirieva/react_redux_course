@@ -28,7 +28,8 @@ const success_mock_data = {
 			aggregateRating: { ratingValue: 8.4 },
 			datePublished: '2019-04-24',
 			genre: ['Adventure', 'Science Fiction', 'Action'],
-			duration: 'PT3H1M'
+			duration: 'PT3H1M',
+			imbdId: 'tt4154796'
 		}
 	},
 	searchFilmDescByName: {
@@ -140,4 +141,11 @@ export async function searchFilmDescByName(filmName: string) {
 		console.error(err);
 		throw new Error('Failed to fetch film details');
 	}
+}
+
+export async function getBothDetailsAndDesc(filmId: string) {
+	const details = await getDetails(filmId);
+	const allDescriptionsByName = await searchFilmDescByName(details.name);
+    const descAboutThisFilm = allDescriptionsByName.find((desc) => desc['#IMDB_ID'] == filmId);
+    return {details, desc: descAboutThisFilm};
 }

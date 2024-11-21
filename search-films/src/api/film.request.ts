@@ -18,8 +18,14 @@ export type FilmDetailsApi = {
     aggregateRating: {ratingValue: number},
     datePublished: string,
     genre: string[],
+	imbdId: string;
     duration: string // PT3H1M PT{часы}H{минуты}M
 }
+
+export type AllAttrsFilm = {
+	details: FilmDetailsApi,
+	desc: FilmDescApi
+};
 
 // !!!!! CAN THROW RUNTIME ERROR
 /**
@@ -81,4 +87,11 @@ export async function searchFilmDescByName(filmName: string) {
 		console.error(err);
 		throw new Error('Failed to fetch film description');
 	}
+}
+
+export async function getBothDetailsAndDesc(filmId: string) {
+	const details = await getDetails(filmId);
+	const allDescriptionsByName = await searchFilmDescByName(details.name);
+    const descAboutThisFilm = allDescriptionsByName.find((desc) => desc['#IMDB_ID'] == filmId);
+    return {details, desc: descAboutThisFilm};
 }
