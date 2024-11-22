@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import Button from '../../components/Button';
 import CartItem from '../../components/CartItem';
 import Heading from '../../components/Heading';
 import { PREFIX } from '../../helpers/API';
@@ -12,6 +14,8 @@ const DELIVERY_PRICE = 169;
 function Cart() {
 	const [cartProducts, setCardProducts] = useState<Product[]>([]);
 	const items = useSelector((s: RootState) => s.cart.items);
+	const jwt = useSelector((s: RootState) => s.user.jwt);
+	const navigate = useNavigate();
 	const total = items.map((i) => {
 		const product = cartProducts.find(p => i.id == p.id);
 		if(!product) return 0;
@@ -28,6 +32,17 @@ function Cart() {
 		setCardProducts(res);
 	};
 
+	const checkout = async () => {
+		await axios.post(`${PREFIX}/order`, {
+			products: items,
+
+		}, {
+			headers: {
+				Authorization: `Bearer ${jwt}`
+			}
+		});
+		navigate('/success');
+	};
 
 	useEffect(() => {
 		loadAllItems();
@@ -55,6 +70,9 @@ function Cart() {
 			<div className={styles['line']}>
 				<div className={styles['text']}>Итог <span className={styles['total-count']}>({items.length})</span></div>
 				<div className={styles['price']}>{total + DELIVERY_PRICE}&nbsp;<span>₽</span></div>
+			</div>
+			<div className={styles['checkout']}>
+				<Button onClick={checkout} appearance='big'>Оформить</Button>
 			</div>
 		</>
 	);

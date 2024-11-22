@@ -1,0 +1,27 @@
+.success {
+    max-width: 330px;
+    margin: 0 auto;
+}
+
+.success img {
+    width: 330px;
+}
+
+.text {
+    font-size: 31px;
+    font-weight: 300;
+    line-height: 120%;
+    text-align: center;
+    margin-top: 55px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.button {
+    color: var(--white-color);
+}

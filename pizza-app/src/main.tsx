@@ -14,6 +14,7 @@ import AuthLayout from './layout/AuthLayout/index.tsx';
 import Login from './pages/Login/index.tsx';
 import { Product } from './pages/Product/index.tsx';
 import RegisterPage from './pages/RegisterPage/index.tsx';
+import { Success } from './pages/Success/index.tsx';
 import { store } from './store/store.ts';
 
 const Menu = lazy(() => import('./pages/Menu'));
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
 					});
 
 				}
+			},
+			{
+				path: '/success',
+				element: <Success/>
 			}
 		]
 	},
