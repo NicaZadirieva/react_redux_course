@@ -53,7 +53,7 @@ function Cart() {
 			</div>
 			<hr className={styles['hr']}/>
 			<div className={styles['line']}>
-				<div className={styles['text']}>Итог </div>
+				<div className={styles['text']}>Итог <span className={styles['total-count']}>({items.length})</span></div>
 				<div className={styles['price']}>{total + DELIVERY_PRICE}&nbsp;<span>₽</span></div>
 			</div>
 		</>
